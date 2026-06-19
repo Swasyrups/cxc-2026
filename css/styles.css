@@ -1315,6 +1315,12 @@ footer {
   .finale-right { text-align: center; }
   .how-steps { grid-template-columns: 1fr; }
   .register-form-card { padding: 28px 20px; }
+  @media (max-width: 768px) {
+  .hero-bg {
+    background-image: url('../assets/images/cxc-master.jpg');
+    background-position: center top;
+  }
+}
 }
 
 @media (max-width: 480px) {
