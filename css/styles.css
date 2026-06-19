@@ -1291,9 +1291,9 @@ footer {
   :root { --section-pad: 64px; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-  .cxc-logo-float {width:120px;top:80px}
-  .hero-content {padding-top:280px}
-  .hero-content h1 {font-size:40px}
+  .cxc-logo-float {width:160px;top:80px}
+  .hero-content {padding-top:180px}
+  .hero-content h1 {font-size:36px}
   .hero-cta {margin-top:100px}
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .register-wrap { grid-template-columns: 1fr; gap: 40px; }
