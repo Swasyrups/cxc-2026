@@ -58,6 +58,9 @@ async function handleRegistration(form) {
       return;
     }
 
+// delay goes HERE
+await new Promise(resolve => setTimeout(resolve, 500));
+
     const { error: dbError } = await sb
       .from('participants')
       .insert({ auth_user_id: authData.user?.id, ...data, status: 'registered' });
