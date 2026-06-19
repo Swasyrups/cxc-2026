@@ -1293,7 +1293,7 @@ footer {
   .nav-hamburger { display: flex; }
   .cxc-logo-float {width:160px;top:60px}
   .hero-content {padding-top:180px}
-  .hero-content h1 {font-size:36px}
+  .hero-content h1 {font-size:32px}
   .hero-cta {margin-top:100px}
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .register-wrap { grid-template-columns: 1fr; gap: 40px; }
