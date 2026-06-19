@@ -47,53 +47,51 @@ window.addEventListener('load', () => {
 const hamburger = document.querySelector('.nav-hamburger');
 const navLinks = document.querySelector('.nav-links');
 
+function openNav() {
+  Object.assign(navLinks.style, {
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'fixed',
+    top: '0', left: '0', right: '0', bottom: '0',
+    width: '100vw', height: '100vh',
+    background: 'rgba(28,28,28,0.98)',
+    padding: '120px 40px 40px',
+    gap: '28px',
+    zIndex: '3000',
+    alignItems: 'center',
+    justifyContent: 'center'
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.style.color = '#fff');
+  document.body.style.overflow = 'hidden';
+  hamburger.style.display = 'none';
+  document.getElementById('navClose').style.display = 'block';
+}
+
+function closeNav() {
+  navLinks.style.display = 'none';
+  document.body.style.overflow = '';
+  hamburger.style.display = 'flex';
+  document.getElementById('navClose').style.display = 'none';
+}
+
+// Create close button once
+const closeBtn = document.createElement('button');
+closeBtn.id = 'navClose';
+closeBtn.innerHTML = '✕';
+closeBtn.style.cssText = 'display:none;position:fixed;top:24px;right:24px;color:#fff;font-size:28px;background:none;border:none;cursor:pointer;z-index:3001;';
+closeBtn.addEventListener('click', closeNav);
+document.body.appendChild(closeBtn);
+
 if (hamburger) {
   hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.style.display === 'flex';
-    if (isOpen) {
-      navLinks.style.display = 'none';
-    } else {
-      Object.assign(navLinks.style, {
-        display: 'flex',
-  flexDirection: 'column',
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  right: '0',
-  bottom: '0',
-  width: '100vw',
-  height: '100vh',
-  background: 'rgba(28,28,28,0.96)',
-  padding: '100px 40px 40px',
-  gap: '28px',
-  zIndex: '2000',
-  alignItems: 'center',
-  justifyContent: 'center'
-      });
-  if (!document.getElementById('navClose')) {
-  const closeBtn = document.createElement('button');
-  closeBtn.id = 'navClose';
-  closeBtn.innerHTML = '✕';
-  closeBtn.style.cssText = 'position:fixed;top:24px;right:24px;color:#fff;font-size:28px;background:none;border:none;cursor:pointer;z-index:2001;';
-  closeBtn.addEventListener('click', () => { 
-    navLinks.style.display = 'none';
-    closeBtn.remove();
-  });
-  document.body.appendChild(closeBtn);
-}
-      navLinks.querySelectorAll('a').forEach(a => a.style.color = '#fff');
-    }
+    navLinks.style.display === 'flex' ? closeNav() : openNav();
   });
 
   navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    if (window.innerWidth < 768) {
-      navLinks.style.display = 'none';
-      const cb = document.getElementById('navClose');
-      if (cb) cb.remove();
-    }
+    a.addEventListener('click', () => {
+      if (window.innerWidth < 768) closeNav();
+    });
   });
-});
 }
 
 /* --- SCROLL REVEAL --- */
