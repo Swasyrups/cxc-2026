@@ -176,41 +176,6 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-/* --- REGISTRATION FORM SUBMIT --- */
-const form = document.getElementById('registerForm');
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Submitting…';
-    btn.disabled = true;
-
-    const data = Object.fromEntries(new FormData(form));
-
-    try {
-      // TODO: Replace with actual Google Apps Script URL
-      const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
-      if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        const res = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: { 'Content-Type': 'application/json' }
-        });
-        const json = await res.json();
-        if (json.result === 'success') {
-          showSuccess();
-        } else {
-          showError();
-        }
-      } else {
-        // Demo mode
-        setTimeout(showSuccess, 1200);
-      }
-    } catch (err) {
-      showError();
-    }
-  });
-}
 
 function showSuccess() {
   const form = document.getElementById('registerForm');
