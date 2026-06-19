@@ -55,7 +55,7 @@ function openNav() {
     top: '0', left: '0', right: '0', bottom: '0',
     width: '100vw', height: '100vh',
     background: 'rgba(28,28,28,0.98)',
-    padding: '120px 40px 40px',
+    padding: '0px 40px 40px',
     gap: '28px',
     zIndex: '3000',
     alignItems: 'center',
