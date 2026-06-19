@@ -8,9 +8,74 @@
   <meta property="og:title" content="CxC 2026 — CoffeeXCocktail Championship" />
   <meta property="og:description" content="Where India's best baristas meet its best bartenders. Register free. Compete for ₹1L+." />
   <meta property="og:image" content="assets/images/CXC_2026.jpg" />
+  <!-- Canonical -->
+<link rel="canonical" href="https://cxc.drinkswa.com/" />
+<!-- OG Type + URL -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cxc.drinkswa.com/" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CxC 2026 — CoffeeXCocktail Championship" />
+<meta name="twitter:description" content="Where India's best baristas meet its best bartenders. Register free. Compete for ₹1L+." />
+<meta name="twitter:image" content="https://cxc.drinkswa.com/assets/images/twitter.svg" />
+
+<!-- Favicon -->
+<link rel="icon" href="https://cxc.drinkswa.com/assets/images/CXC_favicon.svg" type="image/png" />
+
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="assets/images/CXC_2026.jpg" />
+  <!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA4_ID"></script>
+
+<!-- Event JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "CxC 2026 — CoffeeXCocktail Championship",
+  "startDate": "2026-09-08",
+  "endDate": "2026-09-08",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Bangalore, India"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Swa Artisanal Syrups",
+    "url": "https://drinkswa.com"
+  },
+  "description": "India's only barista-meets-bartender championship. Free to enter.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-06-25"
+  }
+}
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'YOUR_GA4_ID');
+</script>
+ 
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_META_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
 </head>
 <body>
 
@@ -747,6 +812,8 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/main.js"></script>
+<script src="js/cxc-registration.js"></script>
 </body>
 </html>
