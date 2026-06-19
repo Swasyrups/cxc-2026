@@ -51,6 +51,9 @@ async function handleRegistration(form) {
       options:  { data: { first_name: data.first_name, last_name: data.last_name } }
     });
 
+    console.log('authData:', authData);
+console.log('authError:', authError);
+
     if (authError) {
       showFormError(form, authError.message.includes('already registered')
         ? 'This email is already registered.'
