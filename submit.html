@@ -518,7 +518,9 @@
 
     try {
       const fileExt  = selectedVideoFile.name.split('.').pop();
-      const filePath = `submissions/${currentParticipant.id}/${Date.now()}.${fileExt}`;
+      const safeName = currentParticipant.first_name.toLowerCase().replace(/\s+/g, '-') 
+               + '-' + currentParticipant.last_name.toLowerCase().replace(/\s+/g, '-');
+const filePath = `submissions/${safeName}-${currentParticipant.id.slice(0,8)}/${Date.now()}.${fileExt}`;
       const { error: uploadError } = await sb.storage.from('cxc-submissions').upload(filePath, selectedVideoFile, { cacheControl: '3600', upsert: false });
       if (uploadError) { showErr(errEl, 'Video upload failed. Please try again.'); console.error(uploadError); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
 

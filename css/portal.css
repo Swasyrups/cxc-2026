@@ -58,6 +58,11 @@
 .page.active { display: block; }
 
 /* ── DASHBOARD ── */
+
+.status-card .svalue {
+  font-family: 'Roca', 'Nunito', serif;
+}
+
 .dash-hero {
   background: var(--olive); padding: 56px 80px 48px;
   display: flex; align-items: flex-end; justify-content: space-between;
@@ -267,6 +272,29 @@
 .success-card p { font-size: 16px; color: rgba(28,28,28,0.6); line-height: 1.8; font-weight: 300; max-width: 400px; margin: 0 auto; }
 
 /* ── MOBILE NAV ── */
+
+/* Force nav dark on portal pages */
+#nav {
+  background: var(--paper) !important;
+  border-bottom: 1.5px solid rgba(89,117,29,0.12) !important;
+}
+#nav .nav-links a {
+  color: var(--ink) !important;
+}
+#nav .nav-links a:hover {
+  color: var(--olive) !important;
+}
+#nav .nav-cta {
+  background: var(--pink) !important;
+  color: var(--paper) !important;
+}
+#nav .nav-logout-btn {
+  color: var(--ink) !important;
+}
+#nav #swa-wordmark img {
+  filter: brightness(0) !important;
+}
+
 .mobile-nav {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
   background: var(--paper); border-top: 1.5px solid rgba(89,117,29,0.12); padding: 8px 0 20px;
