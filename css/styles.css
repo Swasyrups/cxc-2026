@@ -185,7 +185,6 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   justify-self: end;
   position: relative;
   z-index: 10;
-  margin-top: 50px;
 }
 .nav-links a {
   font-size: 13px;
@@ -1297,7 +1296,7 @@ footer {
 
 @media (max-width: 768px) {
   :root { --section-pad: 64px; }
-  .nav-links { display: none; margin-top:0px}
+  .nav-links { display: none; margin-top:50px}
   .nav-hamburger { display: flex; }
   .cxc-logo-float {width:160px;top:60px}
   .hero-content {padding-top:180px}
