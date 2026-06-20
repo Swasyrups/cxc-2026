@@ -821,5 +821,31 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/main.js"></script>
 <script src="js/cxc-registration.js"></script>
+<script>
+(async () => {
+  const sb = supabase.createClient(
+    'https://ftduvppcdjanupoudzvi.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w'
+  );
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+
+  const label = 'My Dashboard →';
+  const href  = 'submit.html';
+
+  document.querySelectorAll('a[href="login.html"]').forEach(link => {
+    link.textContent = label;
+    link.href = href;
+    link.removeAttribute('style');
+    link.style.color = 'var(--olive)';
+    link.style.fontWeight = '600';
+    link.style.textDecoration = 'underline';
+    link.style.textUnderlineOffset = '3px';
+    link.style.fontFamily = "'Poppins', sans-serif";
+  });
+})();
+</script>
+
+
 </body>
 </html>

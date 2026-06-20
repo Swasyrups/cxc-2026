@@ -5,52 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portal — CxC 2026</title>
   <link rel="icon" href="assets/images/cxc-logo.png" type="image/png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/portal.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/portal.css" />
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav id="portal-nav">
-  <a class="nav-logo" href="index.html">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="49" fill="#59751d"/>
-      <circle cx="50" cy="50" r="43" fill="none" stroke="#c8a96e" stroke-width="1.5"/>
-      <text x="50" y="63" text-anchor="middle" fill="#faf7f2" font-size="31" font-family="Nunito,sans-serif" font-weight="900" font-style="italic">CxC</text>
-    </svg>
-    <span class="nav-logo-text">CxC <span>2026</span></span>
-  </a>
-
-  <div class="nav-links">
-    <a href="index.html" class="nav-link main-site">Main site</a>
-    <button class="nav-link active" onclick="showPage('dashboard')">Dashboard</button>
-    <button class="nav-link" onclick="showPage('rules')">Rulebook</button>
-    <button class="nav-link" onclick="showPage('schedule')">Schedule</button>
-    <button class="nav-link" onclick="showPage('submit')">Submit Entry</button>
-  </div>
-
-  <div class="nav-right">
-    <span class="nav-user" id="navUserName">Loading...</span>
-    <button class="nav-logout" onclick="logout()">Log Out</button>
+<!-- ── MAIN CXC NAV (same as index.html) ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Swa Artisanal Syrups">
+      <span style="font-family:var(--font-head);font-size:18px;font-weight:700;color:#fff;letter-spacing:0.06em;transition:color .35s" id="swa-wordmark"><img src="assets/images/swa-logo-white.png" alt="Swa Logo"/></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#schedule">Schedule</a></li>
+      <li><a href="index.html#judges">Judges</a></li>
+      <li><a href="index.html#legacy">CXC 2025</a></li>
+      <li><a href="index.html#faq">FAQs</a></li>
+      <li><a href="index.html#register" class="nav-cta">Register FREE</a></li>
+      <li><button onclick="logout()" style="background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:inherit;text-decoration:underline;text-underline-offset:3px;" class="nav-logout-btn">Log Out</button></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- ── MOBILE NAV ── -->
+<!-- ── PORTAL SUB-NAV ── -->
+<div id="portal-subnav">
+  <div class="portal-subnav-inner">
+    <div class="portal-subnav-left">
+      <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="49" fill="#59751d"/>
+        <circle cx="50" cy="50" r="43" fill="none" stroke="#c8a96e" stroke-width="1.5"/>
+        <text x="50" y="63" text-anchor="middle" fill="#faf7f2" font-size="31" font-family="Nunito,sans-serif" font-weight="900" font-style="italic">CxC</text>
+      </svg>
+      <span class="subnav-title">My Portal</span>
+    </div>
+    <div class="portal-subnav-links">
+      <button class="subnav-link active" onclick="showPage('dashboard')">Dashboard</button>
+      <button class="subnav-link" onclick="showPage('rules')">Rulebook</button>
+      <button class="subnav-link" onclick="showPage('schedule')">Schedule</button>
+      <button class="subnav-link" onclick="showPage('submit')">Submit Entry</button>
+    </div>
+    <span class="subnav-user" id="navUserName">Loading...</span>
+  </div>
+</div>
+
+<!-- ── MOBILE BOTTOM NAV ── -->
 <div class="mobile-nav">
   <div class="mobile-nav-items">
     <button class="mobile-nav-item active" onclick="showPage('dashboard')">
-      <span class="icon">⌂</span><span class="label">Dashboard</span>
+      <span class="micon">⌂</span><span class="mlabel">Home</span>
     </button>
     <button class="mobile-nav-item" onclick="showPage('rules')">
-      <span class="icon">📋</span><span class="label">Rulebook</span>
+      <span class="micon">📋</span><span class="mlabel">Rules</span>
     </button>
     <button class="mobile-nav-item" onclick="showPage('schedule')">
-      <span class="icon">📅</span><span class="label">Schedule</span>
+      <span class="micon">📅</span><span class="mlabel">Dates</span>
     </button>
     <button class="mobile-nav-item" onclick="showPage('submit')">
-      <span class="icon">✦</span><span class="label">Submit</span>
+      <span class="micon">✦</span><span class="mlabel">Submit</span>
     </button>
   </div>
 </div>
@@ -60,32 +78,28 @@
      PAGE: DASHBOARD
 ══════════════════════════════════════════ -->
 <div id="page-dashboard" class="page active">
-
   <div class="dash-hero">
     <div>
-      <h1>Welcome back,<br><span id="dashFirstName">Competitor</span>.</h1>
+      <h1>Welcome back,<br><em id="dashFirstName">Competitor</em>.</h1>
       <p>Your CxC 2026 journey starts here.</p>
     </div>
     <div class="dash-role-badge" id="dashRole">Barista</div>
   </div>
-
   <div class="dash-body">
-
     <div class="status-grid">
       <div class="status-card">
-        <div class="label">Registration</div>
-        <div class="value confirmed"><div class="dot green"></div> Confirmed</div>
+        <div class="slabel">Registration</div>
+        <div class="svalue confirmed"><div class="dot green"></div> Confirmed</div>
       </div>
       <div class="status-card">
-        <div class="label">Sample Pack</div>
-        <div class="value pending" id="dispatchStatus"><div class="dot gold"></div> Processing</div>
+        <div class="slabel">Sample Pack</div>
+        <div class="svalue pending" id="dispatchStatus"><div class="dot gold"></div> Processing</div>
       </div>
       <div class="status-card">
-        <div class="label">My Submission</div>
-        <div class="value not-yet" id="submitStatus"><div class="dot grey"></div> Not submitted</div>
+        <div class="slabel">My Submission</div>
+        <div class="svalue not-yet" id="submitStatus"><div class="dot grey"></div> Not submitted</div>
       </div>
     </div>
-
     <div class="dash-cta">
       <div>
         <h3>Ready to enter?</h3>
@@ -93,12 +107,10 @@
       </div>
       <button class="btn-pink" onclick="showPage('submit')">Submit My Entry →</button>
     </div>
-
     <div class="deadline-bar">
       <p>Submission window closes</p>
-      <div class="date">31 July 2026</div>
+      <div class="ddate">31 July 2026</div>
     </div>
-
   </div>
 </div>
 
@@ -107,7 +119,6 @@
      PAGE: RULEBOOK
 ══════════════════════════════════════════ -->
 <div id="page-rules" class="page">
-
   <div class="rules-hero">
     <p class="eyebrow">CxC 2026</p>
     <h1>Competition<br>Rulebook</h1>
@@ -117,7 +128,6 @@
       <span class="rules-hero-tag">Version 1.0</span>
     </div>
   </div>
-
   <div class="rules-toc">
     <div class="rules-toc-label">In this document</div>
     <div class="rules-toc-items">
@@ -130,9 +140,7 @@
       <a href="#rule-conduct" class="rules-toc-item">7. Conduct</a>
     </div>
   </div>
-
   <div class="rules-body">
-
     <div class="rules-section" id="rule-eligibility">
       <div class="rules-section-number">Section 01</div>
       <h2>Eligibility</h2>
@@ -141,7 +149,6 @@
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Shortlisted individuals from Stage 1 will be paired by the CxC organisers into barista–bartender teams for the regional heats.</p></div>
       <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Employees of Raw Earth Foods & Beverages Pvt. Ltd. and their immediate family members are not eligible.</p></div>
     </div>
-
     <div class="rules-section" id="rule-format">
       <div class="rules-section-number">Section 02</div>
       <h2>Competition Format</h2>
@@ -149,7 +156,6 @@
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Stage 2 — Regional heats in Bangalore, Mumbai, Delhi. Shortlisted teams compete live. Top 3 per city advance.</p></div>
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Stage 3 — Grand Finale on 8 September 2026, Bangalore. 15-minute live showcase per team. Full blind judging panel.</p></div>
     </div>
-
     <div class="rules-section" id="rule-recipe">
       <div class="rules-section-number">Section 03</div>
       <h2>Recipe Rules</h2>
@@ -158,65 +164,42 @@
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">All ingredients must be legally purchasable in India. No prohibited substances.</p></div>
       <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Submission deadline is 31 July 2026, 11:59 PM IST. No extensions will be granted under any circumstances.</p></div>
     </div>
-
     <div class="rules-section" id="rule-swa">
       <div class="rules-section-number">Section 04</div>
       <h2>Swa Syrup Requirement</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">At least one Swa Artisanal Syrup must feature as a named ingredient in the final drink. This is mandatory — entries without Swa will be disqualified.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">At least one Swa Artisanal Syrup must feature as a named ingredient in the final drink. Entries without Swa will be disqualified.</p></div>
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You may use multiple Swa syrups. There is no upper limit.</p></div>
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">The Swa syrup sample kit dispatched on registration must be used in your video demonstration.</p></div>
     </div>
-
     <div class="rules-section" id="rule-video">
       <div class="rules-section-number">Section 05</div>
       <h2>Video Submission</h2>
       <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Submit a video between 60 and 90 seconds showing your drink preparation from start to finish.</p></div>
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">The video must show your face and hands. Voice narration explaining your drink concept is strongly encouraged.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Accepted formats: MP4, MOV. Maximum file size: 500MB. Minimum resolution: 720p.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Accepted formats: MP4, MOV. Maximum file size: 50MB (expanding shortly). Minimum resolution: 720p.</p></div>
       <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">No post-production effects, AI-generated visuals, or footage from commercial shoots. Raw, authentic footage only.</p></div>
     </div>
-
     <div class="rules-section" id="rule-scoring">
       <div class="rules-section-number">Section 06</div>
       <h2>Scoring</h2>
       <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;">Stage 1 entries are scored out of 100 points across five criteria.</p>
       <div class="scorecard-grid">
-        <div class="score-row">
-          <div class="score-row-top"><span class="score-label">Craft & Technique</span><span class="score-pts">25</span></div>
-          <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
-        </div>
-        <div class="score-row">
-          <div class="score-row-top"><span class="score-label">Flavour & Balance</span><span class="score-pts">25</span></div>
-          <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
-        </div>
-        <div class="score-row">
-          <div class="score-row-top"><span class="score-label">Swa Integration</span><span class="score-pts">20</span></div>
-          <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
-        </div>
-        <div class="score-row">
-          <div class="score-row-top"><span class="score-label">Creativity & Narrative</span><span class="score-pts">20</span></div>
-          <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
-        </div>
-        <div class="score-row">
-          <div class="score-row-top"><span class="score-label">Presentation</span><span class="score-pts">10</span></div>
-          <div class="score-bar"><div class="score-fill" style="width:40%"></div></div>
-        </div>
-        <div class="score-total">
-          <span class="score-total-label">Total</span>
-          <span class="score-total-pts">100 pts</span>
-        </div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Craft & Technique</span><span class="score-pts">25</span></div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Flavour & Balance</span><span class="score-pts">25</span></div><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Swa Integration</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Creativity & Narrative</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:80%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Presentation</span><span class="score-pts">10</span></div><div class="score-bar"><div class="score-fill" style="width:40%"></div></div></div>
+        <div class="score-total"><span class="score-total-label">Total</span><span class="score-total-pts">100 pts</span></div>
       </div>
     </div>
-
     <div class="rules-section" id="rule-conduct">
       <div class="rules-section-number">Section 07</div>
-      <h2>Conduct</h2>
+      <h2>Conduct & Rights</h2>
       <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Judges' decisions are final and binding. No appeals will be entertained.</p></div>
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Any attempt to contact judges directly about your submission will result in immediate disqualification.</p></div>
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">CxC organisers reserve the right to disqualify any entry that does not meet the spirit of the competition.</p></div>
       <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">By submitting, you grant Swa Artisanal Syrups and CxC the non-exclusive right to use your name, photo, video, and recipe content for promotional purposes including social media, paid advertising, and the Swa recipe bank — with full credit given to you as the creator.</p></div>
     </div>
-
   </div>
 </div>
 
@@ -225,15 +208,12 @@
      PAGE: SCHEDULE
 ══════════════════════════════════════════ -->
 <div id="page-schedule" class="page">
-
   <div class="schedule-hero">
     <p class="eyebrow">Key Dates</p>
     <h1>The Full Timeline</h1>
     <p>Every important date from registration to the finale on 8 September.</p>
   </div>
-
   <div class="timeline">
-
     <div class="timeline-item">
       <div class="timeline-dot olive">1</div>
       <div class="timeline-content">
@@ -242,61 +222,46 @@
         <p>Individual registration opens for baristas and bartenders across India. Free to enter. Sample pack dispatched within 24 hours of registration.</p>
       </div>
     </div>
-
     <div class="timeline-item">
-      <div class="timeline-dot gold">2</div>
-      <div class="timeline-content">
-        <span class="timeline-date gold">1 August 2026</span>
-        <h3>Swa Sample Kit Dispatch</h3>
-        <p>All registered participants receive their complimentary Swa Artisanal Syrups kit by courier. The kit must be used in your submission video.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot pink">3</div>
+      <div class="timeline-dot pink">2</div>
       <div class="timeline-content">
         <span class="timeline-date pink">25 July 2026</span>
         <h3>Submission Portal Opens</h3>
         <p>Upload your recipe card and video from this portal. The portal closes on 31 July at midnight IST.</p>
       </div>
     </div>
-
     <div class="timeline-item">
-      <div class="timeline-dot pink">4</div>
+      <div class="timeline-dot pink">3</div>
       <div class="timeline-content">
         <span class="timeline-date pink">31 July 2026</span>
         <h3>Registrations & Submissions Close</h3>
         <p>Final deadline for all entries. No registrations or submissions accepted after midnight IST. No extensions.</p>
       </div>
     </div>
-
     <div class="timeline-item">
-      <div class="timeline-dot gold">5</div>
+      <div class="timeline-dot gold">4</div>
       <div class="timeline-content">
         <span class="timeline-date sand">August 2026</span>
         <h3>Shortlist Announced</h3>
-        <p>Shortlisted individuals notified via email and WhatsApp. Barista–bartender team pairings announced for each regional heat city.</p>
+        <p>Shortlisted individuals notified via email. Barista–bartender team pairings announced for each regional heat city.</p>
       </div>
     </div>
-
     <div class="timeline-item">
-      <div class="timeline-dot olive">6</div>
+      <div class="timeline-dot olive">5</div>
       <div class="timeline-content">
         <span class="timeline-date olive">August 2026</span>
         <h3>Regional Heats</h3>
         <p>Live rounds in Bangalore, Mumbai, and Delhi. Blind judging by a panel of three per city. Top 3 teams per city advance to the finale.</p>
       </div>
     </div>
-
     <div class="timeline-item">
-      <div class="timeline-dot pink" style="background:var(--pink)">✦</div>
+      <div class="timeline-dot pink" style="font-size:16px;">✦</div>
       <div class="timeline-content">
         <span class="timeline-date pink">8 September 2026 · Bangalore</span>
         <h3>Grand Finale</h3>
-        <p>The top teams from all regional heats converge for the grand finale. 15-minute live showcase. Full blind judging panel. Winners announced at the closing ceremony. Prize pool ₹3L+.</p>
+        <p>The top teams from all regional heats compete live. 15-minute showcase. Full blind judging panel. Winners announced at the closing ceremony. Prize pool ₹3L+.</p>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -305,17 +270,14 @@
      PAGE: SUBMIT ENTRY
 ══════════════════════════════════════════ -->
 <div id="page-submit" class="page">
-
   <div class="submit-hero">
     <p class="eyebrow">Stage 1 Submission</p>
     <h1>Submit Your Entry</h1>
-    <p>Fill in your recipe details and upload your 60–90 second preparation video.</p>
+    <p>Fill in your recipe details and upload your 60–90 second preparation video. You can save a draft and come back.</p>
   </div>
-
   <div class="submit-body">
 
     <div id="submitForm">
-
       <div class="swa-syrup-note">
         <p>⚠️ <strong>Reminder:</strong> At least one Swa Artisanal Syrup must be used in your drink. Entries without Swa will be disqualified. Use the sample kit we sent you.</p>
       </div>
@@ -331,15 +293,9 @@
             <label class="form-label">Swa Syrup Used *</label>
             <select class="form-select" id="swaSyrup">
               <option value="">Select syrup...</option>
-              <option>Jamun</option>
-              <option>Kokam</option>
-              <option>Nannari</option>
-              <option>Tamarind</option>
-              <option>Rose</option>
-              <option>Lemongrass</option>
-              <option>Hibiscus</option>
-              <option>Paan</option>
-              <option>Multiple syrups</option>
+              <option>Jamun</option><option>Kokam</option><option>Nannari</option>
+              <option>Tamarind</option><option>Rose</option><option>Lemongrass</option>
+              <option>Hibiscus</option><option>Paan</option><option>Multiple syrups</option>
             </select>
           </div>
         </div>
@@ -352,13 +308,8 @@
             <label class="form-label">Method</label>
             <select class="form-select" id="method">
               <option value="">Select...</option>
-              <option>Shake</option>
-              <option>Stir</option>
-              <option>Blend</option>
-              <option>Build</option>
-              <option>Pour-over</option>
-              <option>Cold brew</option>
-              <option>Other</option>
+              <option>Shake</option><option>Stir</option><option>Blend</option>
+              <option>Build</option><option>Pour-over</option><option>Cold brew</option><option>Other</option>
             </select>
           </div>
         </div>
@@ -379,7 +330,7 @@
         <div class="form-row single">
           <div class="form-group">
             <label class="form-label">Ingredients *</label>
-            <textarea class="form-textarea" id="ingredients" placeholder="List all ingredients with measurements. e.g.&#10;45ml Swa Jamun Syrup&#10;30ml Gin&#10;20ml Fresh lime juice&#10;Soda to top&#10;Ice" style="min-height: 130px;"></textarea>
+            <textarea class="form-textarea" id="ingredients" placeholder="List all ingredients with measurements. e.g.&#10;45ml Swa Jamun Syrup&#10;30ml Gin&#10;20ml Fresh lime juice&#10;Soda to top&#10;Ice" style="min-height:130px;"></textarea>
           </div>
         </div>
         <div class="form-row">
@@ -395,7 +346,7 @@
         <div class="form-row single">
           <div class="form-group">
             <label class="form-label">Recipe Notes & Story <span class="opt">(optional)</span></label>
-            <textarea class="form-textarea" id="recipeNotes" placeholder="Tell us the story behind your drink. What inspired it? What does it represent? How does it bring together coffee and cocktail worlds?"></textarea>
+            <textarea class="form-textarea" id="recipeNotes" placeholder="Tell us the story behind your drink. What inspired it? What does it represent?"></textarea>
           </div>
         </div>
       </div>
@@ -405,37 +356,40 @@
         <div class="upload-area" onclick="document.getElementById('videoFile').click()">
           <div class="upload-icon">🎬</div>
           <h4>Upload your preparation video</h4>
-          <p>60–90 seconds · MP4 or MOV · Max 500MB · Min 720p</p>
+          <p>60–90 seconds · MP4 or MOV · Max 50MB · Min 720p</p>
           <p style="margin-top:8px;"><span class="link">Click to browse</span> or drag and drop</p>
         </div>
         <input type="file" id="videoFile" accept="video/mp4,video/quicktime" onchange="handleVideoSelect(this)" />
-        <div id="videoPreview">
-          <p id="videoFileName">✓ Video selected</p>
+        <div id="videoPreview" style="display:none;margin-top:12px;">
+          <p id="videoFileName" style="font-size:13px;color:var(--olive);font-weight:500;"></p>
         </div>
         <p style="font-size:12px;color:rgba(28,28,28,0.4);margin-top:12px;">Your video will be uploaded to secure storage and only viewed by the CxC judging panel.</p>
       </div>
 
       <div class="submit-btn-wrap">
-  <div class="form-card" style="margin-bottom:16px;">
-    <div style="display:flex;align-items:flex-start;gap:12px;">
-      <input type="checkbox" id="contentConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" required />
-      <label for="contentConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
-        I agree that Swa Artisanal Syrups and CxC may use my name, video, and recipe for promotional content, paid ads, and the Swa recipe bank. Full credit will be given to me as the creator.
-      </label>
+        <div class="form-card" style="margin-bottom:16px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <input type="checkbox" id="contentConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
+            <label for="contentConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
+              I agree that Swa Artisanal Syrups and CxC may use my name, video, and recipe for promotional content, paid ads, and the Swa recipe bank. Full credit will be given to me as the creator.
+            </label>
+          </div>
+        </div>
+        <div id="submitError" style="color:#e53e3e;font-size:14px;margin-bottom:12px;display:none;"></div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn-draft" id="draftBtn" onclick="saveDraft()">Save Draft</button>
+          <button class="btn-submit" id="submitBtn" onclick="submitEntry()">Submit My Entry →</button>
+        </div>
+        <p class="submit-note">By submitting you confirm this is your original work and you agree to the CxC 2026 competition rules.</p>
+        <p id="draftSaved" style="text-align:center;font-size:13px;color:var(--olive);margin-top:8px;display:none;">✓ Draft saved</p>
+      </div>
     </div>
-  </div>
-  <div id="submitError" style="color:#e53e3e;font-size:14px;margin-bottom:12px;display:none;"></div>
-  <button class="btn-submit" id="submitBtn" onclick="submitEntry()">Submit My Entry →</button>
-  <p class="submit-note">By submitting you confirm this is your original work and you agree to the CxC 2026 competition rules.</p>
-</div>
 
-    </div>
-
-    <div class="success-card" id="successCard">
+    <div class="success-card" id="successCard" style="display:none;">
       <div class="success-icon">✓</div>
       <h2>Entry Submitted!</h2>
       <p>Your recipe and video have been received. The judging panel will review all entries after 31 July. You'll hear from us in August.</p>
-      <p style="margin-top:20px;font-size:14px;color:var(--gold);">Keep an eye on your email — <strong style="color:var(--ink);">nivedita.panda@drinkswa.com</strong></p>
+      <p style="margin-top:20px;font-size:14px;color:var(--gold);">Questions? Email <strong style="color:var(--ink);">nivedita.panda@drinkswa.com</strong></p>
     </div>
 
   </div>
@@ -444,196 +398,175 @@
 
 <!-- ── SCRIPTS ── -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/main.js"></script>
 <script>
   const SUPABASE_URL      = 'https://ftduvppcdjanupoudzvi.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
-
-  const { createClient } = supabase;
-  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   let currentUser = null;
   let currentParticipant = null;
   let selectedVideoFile = null;
+  let existingSubmissionId = null;
 
-  // ── AUTH CHECK ─────────────────────────────
   document.addEventListener('DOMContentLoaded', async () => {
     const { data: { session } } = await sb.auth.getSession();
-    if (!session) {
-      window.location.href = 'login.html';
-      return;
-    }
+    if (!session) { window.location.href = 'login.html'; return; }
     currentUser = session.user;
     await loadParticipant();
   });
 
   async function loadParticipant() {
     const { data, error } = await sb
-      .from('participants')
-      .select('*')
-      .eq('auth_user_id', currentUser.id)
-      .single();
-
-    if (error || !data) {
-      console.error('Participant not found:', error);
-      return;
-    }
-
+      .from('participants').select('*')
+      .eq('auth_user_id', currentUser.id).single();
+    if (error || !data) { console.error('Participant not found:', error); return; }
     currentParticipant = data;
 
-    // Update UI
-    document.getElementById('navUserName').textContent = data.first_name + ' ' + data.last_name;
+    document.getElementById('navUserName').textContent = data.first_name;
     document.getElementById('dashFirstName').textContent = data.first_name;
     document.getElementById('dashRole').textContent = data.role === 'barista' ? 'Barista ☕' : 'Bartender 🍹';
 
-    // Sample dispatch status
     if (data.sample_dispatched) {
       document.getElementById('dispatchStatus').innerHTML = '<div class="dot green"></div> Dispatched';
-      document.getElementById('dispatchStatus').className = 'value confirmed';
+      document.getElementById('dispatchStatus').className = 'svalue confirmed';
     }
 
-    // Submission status
-    const { data: sub } = await sb
-      .from('submissions')
-      .select('id, final_decision')
-      .eq('participant_id', data.id)
-      .single();
+    const { data: sub } = await sb.from('submissions').select('*')
+      .eq('participant_id', data.id).single();
 
     if (sub) {
-      document.getElementById('submitStatus').innerHTML = '<div class="dot green"></div> Submitted';
-      document.getElementById('submitStatus').className = 'value confirmed';
-      // Hide form, show success on submit page
-      document.getElementById('submitForm').style.display = 'none';
-      document.getElementById('successCard').style.display = 'block';
+      existingSubmissionId = sub.id;
+      if (sub.final_decision !== 'pending' || sub.video_url) {
+        document.getElementById('submitForm').style.display = 'none';
+        document.getElementById('successCard').style.display = 'block';
+        document.getElementById('submitStatus').innerHTML = '<div class="dot green"></div> Submitted';
+        document.getElementById('submitStatus').className = 'svalue confirmed';
+      } else {
+        populateDraft(sub);
+        document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
+        document.getElementById('submitStatus').className = 'svalue pending';
+      }
     }
   }
 
-  // ── PAGE NAVIGATION ────────────────────────
-  function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    document.querySelectorAll('.mobile-nav-item').forEach(l => l.classList.remove('active'));
-
-    const navBtns = document.querySelectorAll('.nav-link');
-    const pageMap = { dashboard: 1, rules: 2, schedule: 3, submit: 4 };
-    if (navBtns[pageMap[page]]) navBtns[pageMap[page]].classList.add('active');
-
-    const mobileBtns = document.querySelectorAll('.mobile-nav-item');
-    const mobileMap = { dashboard: 0, rules: 1, schedule: 2, submit: 3 };
-    if (mobileBtns[mobileMap[page]]) mobileBtns[mobileMap[page]].classList.add('active');
-
-    window.scrollTo(0, 0);
+  function populateDraft(sub) {
+    if (sub.drink_name)    document.getElementById('drinkName').value   = sub.drink_name;
+    if (sub.swa_syrup_used) document.getElementById('swaSyrup').value   = sub.swa_syrup_used;
+    if (sub.spirit_used)   document.getElementById('spiritUsed').value  = sub.spirit_used;
+    if (sub.method)        document.getElementById('method').value      = sub.method;
+    if (sub.prep_time_mins) document.getElementById('prepTime').value   = sub.prep_time_mins;
+    if (sub.servings)      document.getElementById('servings').value    = sub.servings;
+    if (sub.ingredients)   document.getElementById('ingredients').value = sub.ingredients;
+    if (sub.garnish)       document.getElementById('garnish').value     = sub.garnish;
+    if (sub.recipe_notes)  document.getElementById('recipeNotes').value = sub.recipe_notes;
   }
 
-  // ── VIDEO SELECT ───────────────────────────
-  function handleVideoSelect(input) {
-    if (input.files && input.files[0]) {
-      selectedVideoFile = input.files[0];
-      const preview = document.getElementById('videoPreview');
-      const fileName = document.getElementById('videoFileName');
-      fileName.textContent = '✓ ' + selectedVideoFile.name + ' (' + (selectedVideoFile.size / 1024 / 1024).toFixed(1) + 'MB)';
-      preview.style.display = 'block';
+  function getFormData() {
+    return {
+      participant_id:  currentParticipant.id,
+      drink_name:      document.getElementById('drinkName').value.trim() || null,
+      swa_syrup_used:  document.getElementById('swaSyrup').value || null,
+      spirit_used:     document.getElementById('spiritUsed').value.trim() || null,
+      method:          document.getElementById('method').value || null,
+      prep_time_mins:  parseInt(document.getElementById('prepTime').value) || null,
+      servings:        parseInt(document.getElementById('servings').value) || 1,
+      ingredients:     document.getElementById('ingredients').value.trim() || null,
+      garnish:         document.getElementById('garnish').value.trim() || null,
+      recipe_notes:    document.getElementById('recipeNotes').value.trim() || null,
+      final_decision:  'pending',
+    };
+  }
+
+  async function saveDraft() {
+    const btn = document.getElementById('draftBtn');
+    btn.disabled = true; btn.textContent = 'Saving...';
+    const data = getFormData();
+    let error;
+    if (existingSubmissionId) {
+      ({ error } = await sb.from('submissions').update(data).eq('id', existingSubmissionId));
+    } else {
+      const { data: inserted, error: e } = await sb.from('submissions').insert(data).select().single();
+      error = e;
+      if (inserted) existingSubmissionId = inserted.id;
+    }
+    btn.disabled = false; btn.textContent = 'Save Draft';
+    if (!error) {
+      document.getElementById('draftSaved').style.display = 'block';
+      document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
+      document.getElementById('submitStatus').className = 'svalue pending';
+      setTimeout(() => document.getElementById('draftSaved').style.display = 'none', 3000);
     }
   }
 
-  // ── SUBMIT ENTRY ───────────────────────────
   async function submitEntry() {
-    const btn = document.getElementById('submitBtn');
-    const errEl = document.getElementById('submitError');
-
+    const btn    = document.getElementById('submitBtn');
+    const errEl  = document.getElementById('submitError');
     const drinkName   = document.getElementById('drinkName').value.trim();
     const swaSyrup    = document.getElementById('swaSyrup').value;
     const ingredients = document.getElementById('ingredients').value.trim();
 
-    if (!drinkName) { showErr(errEl, 'Please enter your drink name.'); return; }
-    if (!swaSyrup)  { showErr(errEl, 'Please select the Swa syrup you used.'); return; }
-    if (!ingredients) { showErr(errEl, 'Please list your ingredients.'); return; }
+    if (!document.getElementById('contentConsent').checked) { showErr(errEl, 'Please agree to the content usage terms to proceed.'); return; }
+    if (!drinkName)    { showErr(errEl, 'Please enter your drink name.'); return; }
+    if (!swaSyrup)     { showErr(errEl, 'Please select the Swa syrup you used.'); return; }
+    if (!ingredients)  { showErr(errEl, 'Please list your ingredients.'); return; }
     if (!selectedVideoFile) { showErr(errEl, 'Please upload your preparation video.'); return; }
+    if (selectedVideoFile.size > 50 * 1024 * 1024) { showErr(errEl, 'Video must be under 50MB. Please compress and re-upload.'); return; }
 
     hideErr(errEl);
-    btn.disabled = true;
-    btn.textContent = 'Uploading video...';
-
-    if (!document.getElementById('contentConsent').checked) {
-  showErr(errEl, 'Please agree to the content usage terms to proceed.');
-  return;
-}
-
-// ADD HERE:
-if (selectedVideoFile.size > 50 * 1024 * 1024) {
-  showErr(errEl, 'Video must be under 50MB. Please compress before uploading.');
-  return;
-}
+    btn.disabled = true; btn.textContent = 'Uploading video...';
 
     try {
-      // Upload video to Supabase Storage
-      const fileExt = selectedVideoFile.name.split('.').pop();
+      const fileExt  = selectedVideoFile.name.split('.').pop();
       const filePath = `submissions/${currentParticipant.id}/${Date.now()}.${fileExt}`;
-
-      const { error: uploadError } = await sb.storage
-        .from('cxc-submissions')
-        .upload(filePath, selectedVideoFile, { cacheControl: '3600', upsert: false });
-
-      if (uploadError) {
-        showErr(errEl, 'Video upload failed. Please try again.');
-        console.error('Upload error:', uploadError);
-        btn.disabled = false;
-        btn.textContent = 'Submit My Entry →';
-        return;
-      }
+      const { error: uploadError } = await sb.storage.from('cxc-submissions').upload(filePath, selectedVideoFile, { cacheControl: '3600', upsert: false });
+      if (uploadError) { showErr(errEl, 'Video upload failed. Please try again.'); console.error(uploadError); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
 
       const { data: urlData } = sb.storage.from('cxc-submissions').getPublicUrl(filePath);
-      const videoUrl = urlData.publicUrl;
-
       btn.textContent = 'Saving submission...';
 
-      // Insert submission
-      const { error: dbError } = await sb.from('submissions').insert({
-        participant_id:  currentParticipant.id,
-        drink_name:      drinkName,
-        swa_syrup_used:  swaSyrup,
-        spirit_used:     document.getElementById('spiritUsed').value.trim() || null,
-        method:          document.getElementById('method').value || null,
-        prep_time_mins:  parseInt(document.getElementById('prepTime').value) || null,
-        servings:        parseInt(document.getElementById('servings').value) || 1,
-        ingredients:     ingredients,
-        garnish:         document.getElementById('garnish').value.trim() || null,
-        recipe_notes:    document.getElementById('recipeNotes').value.trim() || null,
-        video_url:       videoUrl,
-        video_filename:  selectedVideoFile.name,
-        final_decision:  'pending',
-      });
-
-      if (dbError) {
-        showErr(errEl, 'Submission failed. Please try again or email nivedita.panda@drinkswa.com');
-        console.error('DB error:', dbError);
-        btn.disabled = false;
-        btn.textContent = 'Submit My Entry →';
-        return;
+      const submissionData = { ...getFormData(), video_url: urlData.publicUrl, video_filename: selectedVideoFile.name };
+      let dbError;
+      if (existingSubmissionId) {
+        ({ error: dbError } = await sb.from('submissions').update(submissionData).eq('id', existingSubmissionId));
+      } else {
+        ({ error: dbError } = await sb.from('submissions').insert(submissionData));
       }
+      if (dbError) { showErr(errEl, 'Submission failed. Please try again or email nivedita.panda@drinkswa.com'); console.error(dbError); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
 
-      // Update participant status
-      await sb.from('participants')
-        .update({ status: 'submitted' })
-        .eq('id', currentParticipant.id);
+      await sb.from('participants').update({ status: 'submitted' }).eq('id', currentParticipant.id);
 
-      // Show success
       document.getElementById('submitForm').style.display = 'none';
       document.getElementById('successCard').style.display = 'block';
       document.getElementById('submitStatus').innerHTML = '<div class="dot green"></div> Submitted';
-      document.getElementById('submitStatus').className = 'value confirmed';
+      document.getElementById('submitStatus').className = 'svalue confirmed';
       window.scrollTo(0, 0);
-
     } catch (err) {
-      console.error('Submission error:', err);
+      console.error(err);
       showErr(errEl, 'Unexpected error. Please try again.');
-      btn.disabled = false;
-      btn.textContent = 'Submit My Entry →';
+      btn.disabled = false; btn.textContent = 'Submit My Entry →';
     }
   }
 
-  // ── LOGOUT ─────────────────────────────────
+  function handleVideoSelect(input) {
+    if (input.files && input.files[0]) {
+      selectedVideoFile = input.files[0];
+      document.getElementById('videoFileName').textContent = '✓ ' + selectedVideoFile.name + ' (' + (selectedVideoFile.size/1024/1024).toFixed(1) + 'MB)';
+      document.getElementById('videoPreview').style.display = 'block';
+    }
+  }
+
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.mobile-nav-item').forEach(l => l.classList.remove('active'));
+    const pageMap = { dashboard: 0, rules: 1, schedule: 2, submit: 3 };
+    document.querySelectorAll('.subnav-link')[pageMap[page]]?.classList.add('active');
+    document.querySelectorAll('.mobile-nav-item')[pageMap[page]]?.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
   async function logout() {
     await sb.auth.signOut();
     window.location.href = 'login.html';
@@ -642,6 +575,5 @@ if (selectedVideoFile.size > 50 * 1024 * 1024) {
   function showErr(el, msg) { el.textContent = msg; el.style.display = 'block'; }
   function hideErr(el) { el.style.display = 'none'; }
 </script>
-
 </body>
 </html>
