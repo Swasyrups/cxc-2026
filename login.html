@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In — CxC 2026</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/images/cxc-logo.png" type="image/png" />
+  <style>
+    body {
+      background: var(--paper, #f8f4ec);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body, 'Poppins', sans-serif);
+      margin: 0;
+      padding: 24px;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 4px 32px rgba(75,49,65,0.08);
+      text-align: center;
+    }
+
+    .login-logo {
+      height: 48px;
+      margin-bottom: 24px;
+    }
+
+    .login-card h2 {
+      font-family: var(--font-head, 'Roca', serif);
+      color: var(--plum, #4b3141);
+      font-size: 1.75rem;
+      margin: 0 0 8px;
+    }
+
+    .login-card p {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0 0 32px;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--plum, #4b3141);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      background: #fafafa;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--olive, #59751d);
+      background: #fff;
+    }
+
+    .otp-inputs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .otp-inputs input {
+      width: 48px;
+      height: 56px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      color: var(--plum, #4b3141);
+      transition: border-color 0.2s;
+    }
+
+    .otp-inputs input:focus {
+      outline: none;
+      border-color: var(--olive, #59751d);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: var(--pink, #f0567a);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .login-footer {
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .login-footer a {
+      color: var(--olive, #59751d);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .error-msg {
+      color: #e53e3e;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .success-msg {
+      color: var(--olive, #59751d);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    #step-otp { display: none; }
+
+    .resend-link {
+      background: none;
+      border: none;
+      color: var(--olive, #59751d);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .resend-link:disabled {
+      color: #aaa;
+      text-decoration: none;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-card" id="loginCard">
+
+  <img src="assets/images/cxc-logo.png" alt="CxC 2026" class="login-logo" />
+  
+  <!-- ── Step 1: Email ─────────────────────────── -->
+  <div id="step-email">
+    <h2>Welcome back</h2>
+    <p>Enter your registered email. We'll send you a 6-digit code.</p>
+
+    <div class="form-group">
+      <label for="loginEmail">Email address</label>
+      <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+    </div>
+
+    <div class="error-msg" id="emailError"></div>
+
+    <button class="btn-primary" id="sendOtpBtn" onclick="sendOtp()">
+      Send Code →
+    </button>
+  </div>
+
+  <!-- ── Step 2: OTP ───────────────────────────── -->
+  <div id="step-otp">
+    <h2>Check your email</h2>
+    <p id="otpSubtext">We sent a 6-digit code to <strong id="sentTo"></strong></p>
+
+    <div class="otp-inputs" id="otpInputs">
+      <input type="text" maxlength="1" inputmode="numeric" />
+      <input type="text" maxlength="1" inputmode="numeric" />
+      <input type="text" maxlength="1" inputmode="numeric" />
+      <input type="text" maxlength="1" inputmode="numeric" />
+      <input type="text" maxlength="1" inputmode="numeric" />
+      <input type="text" maxlength="1" inputmode="numeric" />
+    </div>
+
+    <div class="error-msg" id="otpError"></div>
+    <div class="success-msg" id="otpSuccess"></div>
+
+    <button class="btn-primary" id="verifyOtpBtn" onclick="verifyOtp()">
+      Verify & Log In →
+    </button>
+
+    <p style="margin-top:12px;font-size:0.85rem;color:#888;">
+      Didn't get it? <button class="resend-link" id="resendBtn" onclick="resendOtp()">Resend code</button>
+    </p>
+
+    <p style="margin-top:8px;font-size:0.85rem;">
+      <a href="#" onclick="goBack()">← Use a different email</a>
+    </p>
+  </div>
+
+  <div class="login-footer">
+    New here? <a href="index.html">Register FREE →</a>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL      = 'https://ftduvppcdjanupoudzvi.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
+
+  const { createClient } = supabase;
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  let currentEmail = '';
+
+  // ── OTP input navigation ──────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputs = document.querySelectorAll('.otp-inputs input');
+    inputs.forEach((input, i) => {
+      input.addEventListener('input', () => {
+        if (input.value && i < inputs.length - 1) inputs[i + 1].focus();
+        if (getOtpValue().length === 6) verifyOtp();
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !input.value && i > 0) inputs[i - 1].focus();
+      });
+      input.addEventListener('paste', (e) => {
+        const paste = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
+        paste.split('').forEach((char, j) => { if (inputs[j]) inputs[j].value = char; });
+        if (inputs[paste.length - 1]) inputs[paste.length - 1].focus();
+        e.preventDefault();
+      });
+    });
+
+    // Check if already logged in → redirect
+    sb.auth.getSession().then(({ data }) => {
+      if (data.session) window.location.href = 'submit.html';
+    });
+  });
+
+  function getOtpValue() {
+    return [...document.querySelectorAll('.otp-inputs input')].map(i => i.value).join('');
+  }
+
+  // ── Send OTP ──────────────────────────────────
+  async function sendOtp() {
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    const errEl = document.getElementById('emailError');
+    const btn   = document.getElementById('sendOtpBtn');
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showMsg(errEl, 'Enter a valid email address.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    hideMsg(errEl);
+
+    const { error } = await sb.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: false } // only existing users
+    });
+
+    if (error) {
+      showMsg(errEl, error.message.includes('not found')
+        ? 'This email isn\'t registered. <a href="index.html">Register here →</a>'
+        : error.message);
+      btn.disabled = false;
+      btn.textContent = 'Send Code →';
+      return;
+    }
+
+    currentEmail = email;
+    document.getElementById('sentTo').textContent = email;
+    document.getElementById('step-email').style.display = 'none';
+    document.getElementById('step-otp').style.display = 'block';
+    document.querySelector('.otp-inputs input').focus();
+
+    startResendTimer();
+  }
+
+  // ── Verify OTP ────────────────────────────────
+  async function verifyOtp() {
+    const token  = getOtpValue();
+    const errEl  = document.getElementById('otpError');
+    const succEl = document.getElementById('otpSuccess');
+    const btn    = document.getElementById('verifyOtpBtn');
+
+    if (token.length < 6) {
+      showMsg(errEl, 'Enter the full 6-digit code.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Verifying…';
+    hideMsg(errEl);
+
+    const { error } = await sb.auth.verifyOtp({
+      email: currentEmail,
+      token,
+      type: 'email'
+    });
+
+    if (error) {
+      showMsg(errEl, 'Invalid or expired code. Try again.');
+      btn.disabled = false;
+      btn.textContent = 'Verify & Log In →';
+      document.querySelectorAll('.otp-inputs input').forEach(i => i.value = '');
+      document.querySelector('.otp-inputs input').focus();
+      return;
+    }
+
+    showMsg(succEl, 'Logged in! Taking you to your dashboard…');
+    setTimeout(() => { window.location.href = 'submit.html'; }, 1000);
+  }
+
+  // ── Resend ────────────────────────────────────
+  async function resendOtp() {
+    await sendOtpToEmail(currentEmail);
+    startResendTimer();
+  }
+
+  async function sendOtpToEmail(email) {
+    await sb.auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+  }
+
+  function startResendTimer() {
+    const btn = document.getElementById('resendBtn');
+    let secs = 30;
+    btn.disabled = true;
+    btn.textContent = `Resend in ${secs}s`;
+    const t = setInterval(() => {
+      secs--;
+      btn.textContent = secs > 0 ? `Resend in ${secs}s` : 'Resend code';
+      if (secs <= 0) { clearInterval(t); btn.disabled = false; }
+    }, 1000);
+  }
+
+  function goBack() {
+    document.getElementById('step-otp').style.display = 'none';
+    document.getElementById('step-email').style.display = 'block';
+    document.getElementById('sendOtpBtn').disabled = false;
+    document.getElementById('sendOtpBtn').textContent = 'Send Code →';
+  }
+
+  function showMsg(el, msg) { el.innerHTML = msg; el.style.display = 'block'; }
+  function hideMsg(el) { el.style.display = 'none'; }
+</script>
+
+</body>
+</html>
