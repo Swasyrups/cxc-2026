@@ -12,7 +12,7 @@
 
 /* ── PORTAL SUB-NAV ── */
 #portal-subnav {
-  position: fixed; top: 68px; left: 0; right: 0; z-index: 190;
+  position: fixed; top: 92px; left: 0; right: 0; z-index: 190;
   background: var(--sand);
   border-bottom: 1.5px solid rgba(89,117,29,0.15);
   height: 48px;
