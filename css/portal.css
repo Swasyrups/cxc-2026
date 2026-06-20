@@ -54,13 +54,13 @@
 }
 
 /* ── PAGES ── */
-.page { display: none; padding-top: 116px; min-height: 100vh; }
+.page { display: none; padding-top: 116px; min-height: 100vh; padding-top: 124px !important; }
 .page.active { display: block; }
 
 /* ── DASHBOARD ── */
 
-.status-card .svalue {
-  font-family: 'Roca', 'Nunito', serif;
+#page-dashboard .status-card .svalue {
+  font-family: 'Roca', 'Nunito', serif !important;
 }
 
 .dash-hero {
