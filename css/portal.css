@@ -10,6 +10,33 @@
   --ink: #1c1c1c;
 }
 
+#nav {
+  background: var(--ink) !important;
+  border-bottom: none !important;
+}
+#nav .nav-links a {
+  color: rgba(255,255,255,0.75) !important;
+}
+#nav .nav-links a:hover {
+  color: var(--pink) !important;
+  background: none !important;
+}
+#nav .nav-cta {
+  background: var(--pink) !important;
+  color: var(--paper) !important;
+}
+#nav .nav-logout-btn {
+  color: rgba(255,255,255,0.75) !important;
+}
+#nav .nav-logout-btn:hover {
+  color: var(--pink) !important;
+}
+#nav #swa-wordmark img {
+  filter: none !important;
+}
+
+
+
 /* ── PORTAL SUB-NAV ── */
 #portal-subnav {
   position: fixed; top: 92px; left: 0; right: 0; z-index: 190;
@@ -159,6 +186,13 @@
 .rule-num { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 20px; color: var(--gold); flex-shrink: 0; min-width: 28px; line-height: 1.4; }
 .rule-text { font-size: 15px; color: rgba(28,28,28,0.75); line-height: 1.8; font-weight: 300; }
 .scorecard-grid { display: flex; flex-direction: column; gap: 20px; }
+.score-desc {
+  font-size: 13px;
+  color: rgba(28,28,28,0.5);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
 .score-row-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
 .score-label { font-size: 14px; font-weight: 500; }
 .score-pts { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 22px; color: var(--olive); }
