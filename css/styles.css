@@ -116,6 +116,10 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
   color: var(--ink);
 }
 
+#nav.scrolled .nav-links a[href="login.html"] {
+  color: var(--ink);
+  opacity: 1;
+}
 
 #nav.scrolled {
   background: rgba(250,247,242,0.96);
