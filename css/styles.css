@@ -1296,7 +1296,7 @@ footer {
 
 @media (max-width: 768px) {
   :root { --section-pad: 64px; }
-  .nav-links { display: none; margin-top:50px}
+  .nav-links { display: none; margin-top:0px}
   .nav-hamburger { display: flex; }
   .cxc-logo-float {width:160px;top:60px}
   .hero-content {padding-top:180px}
