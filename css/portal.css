@@ -14,6 +14,9 @@
   background: var(--ink) !important;
   border-bottom: none !important;
 }
+
+.nav-cta-submit {color: #fff;}
+
 #nav .nav-links a {
   color: rgba(255,255,255,0.75) !important;
 }
