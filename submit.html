@@ -170,7 +170,7 @@
       <div class="rules-section-number">Section 04</div>
       <h2>Swa Syrup Requirement</h2>
       <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">At least one Swa Artisanal Syrup must feature as a named ingredient in the final drink. Entries without Swa will be disqualified.</p></div>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Minimum of 10ml of any one syrup must be used.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Minimum of 20ml of any one syrup must be used.</p></div>
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You may use multiple Swa syrups. There is no upper limit.</p></div>
       <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You can only use the Swa syrup flavours sent to you in the sample kit.</p></div>
       <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">The Swa syrup sample kit dispatched on registration must be used in your video demonstration.</p></div>
@@ -345,25 +345,60 @@
 
       <div class="form-card">
         <h3>Drink Details</h3>
-        <div class="form-row">
+        <div class="form-row single">
           <div class="form-group">
-            <label class="form-label">Drink Name *</label> 
-            <input class="form-input" id="drinkName" type="text" placeholder="Drink Name" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Swa Syrup Used *</label>
-            <select class="form-select" id="swaSyrup">
-              <option value="">Swa Syrup</option>
-              <option>Alphonso Mango</option><option>Guava Chilli</option><option>Brown Butter</option>
-              <option>Roasted Hazelnut</option><option>Buransh</option><option>Pineapple Bird's Eye</option>
-            </select>
+            <label class="form-label">Drink Name *</label>
+            <input class="form-input" id="drinkName" type="text" placeholder="What will you call it?" />
           </div>
         </div>
-        <div class="form-row">
+
+        <div class="form-row single">
           <div class="form-group">
-            <label class="form-label">Spirit Used <span class="opt">(optional)</span></label>
-            <input class="form-input" id="spiritUsed" type="text" placeholder="e.g. Gin, Rum, None" />
+            <label class="form-label">Swa Syrup(s) Used * <span class="opt">— select all that apply</span></label>
+            <div class="multi-select-wrap" id="swaSyrupWrap">
+              <div class="multi-select-display" onclick="toggleDropdown('swaSyrupDropdown')" id="swaSyrupDisplay">Select syrups...</div>
+              <div class="multi-select-dropdown" id="swaSyrupDropdown">
+                <label class="multi-opt"><input type="checkbox" value="Alphonso Mango" onchange="updateMultiDisplay('swaSyrupWrap')"> Alphonso Mango</label>
+                <label class="multi-opt"><input type="checkbox" value="Guava Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Guava Chilli</label>
+                <label class="multi-opt"><input type="checkbox" value="Brown Butter" onchange="updateMultiDisplay('swaSyrupWrap')"> Brown Butter</label>
+                <label class="multi-opt"><input type="checkbox" value="Roasted Hazelnut" onchange="updateMultiDisplay('swaSyrupWrap')"> Roasted Hazelnut</label>
+                <label class="multi-opt"><input type="checkbox" value="Buransh" onchange="updateMultiDisplay('swaSyrupWrap')"> Buransh</label>
+                <label class="multi-opt"><input type="checkbox" value="Pineapple Bird's Eye" onchange="updateMultiDisplay('swaSyrupWrap')"> Pineapple Bird's Eye</label>
+                <label class="multi-opt"><input type="checkbox" value="Kokam" onchange="updateMultiDisplay('swaSyrupWrap')"> Kokam</label>
+                <label class="multi-opt"><input type="checkbox" value="Jamun" onchange="updateMultiDisplay('swaSyrupWrap')"> Jamun</label>
+                <label class="multi-opt"><input type="checkbox" value="Nannari" onchange="updateMultiDisplay('swaSyrupWrap')"> Nannari</label>
+                <label class="multi-opt"><input type="checkbox" value="Rose" onchange="updateMultiDisplay('swaSyrupWrap')"> Rose</label>
+                <label class="multi-opt"><input type="checkbox" value="Tamarind" onchange="updateMultiDisplay('swaSyrupWrap')"> Tamarind</label>
+                <label class="multi-opt"><input type="checkbox" value="Lemongrass" onchange="updateMultiDisplay('swaSyrupWrap')"> Lemongrass</label>
+              </div>
+            </div>
+            <p style="font-size:12px;color:rgba(28,28,28,0.4);margin-top:6px;">Minimum 20ml of at least one Swa syrup required.</p>
           </div>
+        </div>
+
+        <div class="form-row single">
+          <div class="form-group">
+            <label class="form-label">Spirit(s) Used <span class="opt">— select all that apply, or leave blank for non-alcoholic</span></label>
+            <div class="multi-select-wrap" id="spiritWrap">
+              <div class="multi-select-display" onclick="toggleDropdown('spiritDropdown')" id="spiritDisplay">Select spirits (optional)...</div>
+              <div class="multi-select-dropdown" id="spiritDropdown">
+                <label class="multi-opt"><input type="checkbox" value="Gin" onchange="updateMultiDisplay('spiritWrap')"> Gin</label>
+                <label class="multi-opt"><input type="checkbox" value="Rum" onchange="updateMultiDisplay('spiritWrap')"> Rum</label>
+                <label class="multi-opt"><input type="checkbox" value="Vodka" onchange="updateMultiDisplay('spiritWrap')"> Vodka</label>
+                <label class="multi-opt"><input type="checkbox" value="Whisky" onchange="updateMultiDisplay('spiritWrap')"> Whisky</label>
+                <label class="multi-opt"><input type="checkbox" value="Tequila" onchange="updateMultiDisplay('spiritWrap')"> Tequila</label>
+                <label class="multi-opt"><input type="checkbox" value="Mezcal" onchange="updateMultiDisplay('spiritWrap')"> Mezcal</label>
+                <label class="multi-opt"><input type="checkbox" value="Brandy / Cognac" onchange="updateMultiDisplay('spiritWrap')"> Brandy / Cognac</label>
+                <label class="multi-opt"><input type="checkbox" value="Aperol / Campari" onchange="updateMultiDisplay('spiritWrap')"> Aperol / Campari</label>
+                <label class="multi-opt"><input type="checkbox" value="Amaro" onchange="updateMultiDisplay('spiritWrap')"> Amaro</label>
+                <label class="multi-opt"><input type="checkbox" value="Non-alcoholic" onchange="updateMultiDisplay('spiritWrap')"> Non-alcoholic</label>
+                <label class="multi-opt"><input type="checkbox" value="Other" onchange="updateMultiDisplay('spiritWrap')"> Other</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Method</label>
             <select class="form-select" id="method">
@@ -372,17 +407,44 @@
               <option>Build</option><option>Pour-over</option><option>Cold brew</option><option>Other</option>
             </select>
           </div>
-        </div>
-        <div class="form-row">
           <div class="form-group">
             <label class="form-label">Prep Time (minutes)</label>
             <input class="form-input" id="prepTime" type="number" min="1" max="60" placeholder="e.g. 5" />
           </div>
-          <div class="form-group">
-            <label class="form-label">Servings</label>
-            <input class="form-input" id="servings" type="number" min="1" max="10" placeholder="1" value="1" />
+        </div>
+      </div>
+
+      <!-- Homemade Ingredients -->
+      <div class="form-card">
+        <h3>Homemade Components <span style="font-size:13px;font-weight:300;color:var(--gold);">optional</span></h3>
+        <div class="swa-syrup-note" style="margin-bottom:20px;">
+          <p>If you're using any homemade syrups, infusions, bitters, or fat washes — declare them here. Homemade syrups must be based on a Swa syrup. See rulebook for full policy.</p>
+        </div>
+        <div id="homemadeList">
+          <div class="homemade-item" id="homemade-0">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Component Name</label>
+                <input class="form-input" placeholder="e.g. Spiced Kokam Shrub" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Type</label>
+                <select class="form-select">
+                  <option value="">Select...</option>
+                  <option>Syrup / Cordial</option><option>Infusion</option><option>Bitter</option>
+                  <option>Fat Wash</option><option>Juice</option><option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row single">
+              <div class="form-group">
+                <label class="form-label">Recipe / Method</label>
+                <textarea class="form-textarea" placeholder="Describe how you make it — ingredients and process." style="min-height:80px;"></textarea>
+              </div>
+            </div>
           </div>
         </div>
+        <button type="button" onclick="addHomemade()" style="background:none;border:1.5px dashed rgba(89,117,29,0.3);border-radius:8px;padding:10px 20px;font-size:13px;color:var(--olive);cursor:pointer;font-family:'Poppins',sans-serif;margin-top:4px;">+ Add another component</button>
       </div>
 
       <div class="form-card">
@@ -426,13 +488,45 @@
         <p style="font-size:12px;color:rgba(28,28,28,0.4);margin-top:12px;">Your video will be uploaded to secure storage and only viewed by the CxC judging panel.</p>
       </div>
 
+      <div class="form-card">
+        <h3>Photos</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Finished Drink Photo *</label>
+            <div class="upload-area" style="padding:24px;" onclick="document.getElementById('drinkPhoto').click()">
+              <div class="upload-icon" style="font-size:24px;">📸</div>
+              <p style="font-size:13px;margin-top:4px;"><span class="link">Upload photo</span> · JPG or PNG · Max 5MB</p>
+            </div>
+            <input type="file" id="drinkPhoto" accept="image/jpeg,image/png,image/webp" onchange="handlePhotoSelect(this,'drinkPhotoName')" style="display:none;" />
+            <p id="drinkPhotoName" style="font-size:13px;color:var(--olive);font-weight:500;margin-top:8px;display:none;"></p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Setup / Equipment Photo <span class="opt">(optional)</span></label>
+            <div class="upload-area" style="padding:24px;" onclick="document.getElementById('setupPhoto').click()">
+              <div class="upload-icon" style="font-size:24px;">🔧</div>
+              <p style="font-size:13px;margin-top:4px;"><span class="link">Upload photo</span> · JPG or PNG · Max 5MB</p>
+            </div>
+            <input type="file" id="setupPhoto" accept="image/jpeg,image/png,image/webp" onchange="handlePhotoSelect(this,'setupPhotoName')" style="display:none;" />
+            <p id="setupPhotoName" style="font-size:13px;color:var(--olive);font-weight:500;margin-top:8px;display:none;"></p>
+          </div>
+        </div>
+      </div>
+
       <div class="submit-btn-wrap">
         <div class="form-card" style="margin-bottom:16px;">
-          <div style="display:flex;align-items:flex-start;gap:12px;">
-            <input type="checkbox" id="contentConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
-            <label for="contentConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
-              I agree that Swa Artisanal Syrups and CxC may use my name, video, and recipe for promotional content, paid ads, and the Swa recipe bank. Full credit will be given to me as the creator.
-            </label>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <input type="checkbox" id="rulesConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
+              <label for="rulesConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
+                I confirm I have read and agree to the <a href="#" onclick="showPage('rules');return false;" style="color:var(--olive);font-weight:500;">CxC 2026 Competition Rules</a>. My submission is original work, not publicly served in the last 12 months, and complies with all eligibility requirements.
+              </label>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:12px;">
+              <input type="checkbox" id="contentConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
+              <label for="contentConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
+                I agree that Swa Artisanal Syrups and CxC may use my name, photo, video, and recipe for promotional content, paid ads, and the Swa recipe bank. Full credit will be given to me as the creator.
+              </label>
+            </div>
           </div>
         </div>
         <div id="submitError" style="color:#e53e3e;font-size:14px;margin-bottom:12px;display:none;"></div>
@@ -526,14 +620,15 @@
     return {
       participant_id:  currentParticipant.id,
       drink_name:      document.getElementById('drinkName').value.trim() || null,
-      swa_syrup_used:  document.getElementById('swaSyrup').value || null,
-      spirit_used:     document.getElementById('spiritUsed').value.trim() || null,
+      swa_syrup_used:  getMultiValues('swaSyrupWrap').join(', ') || null,
+      spirit_used:     getMultiValues('spiritWrap').join(', ') || null,
       method:          document.getElementById('method').value || null,
       prep_time_mins:  parseInt(document.getElementById('prepTime').value) || null,
-      servings:        parseInt(document.getElementById('servings').value) || 1,
+      servings:        1,
       ingredients:     document.getElementById('ingredients').value.trim() || null,
       garnish:         document.getElementById('garnish').value.trim() || null,
       recipe_notes:    document.getElementById('recipeNotes').value.trim() || null,
+      ai_score_breakdown: getHomemadeData() ? { homemade: JSON.parse(getHomemadeData()) } : null,
       final_decision:  'pending',
     };
   }
@@ -563,31 +658,63 @@
     const btn    = document.getElementById('submitBtn');
     const errEl  = document.getElementById('submitError');
     const drinkName   = document.getElementById('drinkName').value.trim();
-    const swaSyrup    = document.getElementById('swaSyrup').value;
+    const swaSyrups   = getMultiValues('swaSyrupWrap');
     const ingredients = document.getElementById('ingredients').value.trim();
 
+    if (!document.getElementById('rulesConsent').checked)  { showErr(errEl, 'Please confirm you have read and agree to the competition rules.'); return; }
     if (!document.getElementById('contentConsent').checked) { showErr(errEl, 'Please agree to the content usage terms to proceed.'); return; }
-    if (!drinkName)    { showErr(errEl, 'Please enter your drink name.'); return; }
-    if (!swaSyrup)     { showErr(errEl, 'Please select the Swa syrup you used.'); return; }
-    if (!ingredients)  { showErr(errEl, 'Please list your ingredients.'); return; }
-    if (!selectedVideoFile) { showErr(errEl, 'Please upload your preparation video.'); return; }
+    if (!drinkName)       { showErr(errEl, 'Please enter your drink name.'); return; }
+    if (!swaSyrups.length){ showErr(errEl, 'Please select at least one Swa syrup.'); return; }
+    if (!ingredients)     { showErr(errEl, 'Please list your ingredients.'); return; }
+    if (!selectedDrinkPhoto) { showErr(errEl, 'Please upload a photo of your finished drink.'); return; }
+    if (!selectedVideoFile)  { showErr(errEl, 'Please upload your preparation video.'); return; }
     if (selectedVideoFile.size > 50 * 1024 * 1024) { showErr(errEl, 'Video must be under 50MB. Please compress and re-upload.'); return; }
 
     hideErr(errEl);
-    btn.disabled = true; btn.textContent = 'Uploading video...';
+    btn.disabled = true; btn.textContent = 'Uploading files...';
 
     try {
-      const fileExt  = selectedVideoFile.name.split('.').pop();
-      const safeName = currentParticipant.first_name.toLowerCase().replace(/\s+/g, '-') 
+      const safeName = currentParticipant.first_name.toLowerCase().replace(/\s+/g, '-')
                + '-' + currentParticipant.last_name.toLowerCase().replace(/\s+/g, '-');
-const filePath = `submissions/${safeName}-${currentParticipant.id.slice(0,8)}/${Date.now()}.${fileExt}`;
-      const { error: uploadError } = await sb.storage.from('cxc-submissions').upload(filePath, selectedVideoFile, { cacheControl: '3600', upsert: false });
-      if (uploadError) { showErr(errEl, 'Video upload failed. Please try again.'); console.error(uploadError); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
+      const basePath = `submissions/${safeName}-${currentParticipant.id.slice(0,8)}`;
 
-      const { data: urlData } = sb.storage.from('cxc-submissions').getPublicUrl(filePath);
+      // Upload video
+      const videoExt = selectedVideoFile.name.split('.').pop();
+      const videoPath = `${basePath}/${Date.now()}-video.${videoExt}`;
+      const { error: videoErr } = await sb.storage.from('cxc-submissions').upload(videoPath, selectedVideoFile, { cacheControl: '3600', upsert: false });
+      if (videoErr) { showErr(errEl, 'Video upload failed. Please try again.'); console.error(videoErr); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
+      const { data: videoUrlData } = sb.storage.from('cxc-submissions').getPublicUrl(videoPath);
+
+      // Upload drink photo
+      btn.textContent = 'Uploading photo...';
+      const photoExt = selectedDrinkPhoto.name.split('.').pop();
+      const photoPath = `${basePath}/${Date.now()}-drink.${photoExt}`;
+      const { error: photoErr } = await sb.storage.from('cxc-submissions').upload(photoPath, selectedDrinkPhoto, { cacheControl: '3600', upsert: false });
+      if (photoErr) { showErr(errEl, 'Photo upload failed. Please try again.'); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
+      const { data: photoUrlData } = sb.storage.from('cxc-submissions').getPublicUrl(photoPath);
+
+      // Upload setup photo if provided
+      let setupPhotoUrl = null;
+      if (selectedSetupPhoto) {
+        const setupExt = selectedSetupPhoto.name.split('.').pop();
+        const setupPath = `${basePath}/${Date.now()}-setup.${setupExt}`;
+        await sb.storage.from('cxc-submissions').upload(setupPath, selectedSetupPhoto, { cacheControl: '3600', upsert: false });
+        const { data: setupUrlData } = sb.storage.from('cxc-submissions').getPublicUrl(setupPath);
+        setupPhotoUrl = setupUrlData.publicUrl;
+      }
+
       btn.textContent = 'Saving submission...';
+      const submissionData = {
+        ...getFormData(),
+        video_url:      videoUrlData.publicUrl,
+        video_filename: selectedVideoFile.name,
+        ai_score_breakdown: {
+          drink_photo_url:  photoUrlData.publicUrl,
+          setup_photo_url:  setupPhotoUrl,
+          homemade:         getHomemadeData() ? JSON.parse(getHomemadeData()) : null,
+        },
+      };
 
-      const submissionData = { ...getFormData(), video_url: urlData.publicUrl, video_filename: selectedVideoFile.name };
       let dbError;
       if (existingSubmissionId) {
         ({ error: dbError } = await sb.from('submissions').update(submissionData).eq('id', existingSubmissionId));
@@ -636,6 +763,92 @@ const filePath = `submissions/${safeName}-${currentParticipant.id.slice(0,8)}/${
 
   function showErr(el, msg) { el.textContent = msg; el.style.display = 'block'; }
   function hideErr(el) { el.style.display = 'none'; }
+
+  // ── MULTI SELECT ───────────────────────────
+  function toggleDropdown(id) {
+    const dd = document.getElementById(id);
+    document.querySelectorAll('.multi-select-dropdown').forEach(d => { if (d.id !== id) d.style.display = 'none'; });
+    dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+  }
+  function updateMultiDisplay(wrapId) {
+    const wrap = document.getElementById(wrapId);
+    const checked = [...wrap.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value);
+    const display = wrap.querySelector('.multi-select-display');
+    display.textContent = checked.length ? checked.join(', ') : display.dataset.placeholder || 'Select...';
+    display.style.color = checked.length ? 'var(--ink)' : 'rgba(28,28,28,0.3)';
+  }
+  function getMultiValues(wrapId) {
+    const wrap = document.getElementById(wrapId);
+    return [...wrap.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value);
+  }
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.multi-select-wrap')) {
+      document.querySelectorAll('.multi-select-dropdown').forEach(d => d.style.display = 'none');
+    }
+  });
+
+  // ── HOMEMADE ───────────────────────────────
+  let homemadeCount = 1;
+  function addHomemade() {
+    const list = document.getElementById('homemadeList');
+    const div = document.createElement('div');
+    div.className = 'homemade-item';
+    div.style.marginTop = '20px';
+    div.style.paddingTop = '20px';
+    div.style.borderTop = '1px solid rgba(89,117,29,0.1)';
+    div.innerHTML = `
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Component Name</label>
+          <input class="form-input" placeholder="e.g. Hibiscus Bitters" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-select">
+            <option value="">Select...</option>
+            <option>Syrup / Cordial</option><option>Infusion</option><option>Bitter</option>
+            <option>Fat Wash</option><option>Juice</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label class="form-label">Recipe / Method</label>
+          <textarea class="form-textarea" placeholder="Describe how you make it." style="min-height:80px;"></textarea>
+        </div>
+      </div>`;
+    list.appendChild(div);
+    homemadeCount++;
+  }
+  function getHomemadeData() {
+    const items = [];
+    document.querySelectorAll('.homemade-item').forEach(item => {
+      const name = item.querySelector('input')?.value.trim();
+      const type = item.querySelector('select')?.value;
+      const recipe = item.querySelector('textarea')?.value.trim();
+      if (name) items.push({ name, type, recipe });
+    });
+    return items.length ? JSON.stringify(items) : null;
+  }
+
+  // ── PHOTO HANDLER ──────────────────────────
+  let selectedDrinkPhoto = null;
+  let selectedSetupPhoto = null;
+  function handlePhotoSelect(input, labelId) {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Photo must be under 5MB.');
+        input.value = '';
+        return;
+      }
+      if (input.id === 'drinkPhoto') selectedDrinkPhoto = file;
+      else selectedSetupPhoto = file;
+      const label = document.getElementById(labelId);
+      label.textContent = '✓ ' + file.name;
+      label.style.display = 'block';
+    }
+  }
 </script>
 </body>
 </html>

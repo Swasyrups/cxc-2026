@@ -35,8 +35,8 @@
   "@context": "https://schema.org",
   "@type": "Event",
   "name": "CxC 2026 — CoffeeXCocktail Championship",
-  "startDate": "2026-09-08",
-  "endDate": "2026-09-08",
+  "startDate": "2026-09-15",
+  "endDate": "2026-09-15",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
@@ -54,7 +54,7 @@
     "price": "0",
     "priceCurrency": "INR",
     "availability": "https://schema.org/InStock",
-    "validFrom": "2026-06-25"
+    "validFrom": "2026-06-21"
   }
 }
 </script>
@@ -143,7 +143,7 @@
   Already registered? <a href="login.html" style="color:#fff;font-weight:600;font-family:'Poppins',sans-serif;">Log in →</a>
     </p>
     <p class="hero-dates">
-      Registration opens 25 Jun · Closes 25 Jul · Submission deadline 31 Jul
+      Registration opens 21 Jun · Closes 20 Jul · Submission deadline 31 Jul
     </p>
   </div>
 </section>
@@ -171,6 +171,132 @@
         <div class="stat-label">Expected Registrations</div>
       </div>
       
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTER
+     ============================================================ -->
+<section id="register" class="section-pad">
+  <div class="container">
+    <div class="register-wrap">
+      <!-- LEFT: info -->
+      <div class="register-left reveal">
+        <span class="tag">Register FREE</span>
+        <h2 class="section-title">Claim Your Spot.<br />It's Free.</h2>
+        <p class="section-sub">
+          Unlike other competitions — CxC has no registration fee. Enter individually. Get your Swa sample pack. Make something unforgettable.
+        </p>
+        <ul class="register-perks">
+          <li>Free Swa sample pack dispatched to your door</li>
+          <li>Submit as an individual — no partner needed at this stage</li>
+          <li>Top 10 bartenders and baristas per region qualify for the Regionals</li>
+          <li>Organisers will pair up the top 10 baristas and bartenders into teams of two</li>
+          <li>Open to professional baristas and bartenders across India</li>
+          <li>If selected, you will need to travel for the Regionals at your cost</li>
+        </ul>
+        </div>
+       
+
+      <!-- RIGHT: form -->
+      <div class="register-right reveal">
+        <div class="register-form-card">
+          <h3 class="form-title">Register for CxC 2026</h3>
+          <p class="form-sub">Please fill the address correctly for timely sample dispatch.</p>
+
+          <form id="registerForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <!-- <label for="firstName">First Name *</label> -->
+                <input type="text" id="firstName" name="firstName" required placeholder="First Name" />
+              </div>
+              <div class="form-group">
+                <!-- <label for="lastName">Last Name *</label> -->
+                <input type="text" id="lastName" name="lastName" required placeholder="Last Name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <!-- <label for="email">Email Address *</label> -->
+              <input type="email" id="email" name="email" required placeholder="Email" />
+            </div>
+
+            <div class="form-group">
+              <!-- <label for="whatsapp">WhatsApp Number *</label> -->
+              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Mobile" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <!-- <label for="role">I am a *</label> -->
+                <select id="role" name="role" required>
+                  <option value="" disabled selected>Job</option>
+                  <option value="barista">Barista</option>
+                  <option value="bartender">Bartender</option>
+                </select>
+              </div>
+              <!-- <div class="form-group">
+                <label for="region">My Region *</label>
+                <select id="region" name="region" required>
+                  <option value="" disabled selected>Select city</option>
+                  <option value="Delhi NCR">Delhi NCR</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Coimbatore">Coimbatore</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div> -->
+              <div class="form-group">
+              <!-- <label for="employer">Current Employer / Venue</label> -->
+              <input type="text" id="employer" name="employer"  required placeholder="Employer" />
+            </div>
+            </div>
+
+            
+
+            <div class="form-group">
+              <!-- <label for="addr1">Shipping Address Line 1 *</label> -->
+              <input type="text" id="addr1" name="addr1" required placeholder="Address Line 1" />
+            </div>
+
+            <div class="form-group">
+              <!-- <label for="addr2">Address Line 2</label> -->
+              <input type="text" id="addr2" name="addr2" placeholder="Address Line 2" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <!-- <label for="city">City *</label> -->
+                <input type="text" id="city" name="city" required placeholder="City" />
+              </div>
+              <div class="form-group">
+                <!-- <label for="pincode">Pincode *</label> -->
+                <input type="text" id="pincode" name="pincode" required placeholder="Pincode" maxlength="6" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <!-- <label for="state">State *</label> -->
+              <input type="text" id="state" name="state" required placeholder="State" />
+            </div>
+
+            <button type="submit" class="form-submit">Register FREE →</button>
+            <p style="text-align:center;margin-top:16px;font-size:0.85rem;color:#666;font-family:'Poppins',sans-serif;">
+  Already registered? <a href="login.html" style="color:var(--olive);font-weight:600;font-family:'Poppins',sans-serif;">Log in →</a>
+</p>
+            <p class="form-note">
+              Free to enter. Your sample pack will be shipped within 24 hours of registration and should reach you within 5-7 working days.
+              By registering you agree to the <a href="#" style="color:var(--olive)">CxC 2026 Rules</a>.
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -240,7 +366,7 @@
       <div class="how-step reveal">
         <div class="step-num">4</div>
         <h3>Grand Finale</h3>
-        <p>6 finalist teams compete at the Grand Finale on 8 September, Bangalore. Winners walk away with the title — and prizes over ₹1L.</p>
+        <p>6 finalist teams compete at the Grand Finale on 15 September, Bangalore. Winners walk away with the title — and prizes over ₹1L.</p>
       </div>
     </div>
   </div>
@@ -257,7 +383,7 @@
     </div>
     <div class="dates-timeline reveal">
       <div class="date-item">
-        <div class="date-dot">25</div>
+        <div class="date-dot">21</div>
         <div>
           <div class="date-label">June 2026</div>
           <div class="date-name">Registration Opens</div>
@@ -265,7 +391,7 @@
         </div>
       </div>
       <div class="date-item">
-        <div class="date-dot">25</div>
+        <div class="date-dot">20</div>
         <div>
           <div class="date-label">July 2026</div>
           <div class="date-name">Registration Closes</div>
@@ -283,13 +409,13 @@
       <div class="date-item">
         <div class="date-dot">★</div>
         <div>
-          <div class="date-label">8–25 Aug 2026</div>
+          <div class="date-label">Aug 2026</div>
           <div class="date-name">Regionals</div>
-          <div class="date-sub">Delhi · Mumbai · Bangalore</div>
+          <div class="date-sub">18 Aug Mumbai · 25 Aug Bangalore · 1 Sep Delhi</div>
         </div>
       </div>
       <div class="date-item highlight">
-        <div class="date-dot">8</div>
+        <div class="date-dot">15</div>
         <div>
           <div class="date-label">September 2026</div>
           <div class="date-name">Grand Finale</div>
@@ -315,18 +441,7 @@
     <div class="schedule-grid">
       <div class="schedule-card reveal">
         <div class="schedule-card-head">
-          <div class="card-eyebrow">Regional 1 · Delhi NCR</div>
-          <h3>North India</h3>
-        </div>
-        <div class="schedule-card-body">
-          <p><strong>Date:</strong> 11 August 2026</p>
-          <p><strong>Format:</strong> 10 barista + 10 bartender teams competing live</p>
-          <p><strong>4 finalists</strong> — 2 baristas + 2 bartenders — advance to the Finale</p>
-        </div>
-      </div>
-      <div class="schedule-card reveal">
-        <div class="schedule-card-head">
-          <div class="card-eyebrow">Regional 2 · Bangalore</div>
+          <div class="card-eyebrow">Regional 1 · Mumbai</div>
           <h3>West India</h3>
         </div>
         <div class="schedule-card-body">
@@ -337,11 +452,22 @@
       </div>
       <div class="schedule-card reveal">
         <div class="schedule-card-head">
-          <div class="card-eyebrow">Regional 3 · Mumbai</div>
+          <div class="card-eyebrow">Regional 2 · Bangalore</div>
           <h3>South India</h3>
         </div>
         <div class="schedule-card-body">
           <p><strong>Date:</strong> 25 August 2026</p>
+          <p><strong>Format:</strong> 10 barista + 10 bartender teams competing live</p>
+          <p><strong>4 finalists</strong> — 2 baristas + 2 bartenders — advance to the Finale</p>
+        </div>
+      </div>
+      <div class="schedule-card reveal">
+        <div class="schedule-card-head">
+          <div class="card-eyebrow">Regional 3 · Delhi NCR</div>
+          <h3>North India</h3>
+        </div>
+        <div class="schedule-card-body">
+          <p><strong>Date:</strong> 1 Sep 2026</p>
           <p><strong>Format:</strong> 10 barista + 10 bartender teams competing live</p>
           <p><strong>4 finalists</strong> — 2 baristas + 2 bartenders — advance to the Finale</p>
         </div>
@@ -356,7 +482,7 @@
         <p>6 finalist teams. One floor. India's best barista-bartender pairing walks away with the title.</p>
       </div>
       <div class="finale-right">
-        <div class="finale-date">8 Sep</div>
+        <div class="finale-date">15 Sep</div>
         <div class="finale-location">Bangalore, India</div>
       </div>
     </div>
@@ -516,9 +642,8 @@
         <div class="winner-photo-placeholder"><img src="assets/images/winner-1.jpg" alt="CXC 2025 Winners"/></div>
         <div class="winner-info">
           <div class="winner-place">Champions 2025</div>
-          <div class="winner-team"><!-- TODO: Team name --></div>
-          <div class="winner-members"><!-- TODO: Barista Name · Bartender Name --></div>
-          <a class="winner-li" href="#" target="_blank">↗ LinkedIn profiles</a>
+          <a class="winner-li" href="https://www.instagram.com/ruturaj__007__ig?igsh=MXduZjYyN2R0dWNhOQ%3D%3D" target="_blank">↗ Ruturaj Govekar</a>
+          <a class="winner-li" href="https://www.instagram.com/sen__________01____?igsh=MW1mNDkxazFyc2sycA==" target="_blank">↗ Deepika Sen</a>
         </div>
       </div>
       <div class="winner-card reveal">
@@ -526,9 +651,8 @@
         <div class="winner-photo-placeholder"><img src="assets/images/winner-2.jpg" alt="CXC 2025 Winners"/></div>
         <div class="winner-info">
           <div class="winner-place">Runner-Up 2025</div>
-          <div class="winner-team"><!-- TODO: Team name --></div>
-          <div class="winner-members"><!-- TODO: Barista Name · Bartender Name --></div>
-          <a class="winner-li" href="#" target="_blank">↗ LinkedIn profiles</a>
+          <a class="winner-li" href="https://www.instagram.com/joy.of.mixing?igsh=Mjk5N2FuNjc2dmNz" target="_blank">↗ Joyston Tauro</a>
+          <a class="winner-li" href="https://www.instagram.com/soudh_ibrahim?igsh=MTNhbG85eWtlZjM4OA%3D%3D" target="_blank">↗ Soudh Ibrahim</a>
         </div>
       </div>
       <div class="winner-card reveal">
@@ -536,9 +660,8 @@
         <div class="winner-photo-placeholder"><img src="assets/images/winner-3.jpg" alt="CXC 2025 Winners"/></div>
         <div class="winner-info">
           <div class="winner-place">Second Runner-Up 2025</div>
-          <div class="winner-team"><!-- TODO: Team name --></div>
-          <div class="winner-members"><!-- TODO: Barista Name · Bartender Name --></div>
-          <a class="winner-li" href="#" target="_blank">↗ LinkedIn profiles</a>
+          <a class="winner-li" href="https://www.instagram.com/mi._.dh._.un?igsh=MWlxYzBxeXV5bXUxMA%3D%3D" target="_blank">↗ Midhun </a>
+          <a class="winner-li" href="https://www.instagram.com/adantescoffee?igsh=MTRxNWFkcjZveGlyZA%3D%3D" target="_blank">↗ Aastha Dante</a>
         </div>
       </div>
     </div>
@@ -558,130 +681,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     REGISTER
-     ============================================================ -->
-<section id="register" class="section-pad">
-  <div class="container">
-    <div class="register-wrap">
-      <!-- LEFT: info -->
-      <div class="register-left reveal">
-        <span class="tag">Register FREE</span>
-        <h2 class="section-title">Claim Your Spot.<br />It's Free.</h2>
-        <p class="section-sub">
-          Unlike other competitions — CxC has no registration fee. Enter individually. Get your Swa sample pack. Make something unforgettable.
-        </p>
-        <ul class="register-perks">
-          <li>Free Swa sample pack dispatched to your door</li>
-          <li>Submit as an individual — no partner needed at this stage</li>
-          <li>Top 10 bartenders and baristas per region qualify for the Regionals</li>
-          <li>Organisers will pair up the top 10 baristas and bartenders into teams of two</li>
-          <li>Open to professional baristas and bartenders across India</li>
-          <li>If selected, you will need to travel for the Regionals at your cost</li>
-        </ul>
-        </div>
-       
 
-      <!-- RIGHT: form -->
-      <div class="register-right reveal">
-        <div class="register-form-card">
-          <h3 class="form-title">Register for CxC 2026</h3>
-          <p class="form-sub">Please fill the address correctly for timely sample dispatch.</p>
-
-          <form id="registerForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required placeholder="Arjun" />
-              </div>
-              <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required placeholder="Sharma" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address *</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="whatsapp">WhatsApp Number *</label>
-              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+91 98765 43210" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="role">I am a *</label>
-                <select id="role" name="role" required>
-                  <option value="" disabled selected>Select role</option>
-                  <option value="barista">Barista</option>
-                  <option value="bartender">Bartender</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="region">My Region *</label>
-                <select id="region" name="region" required>
-                  <option value="" disabled selected>Select city</option>
-                  <option value="Delhi NCR">Delhi NCR</option>
-                  <option value="Chandigarh">Chandigarh</option>
-                  <option value="Jaipur">Jaipur</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Pune">Pune</option>
-                  <option value="Bangalore">Bangalore</option>
-                  <option value="Hyderabad">Hyderabad</option>
-                  <option value="Chennai">Chennai</option>
-                  <option value="Coimbatore">Coimbatore</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="employer">Current Employer / Venue</label>
-              <input type="text" id="employer" name="employer" placeholder="e.g. Blue Tokai, SOKA, etc." />
-            </div>
-
-            <div class="form-group">
-              <label for="addr1">Shipping Address Line 1 *</label>
-              <input type="text" id="addr1" name="addr1" required placeholder="Flat / Building / Street" />
-            </div>
-
-            <div class="form-group">
-              <label for="addr2">Address Line 2</label>
-              <input type="text" id="addr2" name="addr2" placeholder="Area / Landmark (optional)" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="city">City *</label>
-                <input type="text" id="city" name="city" required placeholder="City" />
-              </div>
-              <div class="form-group">
-                <label for="pincode">Pincode *</label>
-                <input type="text" id="pincode" name="pincode" required placeholder="400001" maxlength="6" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="state">State *</label>
-              <input type="text" id="state" name="state" required placeholder="Maharashtra" />
-            </div>
-
-            <button type="submit" class="form-submit">Register FREE →</button>
-            <p style="text-align:center;margin-top:16px;font-size:0.85rem;color:#666;font-family:'Poppins',sans-serif;">
-  Already registered? <a href="login.html" style="color:var(--olive);font-weight:600;font-family:'Poppins',sans-serif;">Log in →</a>
-</p>
-            <p class="form-note">
-              Free to enter. Your sample pack will be shipped within 24 hours of registration.
-              By registering you agree to the <a href="#" style="color:var(--olive)">CxC 2026 Rules</a>.
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================
      FAQ
@@ -711,7 +711,7 @@
       <div class="faq-item reveal">
         <div class="faq-q">How do I get my Swa sample pack?</div>
         <div class="faq-a">
-          <p>Once you register, we'll ship a curated Swa Artisanal Syrups sample pack directly to your shipping address. Register early so you have more time to develop recipes. Packs are dispatched within 24 hours. You must use at least one Swa syrup in your Stage 1 submission.</p>
+          <p>Once you register, we'll ship a curated Swa Artisanal Syrups sample pack directly to your shipping address. Register early so you have more time to develop recipes. Packs are dispatched within 24 hours. It will take 5-7 working days to reach your doorstep. You must use at least one Swa syrup in your Stage 1 submission.</p>
         </div>
       </div>
 
@@ -725,7 +725,7 @@
       <div class="faq-item reveal">
         <div class="faq-q">What are the Regionals?</div>
         <div class="faq-a">
-          <p>The Regionals are live, in-person rounds held in Delhi (11 Aug), Bangalore (18 Aug), and Mumbai (25 Aug). The top 10 qualifying bartenders and top qualifying baristas from each region compete. Teams are formed on the day. The top 2 teams from each Regional will advance to the Grand Finale.</p>
+          <p>The Regionals are live, in-person rounds held in Mumbai (18 Aug), Bangalore (25 Aug), and Delhi (1 Sep). The top 10 qualifying bartenders and top qualifying baristas from each region compete. Teams are formed on the day. The top 2 teams from each Regional will advance to the Grand Finale.</p>
         </div>
       </div>
 
@@ -739,14 +739,58 @@
       <div class="faq-item reveal">
         <div class="faq-q">What are the prizes?</div>
         <div class="faq-a">
-          <p>Total prize pool is over ₹1,50,000 distributed across the Regionals and Grand Finale. Full prize breakdown will be announced closer to the event. Every registered participant also receives a Swa sample pack, and all finalists receive industry recognition and features across Swa's trade network.</p>
+          <p>Total prize pool is over ₹1,00,000 distributed across the Regionals and Grand Finale. Full prize breakdown will be announced closer to the event. Every registered participant also receives a Swa sample pack, and all finalists receive industry recognition and features across Swa's trade network.</p>
         </div>
       </div>
 
       <div class="faq-item reveal">
         <div class="faq-q">How do I contact the team?</div>
         <div class="faq-a">
-          <p>Email us at <a href="mailto:nivedita.panda@drinkswa.com" style="color:var(--olive)">nivedita.panda@drinkswa.com</a> or <a href="mailto:shweta.thakur@drinkswa.com" style="color:var(--olive)">shweta.thakur@drinkswa.com</a>. You can also DM us on Instagram at <a href="https://instagram.com/swa.artisanalsyrups" target="_blank" style="color:var(--olive)">@swa.artisanalsyrups</a>.</p>
+          <p>Email us at <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>. You can also DM us on Instagram at <a href="https://instagram.com/swa.artisanalsyrups" target="_blank" style="color:var(--olive)">@swa.artisanalsyrups</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How is my Stage 1 submission judged?</div>
+        <div class="faq-a">
+          <p>Submissions are scored out of 100 points across five criteria:</p>
+          <ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px;padding-left:0;list-style:none;">
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Craft & Technique</span><span style="font-weight:700;color:var(--olive);">25 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Flavour & Balance</span><span style="font-weight:700;color:var(--olive);">25 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Swa Integration</span><span style="font-weight:700;color:var(--olive);">20 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Creativity & Narrative</span><span style="font-weight:700;color:var(--olive);">20 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Presentation</span><span style="font-weight:700;color:var(--olive);">10 pts</span></li>
+          </ul>
+          <p style="margin-top:12px;">Full rulebook is available in your participant portal once you register.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I use homemade ingredients?</div>
+        <div class="faq-a">
+          <p>Yes, with conditions. Homemade infusions, bitters, fat washes, and juices are permitted. However:</p>
+          <ul style="margin-top:10px;padding-left:20px;display:flex;flex-direction:column;gap:6px;">
+            <li>Homemade syrups or cordials must be based on a Swa syrup — e.g. a "spiced kokam shrub" built on Swa Kokam.</li>
+            <li>If using a homemade syrup, an unadulterated Swa product must also appear in the recipe separately.</li>
+            <li>All homemade components must be fully declared in your recipe card — name, base ingredients, and method.</li>
+            <li>Homemade versions of flavours available in the Swa range are not permitted.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What are the key rules for Stage 1?</div>
+        <div class="faq-a">
+          <ul style="padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+            <li>Open to all working baristas and bartenders in India aged 18+.</li>
+            <li>Individual entry only — no teams at this stage.</li>
+            <li>At least 20ml of one Swa Artisanal Syrup must be used in your drink.</li>
+            <li>Recipe must be original and not publicly served in the last 12 months.</li>
+            <li>Submit a 60–90 second video showing preparation from start to finish.</li>
+            <li>Video must show your face and hands. Narration strongly encouraged.</li>
+            <li>Deadline: 31 July 2026, 11:59 PM IST. No extensions.</li>
+            <li>Judges' decisions are final.</li>
+          </ul>
         </div>
       </div>
 

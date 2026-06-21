@@ -117,6 +117,7 @@ function validate(data) {
     errors.push({ field: 'email', msg: 'Valid email is required' });
   if (!data.phone || data.phone.replace(/\D/g, '').length < 10)
     errors.push({ field: 'whatsapp', msg: 'Valid phone number is required' });
+  if (!data.employer) errors.push({ field: 'employer', msg: 'Please enter your current employer or venue' });
   if (!data.role)   errors.push({ field: 'role',    msg: 'Please select your role' });
   if (!data.region) errors.push({ field: 'region',  msg: 'Please select your region' });
   if (!data.address_line_1) errors.push({ field: 'addr1',   msg: 'Shipping address is required' });
