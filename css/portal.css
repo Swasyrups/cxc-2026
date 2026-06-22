@@ -437,7 +437,7 @@
 
 /* Fix CxC logo position when My Dashboard link present */
 .cxc-logo-float {
-  left: 44% !important;
+  left: calc(50% - 80px) !important;
 }
 
 /* Fix Swa logo - nuclear override */
@@ -447,3 +447,4 @@
   filter: none !important;
   -webkit-filter: none !important;
 }
+
