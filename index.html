@@ -872,6 +872,11 @@
   );
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
+  const ctaBtn = document.querySelector('.nav-cta');
+if (ctaBtn) {
+  ctaBtn.textContent = 'My Dashboard →';
+  ctaBtn.href = 'submit.html';
+}
 
   const label = 'My Dashboard →';
   const href  = 'submit.html';
@@ -888,6 +893,8 @@
   });
 })();
 </script>
+
+
 
 
 </body>
