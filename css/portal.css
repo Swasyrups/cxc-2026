@@ -328,9 +328,7 @@
 #nav .nav-logout-btn {
   color: var(--ink) !important;
 }
-#nav #swa-wordmark img {
-  filter: brightness(0) !important;
-}
+
 
 .mobile-nav {
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;

@@ -25,7 +25,7 @@
       <li><a href="index.html#judges">Judges</a></li>
       <li><a href="index.html#legacy">CXC 2025</a></li>
       <li><a href="index.html#faq">FAQs</a></li>
-      <li><a href="index.html#register" class="nav-cta-submit">Register FREE</a></li>
+      <li><a href="index.html" class="nav-cta" style="background:transparent;border:1.5px solid rgba(255,255,255,0.4);color:rgba(255,255,255,0.8);">← Main Site</a></li>
       <li><button onclick="logout()" style="background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:inherit;text-decoration:underline;text-underline-offset:3px;" class="nav-logout-btn">Log Out</button></li>
     </ul>
     <button class="nav-hamburger" aria-label="Menu">
@@ -37,14 +37,6 @@
 <!-- ── PORTAL SUB-NAV ── -->
 <div id="portal-subnav">
   <div class="portal-subnav-inner">
-    <div class="portal-subnav-left">
-      <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="49" fill="#59751d"/>
-        <circle cx="50" cy="50" r="43" fill="none" stroke="#c8a96e" stroke-width="1.5"/>
-        <text x="50" y="63" text-anchor="middle" fill="#faf7f2" font-size="31" font-family="Nunito,sans-serif" font-weight="900" font-style="italic">CxC</text>
-      </svg>
-      <span class="subnav-title">My Portal</span>
-    </div>
     <div class="portal-subnav-links">
       <button class="subnav-link active" onclick="showPage('dashboard')">Dashboard</button>
       <button class="subnav-link" onclick="showPage('rules')">Rulebook</button>
@@ -850,5 +842,6 @@
     }
   }
 </script>
+<img src="assets/images/CXC_2026.jpg" alt="CxC" class="cxc-logo-float" id="cxcLogoFloat" style="pointer-events:auto;cursor:pointer;" onclick="window.location.href='index.html'" />
 </body>
 </html>
