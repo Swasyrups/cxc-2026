@@ -877,6 +877,8 @@ if (ctaBtn) {
   ctaBtn.textContent = 'My Dashboard →';
   ctaBtn.href = 'submit.html';
 }
+const loginLink = document.querySelector('a[href="login.html"]');
+if (loginLink) loginLink.closest('li').style.display = 'none';
 
   const label = 'My Dashboard →';
   const href  = 'submit.html';
