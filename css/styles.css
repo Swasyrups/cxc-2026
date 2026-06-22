@@ -164,8 +164,8 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 
 .cxc-logo-float {
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - 60px);
+transform: translateX(-50%);
   z-index: 1001;
   transition: top 0.45s cubic-bezier(0.4,0,0.2,1), width 0.45s cubic-bezier(0.4,0,0.2,1);
   top: 70px;
