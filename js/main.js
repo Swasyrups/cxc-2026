@@ -31,7 +31,7 @@ if (wordmark) {
 const isDashboard = document.querySelector('a[href="submit.html"]') 
                  || document.querySelector('.nav-dashboard');
 if (floatLogo) {
-  floatLogo.style.left = isDashboard ? '45%' : '50%';
+  floatLogo.style.left = isDashboard ? '50%' : '50%';
   floatLogo.style.filter = scrollY > 60 
     ? (isDashboard ? 'brightness(0)' : 'invert(1) brightness(0)') 
     : 'none';
