@@ -431,7 +431,12 @@
 }
 #nav.scrolled .nav-brand img {
   filter: none !important;
+
 }
+
+.multi-select-dropdown { pointer-events: auto; }
+.multi-opt { pointer-events: auto; }
+.multi-opt input[type=checkbox] { pointer-events: auto; }
 
 /* Fix CxC logo position when My Dashboard link present */
 .cxc-logo-float {

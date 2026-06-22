@@ -16,7 +16,7 @@
 <!-- ── MAIN CXC NAV (same as index.html) ── -->
 <nav id="nav">
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html" aria-label="Swa Artisanal Syrups">
+    <a class="nav-brand" href="drinkswa.com" aria-label="Swa Artisanal Syrups">
       <span style="font-family:var(--font-head);font-size:18px;font-weight:700;color:#fff;letter-spacing:0.06em;transition:color .35s" id="swa-wordmark"><img src="assets/images/swa-logo.webp" alt="Swa Logo"/></span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -758,10 +758,12 @@
 
   // ── MULTI SELECT ───────────────────────────
   function toggleDropdown(id) {
-    const dd = document.getElementById(id);
-    document.querySelectorAll('.multi-select-dropdown').forEach(d => { if (d.id !== id) d.style.display = 'none'; });
-    dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
-  }
+  const dd = document.getElementById(id);
+  document.querySelectorAll('.multi-select-dropdown').forEach(d => { 
+    if (d.id !== id) d.style.display = 'none'; 
+  });
+  dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+}
   function updateMultiDisplay(wrapId) {
     const wrap = document.getElementById(wrapId);
     const checked = [...wrap.querySelectorAll('input[type=checkbox]:checked')].map(c => c.value);
@@ -778,6 +780,10 @@
       document.querySelectorAll('.multi-select-dropdown').forEach(d => d.style.display = 'none');
     }
   });
+
+  document.querySelectorAll('.multi-select-dropdown').forEach(dd => {
+  dd.addEventListener('click', e => e.stopPropagation());
+});
 
   // ── HOMEMADE ───────────────────────────────
   let homemadeCount = 1;
@@ -842,6 +848,6 @@
     }
   }
 </script>
-<img src="assets/images/cxc-logo.png" alt="CxC" class="cxc-logo-float sticky" id="cxcLogoFloat" style="cursor: pointer; left: 50%; filter: brightness(0);" onclick="window.location.href='index.html'" />
+<img src="assets/images/cxc-logo.png"  alt="CxC" class="cxc-logo-float sticky" id="cxcLogoFloat" style="cursor: pointer; left: 50%; filter: brightness(0);" onclick="window.location.href='index.html'" />
 </body>
 </html>

@@ -70,7 +70,7 @@ await new Promise(resolve => setTimeout(resolve, 500));
     if (dbError) {
       showFormError(form, dbError.code === '23505'
         ? 'This email is already registered.'
-        : 'Something went wrong. Email nivedita.panda@drinkswa.com');
+        : 'Something went wrong. Email cxc@drinkswa.com');
       console.error('DB error:', dbError);
       return;
     }

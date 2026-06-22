@@ -365,10 +365,9 @@ transform: translateX(-50%);
   box-shadow: 0 8px 32px rgba(240,86,122,0.5);
 }
 .hero-dates {
-  margin-top: 28px;
-  font-size: 13px;
-  opacity: 0.75;
-  letter-spacing: 0.04em;
+  margin-top: 20px;
+  font-size: 16px;
+ letter-spacing: 0.04em;
 }
 
 /* ============================================================
