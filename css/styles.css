@@ -147,7 +147,7 @@ button { cursor: pointer; border: none; background: none; font-family: var(--fon
 }
 
 #nav.scrolled .nav-brand img {
-  filter: brightness(0);
+  filter: none;
 }
 
 /* CxC logo – center */

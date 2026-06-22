@@ -26,11 +26,11 @@ function updateNav() {
   }
   const wordmark = document.getElementById('swa-wordmark');
 if (wordmark) {
-  wordmark.style.filter = scrollY > 60 ? 'brightness(0)' : 'brightness(0) invert(1)';
+  wordmark.style.filter = scrollY > 60 ? 'brightness(0)' : 'none';
 }
 if (floatLogo) {
   floatLogo.classList.toggle('sticky', scrollY > 60);
-  floatLogo.style.filter = scrollY > 60 ? 'invert(1) brightness(0)' : 'none';
+  floatLogo.style.filter = 'none';
 }
 }
 
