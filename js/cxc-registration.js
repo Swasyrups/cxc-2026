@@ -27,7 +27,6 @@ async function handleRegistration(form) {
     email:          form.email.value.trim().toLowerCase(),
     phone:          form.whatsapp.value.trim(),
     role:           form.role.value,
-    region:         form.region.value,
     employer:       form.employer.value.trim(),
     address_line_1: form.addr1.value.trim(),
     address_line_2: form.addr2.value.trim() || null,
@@ -119,7 +118,6 @@ function validate(data) {
     errors.push({ field: 'whatsapp', msg: 'Valid phone number is required' });
   if (!data.employer) errors.push({ field: 'employer', msg: 'Please enter your current employer or venue' });
   if (!data.role)   errors.push({ field: 'role',    msg: 'Please select your role' });
-  if (!data.region) errors.push({ field: 'region',  msg: 'Please select your region' });
   if (!data.address_line_1) errors.push({ field: 'addr1',   msg: 'Shipping address is required' });
   if (!data.city)           errors.push({ field: 'city',    msg: 'City is required' });
   if (!data.pincode || !/^\d{6}$/.test(data.pincode))
@@ -170,7 +168,6 @@ function showSuccess(form, firstName, data) {
     gtag('event', 'registration_complete', {
       method: 'cxc_form',
       role:   data.role,
-      region: data.region,
     });
   }
   if (typeof fbq === 'function') {
