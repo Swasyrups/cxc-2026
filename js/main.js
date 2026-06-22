@@ -28,9 +28,13 @@ function updateNav() {
 if (wordmark) {
   wordmark.style.filter = scrollY > 60 ? 'brightness(0)' : 'none';
 }
+const isDashboard = document.querySelector('a[href="submit.html"]') 
+                 || document.querySelector('.nav-dashboard');
 if (floatLogo) {
-  floatLogo.classList.toggle('sticky', scrollY > 60);
-  floatLogo.style.filter = 'none';
+  floatLogo.style.left = isDashboard ? '45%' : '50%';
+  floatLogo.style.filter = scrollY > 60 
+    ? (isDashboard ? 'brightness(0)' : 'invert(1) brightness(0)') 
+    : 'none';
 }
 }
 
