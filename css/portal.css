@@ -434,3 +434,16 @@
 #nav.scrolled .nav-brand img {
   filter: none !important;
 }
+
+/* Fix CxC logo position when My Dashboard link present */
+.cxc-logo-float {
+  left: 44% !important;
+}
+
+/* Fix Swa logo - nuclear override */
+#nav .nav-brand img,
+#nav.scrolled .nav-brand img,
+.nav-brand img {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
