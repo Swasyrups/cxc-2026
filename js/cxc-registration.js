@@ -114,7 +114,7 @@ function validate(data) {
   if (!data.last_name)  errors.push({ field: 'lastName',  msg: 'Last name is required' });
   if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
     errors.push({ field: 'email', msg: 'Valid email is required' });
-  if (!data.phone || data.phone.replace(/\D/g, '').length < 10)
+  if (!data.phone || !/^\d{10}$/.test(data.phone.replace(/\D/g, '')))
     errors.push({ field: 'whatsapp', msg: 'Valid phone number is required' });
   if (!data.employer) errors.push({ field: 'employer', msg: 'Please enter your current employer or venue' });
   if (!data.role)   errors.push({ field: 'role',    msg: 'Please select your role' });
