@@ -954,13 +954,26 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
   );
   const { data: { session } } = await sb.auth.getSession();
   if (!session) return;
+
+  // Verify user exists in participants
+  const { data: participant } = await sb
+    .from('participants')
+    .select('email')
+    .eq('email', session.user.email)
+    .single();
+
+  if (!participant) {
+    await sb.auth.signOut();
+    return;
+  }
+
   const ctaBtn = document.querySelector('.nav-cta');
-if (ctaBtn) {
-  ctaBtn.textContent = 'My Dashboard →';
-  ctaBtn.href = 'submit.html';
-}
-const loginLink = document.querySelector('a[href="login.html"]');
-if (loginLink) loginLink.closest('li').style.display = 'none';
+  if (ctaBtn) {
+    ctaBtn.textContent = 'My Dashboard →';
+    ctaBtn.href = 'submit.html';
+  }
+  const loginLink = document.querySelector('a[href="login.html"]');
+  if (loginLink) loginLink.closest('li').style.display = 'none';
 
   const label = 'My Dashboard →';
   const href  = 'submit.html';
