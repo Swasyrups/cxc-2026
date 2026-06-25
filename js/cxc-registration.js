@@ -31,19 +31,19 @@ function initPlaces() {
       fields: ['name', 'formatted_address', 'place_id']
     });
     empAC.addListener('place_changed', () => {
-  const place = empAC.getPlace();
-  const errEl = document.getElementById('employer-error');
-  if (place.place_id) {
-    employerInput.value = place.name;
-    document.getElementById('employer_address').value = place.formatted_address || '';
-    errEl.style.display = 'none';
-    employerChecked = true;
-  } else {
-    errEl.innerHTML = 'We couldn\'t verify this venue. Please email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
-    errEl.style.display = 'block';
-    employerChecked = false;
-  }
-});
+      const place = empAC.getPlace();
+      const errEl = document.getElementById('employer-error');
+      if (place.place_id) {
+        employerInput.value = place.name;
+        document.getElementById('employer_address').value = place.formatted_address || '';
+        errEl.style.display = 'none';
+        employerChecked = true;
+      } else {
+        errEl.innerHTML = 'We couldn\'t verify this venue. Please email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
+        errEl.style.display = 'block';
+        employerChecked = false;
+      }
+    });
   }
 
   // ── Address autocomplete ──
@@ -55,55 +55,54 @@ function initPlaces() {
       fields: ['address_components', 'formatted_address']
     });
     addrAC.addListener('place_changed', () => {
-  const place = addrAC.getPlace();
-  const components = place.address_components || [];
+      const place = addrAC.getPlace();
+      const components = place.address_components || [];
 
-  let locality = '', level2 = '', pincode = '', state = '';
+      let locality = '', level2 = '', pincode = '', state = '';
 
-  components.forEach(c => {
-    if (c.types.includes('locality')) locality = c.long_name;
-    if (c.types.includes('administrative_area_level_2')) level2 = c.long_name;
-    if (c.types.includes('postal_code')) pincode = c.long_name;
-    if (c.types.includes('administrative_area_level_1')) state = c.long_name;
-  });
+      components.forEach(c => {
+        if (c.types.includes('locality')) locality = c.long_name;
+        if (c.types.includes('administrative_area_level_2')) level2 = c.long_name;
+        if (c.types.includes('postal_code')) pincode = c.long_name;
+        if (c.types.includes('administrative_area_level_1')) state = c.long_name;
+      });
 
-  const CITY_ALIASES = {
-    'bangalore urban': 'Bangalore',
-    'bengaluru urban': 'Bengaluru',
-    'mumbai suburban': 'Mumbai',
-    'delhi district': 'Delhi',
-    'south goa': 'Goa',
-    'north goa': 'Goa',
-    'gautam buddha nagar': 'Delhi',
-    'gurugram': 'Delhi',
-    'faridabad': 'Delhi',
-    'ghaziabad': 'Delhi',
-  };
+      const CITY_ALIASES = {
+        'bangalore urban': 'Bangalore',
+        'bengaluru urban': 'Bengaluru',
+        'mumbai suburban': 'Mumbai',
+        'delhi district': 'Delhi',
+        'south goa': 'Goa',
+        'north goa': 'Goa',
+        'gautam buddha nagar': 'Delhi',
+        'gurugram': 'Delhi',
+        'faridabad': 'Delhi',
+        'ghaziabad': 'Delhi',
+      };
 
-  // Use locality first, fallback to level2, then normalize via aliases
-  let rawCity = locality || level2;
-  const city = CITY_ALIASES[rawCity.toLowerCase()] || rawCity;
+      let rawCity = locality || level2;
+      const city = CITY_ALIASES[rawCity.toLowerCase()] || rawCity;
 
-  // Validate against shipping list using both locality and level2
-  const toCheck = [locality, level2, city].map(s => s.toLowerCase());
-  cityValid = toCheck.some(s => SHIPPING_CITIES.some(sc => s.includes(sc) || sc.includes(s)));
+      const toCheck = [locality, level2, city].map(s => s.toLowerCase());
+      cityValid = toCheck.some(s => SHIPPING_CITIES.some(sc => s.includes(sc) || sc.includes(s)));
 
-  if (city) document.getElementById('city').value = city;
-  if (pincode) document.getElementById('pincode').value = pincode;
-  if (state) {
-    const stateSelect = document.getElementById('state');
-    for (let opt of stateSelect.options) {
-      if (opt.value.toLowerCase() === state.toLowerCase()) {
-        stateSelect.value = opt.value;
-        break;
+      if (city) document.getElementById('city').value = city;
+      if (pincode) document.getElementById('pincode').value = pincode;
+      if (state) {
+        const stateSelect = document.getElementById('state');
+        for (let opt of stateSelect.options) {
+          if (opt.value.toLowerCase() === state.toLowerCase()) {
+            stateSelect.value = opt.value;
+            break;
+          }
+        }
       }
-    }
-  }
 
-  document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
-});
+      document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
+    });
   }
 }
+
 // ── Form init ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
@@ -118,18 +117,18 @@ async function handleRegistration(form) {
   const btn = form.querySelector('button[type="submit"]');
 
   const data = {
-    first_name:     form.firstName.value.trim(),
-    last_name:      form.lastName.value.trim(),
-    email:          form.email.value.trim().toLowerCase(),
-    phone:          form.whatsapp.value.trim(),
-    role:           form.role.value,
-    employer:       form.employer.value.trim(),
+    first_name:       form.firstName.value.trim(),
+    last_name:        form.lastName.value.trim(),
+    email:            form.email.value.trim().toLowerCase(),
+    phone:            form.whatsapp.value.trim(),
+    role:             form.role.value,
+    employer:         form.employer.value.trim(),
     employer_address: form.employer_address.value.trim() || null,
-    address_line_1: form.addr1.value.trim(),
-    address_line_2: form.addr2.value.trim() || null,
-    city:           form.city.value.trim(),
-    pincode:        form.pincode.value.trim(),
-    state:          form.state.value.trim(),
+    address_line_1:   form.addr1.value.trim(),
+    address_line_2:   form.addr2.value.trim() || null,
+    city:             form.city.value.trim(),
+    pincode:          form.pincode.value.trim(),
+    state:            form.state.value.trim(),
   };
 
   const errors = validate(data);
@@ -161,7 +160,7 @@ async function handleRegistration(form) {
 
     const { error: dbError } = await sb
       .from('participants')
-      .insert({ auth_user_id: authData.user?.id, ...data, status: 'registered' });
+      .insert({ auth_user_id: authData.user?.id, ...data, status: 'pending_payment' });
 
     if (dbError) {
       showFormError(form, dbError.code === '23505'
@@ -171,8 +170,7 @@ async function handleRegistration(form) {
       return;
     }
 
-    showSuccess(form, data.first_name, data);
-    triggerSamplePack(authData.user?.id, data).catch(console.error);
+    window.location.href = `https://drinkswa.myshopify.com/cart/49166731018548:1?checkout[email]=${encodeURIComponent(data.email)}`;
 
   } catch (err) {
     console.error('Registration error:', err);
@@ -180,28 +178,6 @@ async function handleRegistration(form) {
   } finally {
     setLoading(btn, false);
   }
-}
-
-async function triggerSamplePack(userId, participant) {
-  const { error } = await sb.functions.invoke('create-shopify-order', {
-    body: {
-      participant_id:  userId,
-      product_handle:  'cxc-2026-registration-sample',
-      email:           participant.email,
-      shipping: {
-        first_name: participant.first_name,
-        last_name:  participant.last_name,
-        address1:   participant.address_line_1,
-        address2:   participant.address_line_2,
-        city:       participant.city,
-        zip:        participant.pincode,
-        province:   participant.state,
-        country:    'IN',
-        phone:      participant.phone,
-      },
-    }
-  });
-  if (error) console.error('Sample pack order failed:', error);
 }
 
 function validate(data) {
