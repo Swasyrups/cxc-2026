@@ -31,17 +31,19 @@ function initPlaces() {
       fields: ['name', 'formatted_address', 'place_id']
     });
     empAC.addListener('place_changed', () => {
-      const place = empAC.getPlace();
-      const errEl = document.getElementById('employer-error');
-      if (place.place_id) {
-        errEl.style.display = 'none';
-        employerChecked = true;
-      } else {
-        errEl.innerHTML = 'We couldn\'t verify this venue. Please email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
-        errEl.style.display = 'block';
-        employerChecked = false;
-      }
-    });
+  const place = empAC.getPlace();
+  const errEl = document.getElementById('employer-error');
+  if (place.place_id) {
+    employerInput.value = place.name;
+    document.getElementById('employer_address').value = place.formatted_address || '';
+    errEl.style.display = 'none';
+    employerChecked = true;
+  } else {
+    errEl.innerHTML = 'We couldn\'t verify this venue. Please email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
+    errEl.style.display = 'block';
+    employerChecked = false;
+  }
+});
   }
 
   // ── Address autocomplete ──
@@ -53,32 +55,53 @@ function initPlaces() {
       fields: ['address_components', 'formatted_address']
     });
     addrAC.addListener('place_changed', () => {
-      const place = addrAC.getPlace();
-      const components = place.address_components || [];
+  const place = addrAC.getPlace();
+  const components = place.address_components || [];
 
-      let city = '', pincode = '', state = '';
-      components.forEach(c => {
-        if (c.types.includes('locality')) city = c.long_name;
-        if (c.types.includes('postal_code')) pincode = c.long_name;
-        if (c.types.includes('administrative_area_level_1')) state = c.long_name;
-      });
+  let locality = '', level2 = '', pincode = '', state = '';
 
-      if (city) document.getElementById('city').value = city;
-      if (pincode) document.getElementById('pincode').value = pincode;
-      if (state) {
-        const stateSelect = document.getElementById('state');
-        for (let opt of stateSelect.options) {
-          if (opt.value.toLowerCase() === state.toLowerCase()) {
-            stateSelect.value = opt.value;
-            break;
-          }
-        }
+  components.forEach(c => {
+    if (c.types.includes('locality')) locality = c.long_name;
+    if (c.types.includes('administrative_area_level_2')) level2 = c.long_name;
+    if (c.types.includes('postal_code')) pincode = c.long_name;
+    if (c.types.includes('administrative_area_level_1')) state = c.long_name;
+  });
+
+  const CITY_ALIASES = {
+    'bangalore urban': 'Bangalore',
+    'bengaluru urban': 'Bengaluru',
+    'mumbai suburban': 'Mumbai',
+    'delhi district': 'Delhi',
+    'south goa': 'Goa',
+    'north goa': 'Goa',
+    'gautam buddha nagar': 'Delhi',
+    'gurugram': 'Delhi',
+    'faridabad': 'Delhi',
+    'ghaziabad': 'Delhi',
+  };
+
+  // Use locality first, fallback to level2, then normalize via aliases
+  let rawCity = locality || level2;
+  const city = CITY_ALIASES[rawCity.toLowerCase()] || rawCity;
+
+  // Validate against shipping list using both locality and level2
+  const toCheck = [locality, level2, city].map(s => s.toLowerCase());
+  cityValid = toCheck.some(s => SHIPPING_CITIES.some(sc => s.includes(sc) || sc.includes(s)));
+
+  if (city) document.getElementById('city').value = city;
+  if (pincode) document.getElementById('pincode').value = pincode;
+  if (state) {
+    const stateSelect = document.getElementById('state');
+    for (let opt of stateSelect.options) {
+      if (opt.value.toLowerCase() === state.toLowerCase()) {
+        stateSelect.value = opt.value;
+        break;
       }
+    }
+  }
 
-      const cityLower = city.toLowerCase();
-      cityValid = SHIPPING_CITIES.some(c => cityLower.includes(c));
-      document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
-    });
+  document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
+});
   }
 }
 // ── Form init ─────────────────────────────────────────────────────────────────
@@ -101,6 +124,7 @@ async function handleRegistration(form) {
     phone:          form.whatsapp.value.trim(),
     role:           form.role.value,
     employer:       form.employer.value.trim(),
+    employer_address: form.employer_address.value.trim() || null,
     address_line_1: form.addr1.value.trim(),
     address_line_2: form.addr2.value.trim() || null,
     city:           form.city.value.trim(),

@@ -270,11 +270,11 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
                   <option value="Other">Other</option>
                 </select>
               </div> -->
-              <div class="form-group">
-              <!-- <label for="employer">Current Employer / Venue</label> -->
-              <input type="text" id="employer" name="employer" required placeholder="Employer" />
-              <div id="employer-error" class="field-error" style="display:none">We couldn't find this venue. Please enter a valid place of work.</div>
-            </div>
+             <div class="form-group">
+  <input type="text" id="employer" name="employer" required placeholder="Employer / Venue" autocomplete="off" />
+  <input type="hidden" id="employer_address" name="employer_address" />
+  <div id="employer-error" class="field-error" style="display:none">We couldn't verify this venue. If you believe this is an error, email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.</div>
+</div>
             </div>
             <div class="form-group">
               <input type="text" id="addr1" name="addr1" required placeholder="Address Line 1" />
