@@ -1005,6 +1005,10 @@ background: var(--warm-white); }
   align-items: start;
 }
 
+.pac-container {
+  z-index: 9999 !important;
+}
+
 .register-right {
   min-width: 0;
 }
