@@ -19,9 +19,13 @@ const SHIPPING_CITIES = [
 
 let cityValid = false;
 let employerChecked = false;
+let couponValid = false;
+let couponCode = '';
 
 // ── Google Places init (called by Maps script callback) ───────────────────────
 function initPlaces() {
+  document.getElementById('city-error').style.display = 'none';
+
   // ── Employer autocomplete ──
   const employerInput = document.getElementById('employer');
   if (employerInput) {
@@ -107,6 +111,42 @@ function initPlaces() {
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
   if (!form) return;
+
+  // ── Coupon blur validation ──
+  const couponInput = document.getElementById('couponCode');
+  if (couponInput) {
+    couponInput.addEventListener('blur', async () => {
+      const code = couponInput.value.trim().toUpperCase();
+      const statusEl = document.getElementById('coupon-status');
+      if (!code) {
+        statusEl.style.display = 'none';
+        couponValid = false;
+        couponCode = '';
+        return;
+      }
+
+      const { data, error } = await sb
+        .from('coupons')
+        .select('code, type, max_uses, used_count, active')
+        .eq('code', code)
+        .single();
+
+      if (error || !data || !data.active || data.used_count >= data.max_uses) {
+        statusEl.textContent = '✗ Invalid or expired coupon code.';
+        statusEl.style.color = '#e53e3e';
+        statusEl.style.display = 'block';
+        couponValid = false;
+        couponCode = '';
+      } else {
+        statusEl.textContent = '✓ Coupon applied — free registration!';
+        statusEl.style.color = '#38a169';
+        statusEl.style.display = 'block';
+        couponValid = true;
+        couponCode = code;
+      }
+    });
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     await handleRegistration(form);
@@ -158,9 +198,16 @@ async function handleRegistration(form) {
 
     await new Promise(resolve => setTimeout(resolve, 500));
 
+    const status = couponValid ? 'registered' : 'pending_payment';
+
     const { error: dbError } = await sb
       .from('participants')
-      .insert({ auth_user_id: authData.user?.id, ...data, status: 'pending_payment' });
+      .insert({
+        auth_user_id: authData.user?.id,
+        ...data,
+        status,
+        coupon_code: couponCode || null
+      });
 
     if (dbError) {
       showFormError(form, dbError.code === '23505'
@@ -170,7 +217,27 @@ async function handleRegistration(form) {
       return;
     }
 
-    window.location.href = `https://drinkswa.myshopify.com/cart/49166731018548:1?checkout[email]=${encodeURIComponent(data.email)}`;
+    if (couponValid) {
+      // Mark coupon used
+      const { data: couponData } = await sb
+        .from('coupons')
+        .select('used_count, used_by')
+        .eq('code', couponCode)
+        .single();
+
+      await sb.from('coupons')
+        .update({
+          used_count: (couponData.used_count || 0) + 1,
+          used_by: [...(couponData.used_by || []), data.email]
+        })
+        .eq('code', couponCode);
+
+      showSuccess(form, data.first_name, data, true);
+    } else {
+      // Show Razorpay
+      form.style.display = 'none';
+      document.getElementById('razorpay-wrapper').style.display = 'block';
+    }
 
   } catch (err) {
     console.error('Registration error:', err);
@@ -202,7 +269,7 @@ function validate(data) {
 
 function setLoading(btn, loading) {
   btn.disabled = loading;
-  btn.textContent = loading ? 'Registering...' : 'Register FREE →';
+  btn.textContent = loading ? 'Registering...' : 'Submit Form →';
 }
 
 function showErrors(form, errors) {
@@ -236,7 +303,7 @@ function showFormError(form, msg) {
   banner.innerHTML = msg;
 }
 
-function showSuccess(form, firstName, data) {
+function showSuccess(form, firstName, data, freeCoupon = false) {
   if (typeof gtag === 'function') {
     gtag('event', 'registration_complete', {
       method: 'cxc_form',
@@ -244,10 +311,10 @@ function showSuccess(form, firstName, data) {
     });
   }
   if (typeof fbq === 'function') {
-    fbq('track', 'Lead', {
+    fbq('track', 'Purchase', {
       content_name:     'CxC 2026 Registration',
       content_category: data.role,
-      value:            0,
+      value:            freeCoupon ? 0 : 99,
       currency:         'INR',
     });
   }

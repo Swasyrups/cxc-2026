@@ -311,6 +311,13 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 </select>
             </div>
 
+            <div class="form-group" style="margin-bottom:8px;">
+              <input type="text" id="couponCode" name="couponCode" placeholder="Coupon code (optional)" autocomplete="off" style="text-transform:uppercase;letter-spacing:1px;" />
+              <span id="coupon-status" style="display:none;font-size:0.8rem;margin-top:4px;display:block;font-family:'Poppins',sans-serif;"></span>
+            </div>
+            <p style="text-align:center;font-size:0.82rem;color:#666;font-family:'Poppins',sans-serif;margin-bottom:12px;">
+              Entry fee: ₹99. Have a coupon code? Enter it above for free registration.
+            </p>
             <button type="submit" class="form-submit">Submit Form →</button>
             <p style="text-align:center;margin-top:16px;font-size:0.85rem;color:#666;font-family:'Poppins',sans-serif;">
   Already registered? <a href="login.html" style="color:var(--olive);font-weight:600;font-family:'Poppins',sans-serif;">Log in →</a>
@@ -320,6 +327,15 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
               By registering you agree to the <a href="#" style="color:var(--olive)">CxC 2026 Rules</a>.
             </p>
           </form>
+          </form>
+          <div id="razorpay-wrapper" style="display:none;text-align:center;padding:32px 16px;">
+            <div class="reg-success-icon">→</div>
+            <h3 style="font-family:'Roca',serif;margin-bottom:8px;">Almost there!</h3>
+            <p style="font-family:'Poppins',sans-serif;font-size:0.95rem;margin-bottom:20px;color:var(--plum);">Complete your registration by paying the ₹99 entry fee.</p>
+            <form>
+              <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_T5sa8phJmOEjaG" async></script>
+            </form>
+          </div>
         </div>
       </div>
     </div>
