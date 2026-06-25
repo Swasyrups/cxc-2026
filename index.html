@@ -90,6 +90,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQR3MPLlIwoxxgbgQ-oMusg4pt237Vtbg&libraries=places&callback=initPlaces" async defer></script>
 </head>
 <body>
 
@@ -267,32 +268,25 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
               </div> -->
               <div class="form-group">
               <!-- <label for="employer">Current Employer / Venue</label> -->
-              <input type="text" id="employer" name="employer"  required placeholder="Employer" />
+              <input type="text" id="employer" name="employer" required placeholder="Employer" />
+              <div id="employer-error" class="field-error" style="display:none">We couldn't find this venue. Please enter a valid place of work.</div>
             </div>
             </div>
-
-            
-
             <div class="form-group">
-              <!-- <label for="addr1">Shipping Address Line 1 *</label> -->
               <input type="text" id="addr1" name="addr1" required placeholder="Address Line 1" />
             </div>
-
-            <div class="form-group">
-              <!-- <label for="addr2">Address Line 2</label> -->
-              <input type="text" id="addr2" name="addr2" placeholder="Address Line 2" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <!-- <label for="city">City *</label> -->
-                <input type="text" id="city" name="city" required placeholder="City" />
-              </div>
-              <div class="form-group">
-                <!-- <label for="pincode">Pincode *</label> -->
-                <input type="text" id="pincode" name="pincode" required placeholder="Pincode" maxlength="6" />
-              </div>
-            </div>
+<div class="form-group">
+  <input type="text" id="addr2" name="addr2" placeholder="Address Line 2" />
+</div>
+<div class="form-row">
+  <div class="form-group">
+    <input type="text" id="city" name="city" required placeholder="City" readonly />
+    <div id="city-error" class="field-error" style="display:none">We don't ship to this city. Please use an address in one of our shipping cities.</div>
+  </div>
+  <div class="form-group">
+    <input type="text" id="pincode" name="pincode" required placeholder="Pincode" maxlength="6" />
+  </div>
+</div>
 
             <div class="form-group">
               <!-- <label for="state">State *</label> -->

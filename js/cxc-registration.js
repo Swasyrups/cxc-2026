@@ -192,4 +192,93 @@ function showSuccess(form, firstName, data) {
       </a>
     </div>
   `;
+
+  const SHIPPING_CITIES = [
+  'delhi', 'new delhi', 'mumbai', 'bombay', 'bangalore', 'bengaluru',
+  'jaipur', 'jodhpur', 'chandigarh', 'amritsar', 'ludhiana',
+  'goa', 'panaji', 'pune', 'surat', 'ahmedabad', 'nagpur',
+  'hyderabad', 'chennai', 'madras', 'kochi', 'cochin',
+  'mysore', 'mysuru', 'coimbatore'
+];
+
+let cityValid = false;
+let employerChecked = false;
+
+function initPlaces() {
+  // ── Employer autocomplete ──
+  const employerInput = document.getElementById('employer');
+  if (employerInput) {
+    const empAC = new google.maps.places.Autocomplete(employerInput, {
+      types: ['establishment'],
+      componentRestrictions: { country: 'in' },
+      fields: ['name', 'formatted_address', 'place_id']
+    });
+    empAC.addListener('place_changed', () => {
+  const place = empAC.getPlace();
+  const errEl = document.getElementById('employer-error');
+  if (place.place_id) {
+    errEl.style.display = 'none';
+    employerChecked = true;
+  } else {
+    errEl.innerHTML = 'We couldn\'t verify this venue. If you believe this is an error, email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
+    errEl.style.display = 'block';
+    employerChecked = false;
+  }
+});
+if (!employerChecked) {
+  errors.push({ field: 'employer', msg: 'Please select your venue from the dropdown suggestions.' });
+}
+  }
+
+  // ── Address autocomplete ──
+  const addr1Input = document.getElementById('addr1');
+  if (addr1Input) {
+    const addrAC = new google.maps.places.Autocomplete(addr1Input, {
+      types: ['address'],
+      componentRestrictions: { country: 'in' },
+      fields: ['address_components', 'formatted_address']
+    });
+    addrAC.addListener('place_changed', () => {
+      const place = addrAC.getPlace();
+      const components = place.address_components || [];
+
+      let city = '', pincode = '', state = '';
+
+      components.forEach(c => {
+        if (c.types.includes('locality')) city = c.long_name;
+        if (c.types.includes('postal_code')) pincode = c.long_name;
+        if (c.types.includes('administrative_area_level_1')) state = c.long_name;
+      });
+
+      // Auto-fill fields
+      if (city) document.getElementById('city').value = city;
+      if (pincode) document.getElementById('pincode').value = pincode;
+      if (state) {
+        const stateSelect = document.getElementById('state');
+        for (let opt of stateSelect.options) {
+          if (opt.value.toLowerCase() === state.toLowerCase()) {
+            stateSelect.value = opt.value;
+            break;
+          }
+        }
+      }
+
+      // Validate city against shipping list
+      const cityLower = city.toLowerCase();
+      cityValid = SHIPPING_CITIES.some(c => cityLower.includes(c));
+      document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
+    });
+  }
+}
+
+// Block form submit if city invalid
+const _originalValidate = validate;
+window.validate = function(data) {
+  const errors = _originalValidate(data);
+  if (!cityValid) {
+    errors.push({ field: 'city', msg: 'We don\'t ship to this city.' });
+  }
+  return errors;
+};
+
 }
