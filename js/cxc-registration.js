@@ -234,10 +234,38 @@ async function handleRegistration(form) {
 
       showSuccess(form, data.first_name, data, true);
     } else {
-      // Show Razorpay
-      form.style.display = 'none';
-      document.getElementById('razorpay-wrapper').style.display = 'block';
-    }
+// Paid registration — Razorpay Checkout
+const options = {
+key: 'rzp_live_4AzNUAe2pzeoqV',
+amount: 9900, // paise
+currency: 'INR',
+name: 'CxC 2026',
+description: 'Registration Entry Fee',
+image: 'https://cxc.drinkswa.com/assets/images/CXC_favicon.svg',
+prefill: {
+name: `${data.first_name} ${data.last_name}`,
+email: data.email,
+contact: data.phone
+},
+theme: { color: '#59751d' },
+handler: function(response) {
+// Payment success
+showSuccess(form, data.first_name, data, false);
+// Fire tracking
+if (typeof fbq === 'function') {
+fbq('track', 'Purchase', { value: 99, currency: 'INR' });
+}
+},
+modal: {
+ondismiss: function() {
+setLoading(btn, false);
+}
+}
+};
+const rzp = new Razorpay(options);
+rzp.open();
+}
+
 
   } catch (err) {
     console.error('Registration error:', err);
