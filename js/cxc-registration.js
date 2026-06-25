@@ -1,6 +1,5 @@
 /**
  * CxC 2026 — Registration Form Handler
- * Replace YOUR_GA4_ID and YOUR_META_PIXEL_ID before deploying
  */
 
 const SUPABASE_URL      = 'https://ftduvppcdjanupoudzvi.supabase.co';
@@ -9,6 +8,81 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const { createClient } = supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+// ── Places state ──────────────────────────────────────────────────────────────
+const SHIPPING_CITIES = [
+  'delhi', 'new delhi', 'mumbai', 'bombay', 'bangalore', 'bengaluru',
+  'jaipur', 'jodhpur', 'chandigarh', 'amritsar', 'ludhiana',
+  'goa', 'panaji', 'pune', 'surat', 'ahmedabad', 'nagpur',
+  'hyderabad', 'chennai', 'madras', 'kochi', 'cochin',
+  'mysore', 'mysuru', 'coimbatore'
+];
+
+let cityValid = false;
+let employerChecked = false;
+
+// ── Google Places init (called by Maps script callback) ───────────────────────
+function initPlaces() {
+  // Employer autocomplete
+  const employerInput = document.getElementById('employer');
+  if (employerInput) {
+    const empAC = new google.maps.places.Autocomplete(employerInput, {
+      types: ['establishment'],
+      componentRestrictions: { country: 'in' },
+      fields: ['name', 'formatted_address', 'place_id']
+    });
+    empAC.addListener('place_changed', () => {
+      const place = empAC.getPlace();
+      const errEl = document.getElementById('employer-error');
+      if (place.place_id) {
+        errEl.style.display = 'none';
+        employerChecked = true;
+      } else {
+        errEl.innerHTML = 'We couldn\'t verify this venue. If you believe this is an error, email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
+        errEl.style.display = 'block';
+        employerChecked = false;
+      }
+    });
+  }
+
+  // Address autocomplete
+  const addr1Input = document.getElementById('addr1');
+  if (addr1Input) {
+    const addrAC = new google.maps.places.Autocomplete(addr1Input, {
+      types: ['address'],
+      componentRestrictions: { country: 'in' },
+      fields: ['address_components', 'formatted_address']
+    });
+    addrAC.addListener('place_changed', () => {
+      const place = addrAC.getPlace();
+      const components = place.address_components || [];
+
+      let city = '', pincode = '', state = '';
+      components.forEach(c => {
+        if (c.types.includes('locality')) city = c.long_name;
+        if (c.types.includes('postal_code')) pincode = c.long_name;
+        if (c.types.includes('administrative_area_level_1')) state = c.long_name;
+      });
+
+      if (city) document.getElementById('city').value = city;
+      if (pincode) document.getElementById('pincode').value = pincode;
+      if (state) {
+        const stateSelect = document.getElementById('state');
+        for (let opt of stateSelect.options) {
+          if (opt.value.toLowerCase() === state.toLowerCase()) {
+            stateSelect.value = opt.value;
+            break;
+          }
+        }
+      }
+
+      const cityLower = city.toLowerCase();
+      cityValid = SHIPPING_CITIES.some(c => cityLower.includes(c));
+      document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
+    });
+  }
+}
+
+// ── Form init ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
   if (!form) return;
@@ -51,7 +125,7 @@ async function handleRegistration(form) {
     });
 
     console.log('authData:', authData);
-console.log('authError:', authError);
+    console.log('authError:', authError);
 
     if (authError) {
       showFormError(form, authError.message.includes('already registered')
@@ -60,8 +134,7 @@ console.log('authError:', authError);
       return;
     }
 
-// delay goes HERE
-await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     const { error: dbError } = await sb
       .from('participants')
@@ -115,11 +188,13 @@ function validate(data) {
   if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
     errors.push({ field: 'email', msg: 'Valid email is required' });
   if (!data.phone || !/^\d{10}$/.test(data.phone.replace(/\D/g, '')))
-    errors.push({ field: 'whatsapp', msg: 'Valid phone number is required' });
+    errors.push({ field: 'whatsapp', msg: 'Valid 10-digit phone number required' });
   if (!data.employer) errors.push({ field: 'employer', msg: 'Please enter your current employer or venue' });
+  if (!employerChecked) errors.push({ field: 'employer', msg: 'Please select your venue from the dropdown suggestions.' });
   if (!data.role)   errors.push({ field: 'role',    msg: 'Please select your role' });
-  if (!data.address_line_1) errors.push({ field: 'addr1',   msg: 'Shipping address is required' });
-  if (!data.city)           errors.push({ field: 'city',    msg: 'City is required' });
+  if (!data.address_line_1) errors.push({ field: 'addr1', msg: 'Shipping address is required' });
+  if (!data.city)           errors.push({ field: 'city',  msg: 'City is required' });
+  if (!cityValid)           errors.push({ field: 'city',  msg: 'We don\'t ship to this city. Please use an address in one of our shipping cities.' });
   if (!data.pincode || !/^\d{6}$/.test(data.pincode))
     errors.push({ field: 'pincode', msg: 'Valid 6-digit pincode required' });
   if (!data.state) errors.push({ field: 'state', msg: 'State is required' });
@@ -163,7 +238,6 @@ function showFormError(form, msg) {
 }
 
 function showSuccess(form, firstName, data) {
-  // ── Tracking ──────────────────────────────
   if (typeof gtag === 'function') {
     gtag('event', 'registration_complete', {
       method: 'cxc_form',
@@ -179,7 +253,6 @@ function showSuccess(form, firstName, data) {
     });
   }
 
-  // ── Success UI ────────────────────────────
   const card = form.closest('.register-form-card');
   card.innerHTML = `
     <div class="reg-success">
@@ -192,93 +265,4 @@ function showSuccess(form, firstName, data) {
       </a>
     </div>
   `;
-
-  const SHIPPING_CITIES = [
-  'delhi', 'new delhi', 'mumbai', 'bombay', 'bangalore', 'bengaluru',
-  'jaipur', 'jodhpur', 'chandigarh', 'amritsar', 'ludhiana',
-  'goa', 'panaji', 'pune', 'surat', 'ahmedabad', 'nagpur',
-  'hyderabad', 'chennai', 'madras', 'kochi', 'cochin',
-  'mysore', 'mysuru', 'coimbatore'
-];
-
-let cityValid = false;
-let employerChecked = false;
-
-function initPlaces() {
-  // ── Employer autocomplete ──
-  const employerInput = document.getElementById('employer');
-  if (employerInput) {
-    const empAC = new google.maps.places.Autocomplete(employerInput, {
-      types: ['establishment'],
-      componentRestrictions: { country: 'in' },
-      fields: ['name', 'formatted_address', 'place_id']
-    });
-    empAC.addListener('place_changed', () => {
-  const place = empAC.getPlace();
-  const errEl = document.getElementById('employer-error');
-  if (place.place_id) {
-    errEl.style.display = 'none';
-    employerChecked = true;
-  } else {
-    errEl.innerHTML = 'We couldn\'t verify this venue. If you believe this is an error, email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
-    errEl.style.display = 'block';
-    employerChecked = false;
-  }
-});
-if (!employerChecked) {
-  errors.push({ field: 'employer', msg: 'Please select your venue from the dropdown suggestions.' });
-}
-  }
-
-  // ── Address autocomplete ──
-  const addr1Input = document.getElementById('addr1');
-  if (addr1Input) {
-    const addrAC = new google.maps.places.Autocomplete(addr1Input, {
-      types: ['address'],
-      componentRestrictions: { country: 'in' },
-      fields: ['address_components', 'formatted_address']
-    });
-    addrAC.addListener('place_changed', () => {
-      const place = addrAC.getPlace();
-      const components = place.address_components || [];
-
-      let city = '', pincode = '', state = '';
-
-      components.forEach(c => {
-        if (c.types.includes('locality')) city = c.long_name;
-        if (c.types.includes('postal_code')) pincode = c.long_name;
-        if (c.types.includes('administrative_area_level_1')) state = c.long_name;
-      });
-
-      // Auto-fill fields
-      if (city) document.getElementById('city').value = city;
-      if (pincode) document.getElementById('pincode').value = pincode;
-      if (state) {
-        const stateSelect = document.getElementById('state');
-        for (let opt of stateSelect.options) {
-          if (opt.value.toLowerCase() === state.toLowerCase()) {
-            stateSelect.value = opt.value;
-            break;
-          }
-        }
-      }
-
-      // Validate city against shipping list
-      const cityLower = city.toLowerCase();
-      cityValid = SHIPPING_CITIES.some(c => cityLower.includes(c));
-      document.getElementById('city-error').style.display = cityValid ? 'none' : 'block';
-    });
-  }
-}
-
-// Block form submit if city invalid
-const _originalValidate = validate;
-window.validate = function(data) {
-  const errors = _originalValidate(data);
-  if (!cityValid) {
-    errors.push({ field: 'city', msg: 'We don\'t ship to this city.' });
-  }
-  return errors;
-};
-
 }
