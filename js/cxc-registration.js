@@ -22,7 +22,7 @@ let employerChecked = false;
 
 // ── Google Places init (called by Maps script callback) ───────────────────────
 function initPlaces() {
-  // Employer autocomplete
+  // ── Employer autocomplete ──
   const employerInput = document.getElementById('employer');
   if (employerInput) {
     const empAC = new google.maps.places.Autocomplete(employerInput, {
@@ -37,18 +37,18 @@ function initPlaces() {
         errEl.style.display = 'none';
         employerChecked = true;
       } else {
-        errEl.innerHTML = 'We couldn\'t verify this venue. If you believe this is an error, email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
+        errEl.innerHTML = 'We couldn\'t verify this venue. Please email <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>.';
         errEl.style.display = 'block';
         employerChecked = false;
       }
     });
   }
 
-  // Address autocomplete
+  // ── Address autocomplete ──
   const addr1Input = document.getElementById('addr1');
   if (addr1Input) {
     const addrAC = new google.maps.places.Autocomplete(addr1Input, {
-      types: ['address'],
+      types: ['geocode'],
       componentRestrictions: { country: 'in' },
       fields: ['address_components', 'formatted_address']
     });
@@ -81,7 +81,6 @@ function initPlaces() {
     });
   }
 }
-
 // ── Form init ─────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
