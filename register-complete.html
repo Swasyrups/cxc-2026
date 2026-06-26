@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Registration — CxC 2026</title>
+  <link rel="icon" href="assets/images/cxc-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { background: var(--paper, #f8f4ec); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .complete-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 8px 40px rgba(75,49,65,0.10);
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .complete-card img.logo { width: 80px; margin-bottom: 20px; }
+    .complete-card h2 { font-family: var(--font-head, 'Poppins', sans-serif); color: var(--plum, #4b3141); margin-bottom: 8px; font-size: 1.7rem; }
+    .complete-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; }
+    .coupon-display {
+      background: var(--paper, #f8f4ec);
+      border: 1.5px dashed var(--olive, #59751d);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--olive, #59751d);
+      margin: 20px 0;
+    }
+    .btn-complete {
+      background: var(--pink, #f0567a);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 36px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 12px;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-complete:hover { opacity: 0.88; }
+    .btn-complete:disabled { opacity: 0.5; cursor: not-allowed; }
+    .status-msg { margin-top: 16px; font-size: 0.85rem; }
+    .error-msg { color: #e53e3e; }
+    .success-icon { font-size: 3rem; margin-bottom: 12px; }
+    .razorpay-wrapper { margin-top: 20px; }
+    .loader { color: #888; font-size: 0.9rem; margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+<div class="complete-card" id="mainCard">
+  <img class="logo" src="assets/images/cxc-logo.png" alt="CxC 2026" />
+  <h2 id="cardTitle">One Moment...</h2>
+  <p id="cardBody"></p>
+  <div id="cardContent"></div>
+  <p class="status-msg" id="statusMsg"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL      = 'https://ftduvppcdjanupoudzvi.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const params  = new URLSearchParams(window.location.search);
+  const type    = params.get('type') || '';
+  const email   = params.get('email') ? decodeURIComponent(params.get('email')) : '';
+  const coupon  = params.get('coupon') ? params.get('coupon').toUpperCase() : '';
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (!email || !type) { showError('Invalid link. Please check your email.'); return; }
+
+    const { data: participant } = await sb
+      .from('participants')
+      .select('first_name, status')
+      .eq('email', email)
+      .single();
+
+    if (!participant) { showError('We couldn\'t find your registration. Email cxc@drinkswa.com'); return; }
+
+    if (participant.status === 'registered') { showAlreadyDone(); return; }
+
+    const name = participant.first_name;
+
+    if (type === 'payment') {
+      // Case 2 — pending_payment reminder — show Razorpay button
+      document.getElementById('cardTitle').textContent = `Hi ${name}, you're almost in!`;
+      document.getElementById('cardBody').textContent = 'Complete your CxC 2026 registration by paying the ₹99 entry fee below.';
+      document.getElementById('cardContent').innerHTML = `
+        <p style="font-size:0.8rem;color:#888;margin-bottom:8px;">Registrations close 20 July 2026.</p>
+        <div class="razorpay-wrapper">
+          <form>
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_T5sa8phJmOEjaG" async><\/script>
+          </form>
+        </div>
+      `;
+
+    } else if (type === 'coupon') {
+      // Case 3 — verified user — show coupon + complete button
+      if (!coupon) { showError('Invalid link. Please check your email.'); return; }
+
+      const { data: couponData } = await sb
+        .from('coupons')
+        .select('active, max_uses, used_count, expires_at')
+        .eq('code', coupon)
+        .single();
+
+      if (!couponData || !couponData.active || couponData.used_count >= couponData.max_uses) {
+        showError('This coupon is invalid or already used. Email cxc@drinkswa.com');
+        return;
+      }
+
+      if (couponData.expires_at && new Date(couponData.expires_at) < new Date()) {
+        showError('This coupon has expired. Email cxc@drinkswa.com');
+        return;
+      }
+
+      document.getElementById('cardTitle').textContent = `You're Verified, ${name}!`;
+      document.getElementById('cardBody').textContent = 'Your eligibility for CxC 2026 has been confirmed. Use your exclusive code below to complete your free registration:';
+      document.getElementById('cardContent').innerHTML = `
+        <div class="coupon-display">${coupon}</div>
+        <p style="font-size:0.8rem;color:#888;">One-time use only. Valid for 7 days.</p>
+        <button class="btn-complete" id="completeBtn" onclick="completeCoupon('${name}')">
+          Complete My Registration →
+        </button>
+      `;
+    } else {
+      showError('Invalid link type. Please check your email.');
+    }
+  });
+
+  async function completeCoupon(name) {
+    const btn = document.getElementById('completeBtn');
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    try {
+      const { error: updateError } = await sb
+        .from('participants')
+        .update({ status: 'registered', verification_status: 'verified', coupon_code: coupon })
+        .eq('email', email);
+
+      if (updateError) throw updateError;
+
+      await sb.rpc('increment_coupon', { coupon_code: coupon, user_email: email });
+
+      // Trigger n8n Case 4 webhook — create Shopify order + confirmation email
+      await fetch('https://drinkswa.app.n8n.cloud/webhook/case4-coupon-complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, coupon })
+      });
+
+      showSuccessScreen(name);
+
+    } catch (err) {
+      console.error(err);
+      showError('Something went wrong. Email cxc@drinkswa.com');
+      btn.disabled = false;
+      btn.textContent = 'Complete My Registration →';
+    }
+  }
+
+  function showError(msg) {
+    document.getElementById('cardTitle').textContent = 'Oops!';
+    document.getElementById('statusMsg').innerHTML = `<span class="error-msg">${msg}</span>`;
+  }
+
+  function showAlreadyDone() {
+    document.getElementById('mainCard').innerHTML = `
+      <div class="success-icon">✓</div>
+      <h2>Already Registered!</h2>
+      <p>Your CxC 2026 registration is complete. Check your email for details.</p>
+      <a href="https://www.instagram.com/swa.artisanalsyrups/" target="_blank" class="btn-complete">
+        Follow @swa.artisanalsyrups →
+      </a>
+    `;
+  }
+
+  function showSuccessScreen(name) {
+    document.getElementById('mainCard').innerHTML = `
+      <div class="success-icon">✓</div>
+      <h2>You're In, ${name}!</h2>
+      <p>Your registration is confirmed. Your Swa sample pack will be shipped within 24 hours.</p>
+      <p>The submission portal opens <strong>25 July 2026</strong>.</p>
+      <a href="https://www.instagram.com/swa.artisanalsyrups/" target="_blank" class="btn-complete">
+        Follow @swa.artisanalsyrups →
+      </a>
+    `;
+  }
+</script>
+</body>
+</html>

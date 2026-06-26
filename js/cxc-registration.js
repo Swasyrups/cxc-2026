@@ -19,8 +19,6 @@ const SHIPPING_CITIES = [
 
 let cityValid = false;
 let employerChecked = false;
-let couponValid = false;
-let couponCode = '';
 
 // ── Google Places init (called by Maps script callback) ───────────────────────
 function initPlaces() {
@@ -111,42 +109,6 @@ function initPlaces() {
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
   if (!form) return;
-
-  // ── Coupon blur validation ──
-  const couponInput = document.getElementById('couponCode');
-  if (couponInput) {
-    couponInput.addEventListener('blur', async () => {
-      const code = couponInput.value.trim().toUpperCase();
-      const statusEl = document.getElementById('coupon-status');
-      if (!code) {
-        statusEl.style.display = 'none';
-        couponValid = false;
-        couponCode = '';
-        return;
-      }
-
-      const { data, error } = await sb
-        .from('coupons')
-        .select('code, type, max_uses, used_count, active')
-        .eq('code', code)
-        .single();
-
-      if (error || !data || !data.active || data.used_count >= data.max_uses) {
-        statusEl.textContent = '✗ Invalid or expired coupon code.';
-        statusEl.style.color = '#e53e3e';
-        statusEl.style.display = 'block';
-        couponValid = false;
-        couponCode = '';
-      } else {
-        statusEl.textContent = '✓ Coupon applied — free registration!';
-        statusEl.style.color = '#38a169';
-        statusEl.style.display = 'block';
-        couponValid = true;
-        couponCode = code;
-      }
-    });
-  }
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     await handleRegistration(form);
@@ -198,15 +160,13 @@ async function handleRegistration(form) {
 
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    const status = couponValid ? 'registered' : 'pending_payment';
-
     const { error: dbError } = await sb
       .from('participants')
       .insert({
         auth_user_id: authData.user?.id,
         ...data,
-        status,
-        coupon_code: couponCode || null
+        status: 'registered',
+        verification_status: 'verified'
       });
 
     if (dbError) {
@@ -217,42 +177,7 @@ async function handleRegistration(form) {
       return;
     }
 
-    if (couponValid) {
-      await sb.rpc('increment_coupon', { coupon_code: couponCode, user_email: data.email });
-      showSuccess(form, data.first_name, data, true);
-    } else {
-// Paid registration — Razorpay Checkout
-const options = {
-key: 'rzp_live_4AzNUAe2pzeoqV',
-amount: 9900, // paise
-currency: 'INR',
-name: 'CxC 2026',
-description: 'Registration Entry Fee',
-image: 'https://cxc.drinkswa.com/assets/images/CXC_favicon.svg',
-prefill: {
-name: `${data.first_name} ${data.last_name}`,
-email: data.email,
-contact: data.phone
-},
-theme: { color: '#59751d' },
-handler: function(response) {
-// Payment success
-showSuccess(form, data.first_name, data, false);
-// Fire tracking
-if (typeof fbq === 'function') {
-fbq('track', 'Purchase', { value: 99, currency: 'INR' });
-}
-},
-modal: {
-ondismiss: function() {
-setLoading(btn, false);
-}
-}
-};
-const rzp = new Razorpay(options);
-rzp.open();
-}
-
+    showSuccess(form, data.first_name, data);
 
   } catch (err) {
     console.error('Registration error:', err);
@@ -318,7 +243,7 @@ function showFormError(form, msg) {
   banner.innerHTML = msg;
 }
 
-function showSuccess(form, firstName, data, freeCoupon = false) {
+function showSuccess(form, firstName, data) {
   if (typeof gtag === 'function') {
     gtag('event', 'registration_complete', {
       method: 'cxc_form',
@@ -326,10 +251,10 @@ function showSuccess(form, firstName, data, freeCoupon = false) {
     });
   }
   if (typeof fbq === 'function') {
-    fbq('track', 'Purchase', {
+    fbq('track', 'Lead', {
       content_name:     'CxC 2026 Registration',
       content_category: data.role,
-      value:            freeCoupon ? 0 : 99,
+      value:            0,
       currency:         'INR',
     });
   }
