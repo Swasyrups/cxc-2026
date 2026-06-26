@@ -218,20 +218,7 @@ async function handleRegistration(form) {
     }
 
     if (couponValid) {
-      // Mark coupon used
-      const { data: couponData } = await sb
-        .from('coupons')
-        .select('used_count, used_by')
-        .eq('code', couponCode)
-        .single();
-
-      await sb.from('coupons')
-        .update({
-          used_count: (couponData.used_count || 0) + 1,
-          used_by: [...(couponData.used_by || []), data.email]
-        })
-        .eq('code', couponCode);
-
+      await sb.rpc('increment_coupon', { coupon_code: couponCode, user_email: data.email });
       showSuccess(form, data.first_name, data, true);
     } else {
 // Paid registration — Razorpay Checkout
