@@ -141,16 +141,17 @@ If no homemade components are mentioned, return empty array for homemade.
 Keep ingredients formatted with one ingredient per line with measurements.`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://ftduvppcdjanupoudzvi.supabase.co/functions/v1/claude-proxy', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w`
+      },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
         messages: [{ role: 'user', content: prompt }]
       })
     });
-
+    
     const data = await response.json();
     const text = data.content[0].text.trim();
     const clean = text.replace(/```json|```/g, '').trim();
