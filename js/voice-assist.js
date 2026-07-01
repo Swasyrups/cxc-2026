@@ -118,7 +118,7 @@ function stopRecording() {
 }
 
 async function extractAndFill(transcript) {
-  const prompt = `Extract recipe submission details from this spoken description and return ONLY valid JSON, no markdown, no explanation.
+  const prompt = `Extract recipe submission details from this spoken description and return ONLY valid JSON, no markdown, no explanation.Extract ONLY what the speaker explicitly says. Do not add adjectives, embellishments, or creative interpretation. Preserve their exact words and phrasing. If they say inspired by my grandmothers kitchen, write exactly that.
 
 Spoken description: "${transcript}"
 
@@ -151,7 +151,7 @@ Keep ingredients formatted with one ingredient per line with measurements.`;
         messages: [{ role: 'user', content: prompt }]
       })
     });
-    
+
     const data = await response.json();
     const text = data.content[0].text.trim();
     const clean = text.replace(/```json|```/g, '').trim();
