@@ -16,7 +16,7 @@ const SPIRITS = [
 const METHODS = ['Shake', 'Stir', 'Blend', 'Build', 'Pour-over', 'Cold brew', 'Other'];
 
 const SUPABASE_FN_BASE = 'https://ftduvppcdjanupoudzvi.supabase.co/functions/v1';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
+const VOICE_ASSIST_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
 
 let mediaRecorder = null;
 let audioChunks = [];
@@ -187,7 +187,7 @@ async function transcribeAudio(audioBlob) {
   const response = await fetch(`${SUPABASE_FN_BASE}/whisper-transcribe`, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+      'Authorization': `Bearer ${VOICE_ASSIST_KEY}`
     },
     body: formData
   });
@@ -238,7 +238,7 @@ Keep ingredients formatted with one ingredient per line with measurements.`;
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        'Authorization': `Bearer ${VOICE_ASSIST_KEY}`
       },
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }]
