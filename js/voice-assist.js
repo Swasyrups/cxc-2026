@@ -1,11 +1,11 @@
 /**
  * CxC 2026 — Voice Submission Assistant
+ * v2: MediaRecorder + Whisper transcription (works on iOS, Android, desktop)
  */
 
 const SWA_SYRUPS = [
   'Alphonso Mango', 'Guava Chilli', 'Brown Butter', 'Roasted Hazelnut',
-  'Buransh', "Pineapple Bird's Eye", 'Kokam', 'Jamun', 'Nannari',
-  'Rose', 'Tamarind', 'Lemongrass'
+  'Passionfruit', "Pineapple Bird's Eye"
 ];
 
 const SPIRITS = [
@@ -15,12 +15,15 @@ const SPIRITS = [
 
 const METHODS = ['Shake', 'Stir', 'Blend', 'Build', 'Pour-over', 'Cold brew', 'Other'];
 
-let recognition = null;
+const SUPABASE_FN_BASE = 'https://ftduvppcdjanupoudzvi.supabase.co/functions/v1';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
+
+let mediaRecorder = null;
+let audioChunks = [];
 let isRecording = false;
-let fullTranscript = '';
+let recordStartTime = 0;
 
 function initVoiceAssist() {
-  // Add voice button to form
   const formCard = document.querySelector('#submitForm .form-card');
   if (!formCard) return;
 
@@ -65,69 +68,159 @@ function toggleRecording() {
   }
 }
 
-function startRecording() {
-  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-    alert('Voice input is not supported in this browser. Please use Chrome.');
+async function startRecording() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    alert('Voice input is not supported in this browser. Please fill the form manually.');
     return;
   }
 
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  recognition = new SpeechRecognition();
-  recognition.continuous = true;
-  recognition.interimResults = true;
-  recognition.lang = 'en-IN';
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-  fullTranscript = '';
+    // Pick a mime type the device actually supports
+    const mimeType = pickSupportedMimeType();
+    mediaRecorder = mimeType
+      ? new MediaRecorder(stream, { mimeType })
+      : new MediaRecorder(stream);
 
-  recognition.onresult = (event) => {
-    let interim = '';
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      if (event.results[i].isFinal) {
-        fullTranscript += event.results[i][0].transcript + ' ';
-      } else {
-        interim += event.results[i][0].transcript;
-      }
+    audioChunks = [];
+
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data && e.data.size > 0) audioChunks.push(e.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(track => track.stop());
+      handleRecordingComplete();
+    };
+
+    mediaRecorder.start();
+    recordStartTime = Date.now();
+    isRecording = true;
+
+    document.getElementById('voiceBtn').textContent = '⏹ Stop & Fill Form';
+    document.getElementById('voiceBtn').style.background = '#e53e3e';
+    document.getElementById('voiceStatus').style.display = 'block';
+    setVoiceStatus('🎙️ Recording... speak your recipe details.');
+
+  } catch (err) {
+    console.error('Mic access error:', err);
+    if (err.name === 'NotAllowedError') {
+      setVoiceStatus('Microphone permission denied. Please allow mic access and try again.');
+    } else {
+      setVoiceStatus('Could not access microphone. Please fill manually.');
     }
-    document.getElementById('voiceStatus').textContent = '🎙️ ' + (fullTranscript + interim).slice(-120) + '...';
-  };
-
-  recognition.onerror = (e) => {
-    setVoiceStatus('Error: ' + e.error + '. Please try again.');
-    stopRecording();
-  };
-
-  recognition.start();
-  isRecording = true;
-  document.getElementById('voiceBtn').textContent = '⏹ Stop & Fill Form';
-  document.getElementById('voiceBtn').style.background = '#e53e3e';
-  document.getElementById('voiceStatus').style.display = 'block';
-  setVoiceStatus('🎙️ Listening... speak your recipe details.');
-}
-
-function stopRecording() {
-  if (recognition) recognition.stop();
-  isRecording = false;
-  document.getElementById('voiceBtn').textContent = '🎤 Start Speaking';
-  document.getElementById('voiceBtn').style.background = '#f0567a';
-  setVoiceStatus('⏳ Processing your recipe...');
-  if (fullTranscript.trim()) {
-    extractAndFill(fullTranscript.trim());
-  } else {
-    setVoiceStatus('No speech detected. Please try again.');
   }
 }
 
+function pickSupportedMimeType() {
+  const candidates = [
+    'audio/webm;codecs=opus',
+    'audio/webm',
+    'audio/mp4',
+    'audio/mpeg',
+    'audio/ogg;codecs=opus'
+  ];
+  for (const type of candidates) {
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(type)) {
+      return type;
+    }
+  }
+  return null; // let browser pick default
+}
+
+function stopRecording() {
+  if (!mediaRecorder || mediaRecorder.state === 'inactive') return;
+
+  const elapsed = Date.now() - recordStartTime;
+  if (elapsed < 800) {
+    // too short — likely accidental tap, avoid empty/garbage upload
+    mediaRecorder.stop();
+    isRecording = false;
+    resetVoiceButton();
+    setVoiceStatus('Recording too short. Please try again and speak for a few seconds.');
+    return;
+  }
+
+  mediaRecorder.stop();
+  isRecording = false;
+  resetVoiceButton();
+  setVoiceStatus('⏳ Uploading & transcribing your recipe...');
+}
+
+function resetVoiceButton() {
+  document.getElementById('voiceBtn').textContent = '🎤 Start Speaking';
+  document.getElementById('voiceBtn').style.background = '#f0567a';
+}
+
+async function handleRecordingComplete() {
+  if (!audioChunks.length) {
+    setVoiceStatus('No audio captured. Please try again.');
+    return;
+  }
+
+  const audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+
+  if (audioBlob.size < 1000) {
+    setVoiceStatus('No speech detected. Please try again.');
+    return;
+  }
+
+  try {
+    const transcript = await transcribeAudio(audioBlob);
+    if (!transcript || !transcript.trim()) {
+      setVoiceStatus('No speech detected. Please try again.');
+      return;
+    }
+    await extractAndFill(transcript.trim());
+  } catch (err) {
+    console.error('Transcription error:', err);
+    setVoiceStatus('Could not process. Please fill manually or try again.');
+  }
+}
+
+async function transcribeAudio(audioBlob) {
+  const formData = new FormData();
+  const ext = (mediaRecorder.mimeType || '').includes('mp4') ? 'mp4' : 'webm';
+  formData.append('audio', audioBlob, `recording.${ext}`);
+
+  const response = await fetch(`${SUPABASE_FN_BASE}/whisper-transcribe`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    },
+    body: formData
+  });
+
+  if (!response.ok) {
+    const errText = await response.text().catch(() => '');
+    throw new Error(`Transcribe failed: ${response.status} ${errText}`);
+  }
+
+  const data = await response.json();
+  return data.text || '';
+}
+
 async function extractAndFill(transcript) {
-  const prompt = `Extract recipe submission details from this spoken description and return ONLY valid JSON, no markdown, no explanation.Extract ONLY what the speaker explicitly says. Do not add adjectives, embellishments, or creative interpretation. Preserve their exact words and phrasing. If they say inspired by my grandmothers kitchen, write exactly that.
+  const prompt = `Extract recipe submission details from this spoken description and return ONLY valid JSON, no markdown, no explanation. Extract ONLY what the speaker explicitly says. Do not add adjectives, embellishments, or creative interpretation. Preserve their exact words and phrasing. If they say inspired by my grandmothers kitchen, write exactly that.
 
 Spoken description: "${transcript}"
 
+Valid Swa syrup options (match spoken syrup names to these exactly, only include if mentioned): ${SWA_SYRUPS.join(', ')}
+Valid spirit options (match spoken spirit names to these exactly, only include if mentioned): ${SPIRITS.join(', ')}
+Valid method options (pick one if the speaker describes how they made it, else empty string): ${METHODS.join(', ')}
+
 Return this exact JSON structure:
 {
+  "drinkName": "name of the drink, or empty string if not mentioned",
+  "swaSyrups": ["exact matches from the valid Swa syrup options list, only if mentioned"],
+  "spirits": ["exact matches from the valid spirit options list, only if mentioned"],
+  "method": "one exact match from valid method options, or empty string",
+  "prepTime": "prep time in minutes as a number, or empty string if not mentioned",
   "ingredients": "full ingredients list with measurements, one per line",
   "garnish": "garnish description or empty string",
   "glassware": "glassware type or empty string",
-  "recipeNotes": "story/inspiration/notes or empty string",
+  "recipeNotes": "the steps describing HOW the drink was made — the actual procedure/process, in the speaker's own words. Not inspiration or backstory unless no procedure was given.",
   "homemade": [
     {
       "name": "component name",
@@ -141,11 +234,11 @@ If no homemade components are mentioned, return empty array for homemade.
 Keep ingredients formatted with one ingredient per line with measurements.`;
 
   try {
-    const response = await fetch('https://ftduvppcdjanupoudzvi.supabase.co/functions/v1/claude-proxy', {
+    const response = await fetch(`${SUPABASE_FN_BASE}/claude-proxy`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w`
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
       },
       body: JSON.stringify({
         messages: [{ role: 'user', content: prompt }]
@@ -159,6 +252,7 @@ Keep ingredients formatted with one ingredient per line with measurements.`;
 
     fillFields(parsed);
     setVoiceStatus('✓ Form filled! Please review and edit as needed.');
+    resetVoiceButton();
     document.getElementById('voiceBtn').textContent = '🎤 Speak Again';
 
   } catch (err) {
@@ -168,16 +262,38 @@ Keep ingredients formatted with one ingredient per line with measurements.`;
 }
 
 function fillFields(data) {
+  if (data.drinkName) document.getElementById('drinkName').value = data.drinkName;
   if (data.ingredients) document.getElementById('ingredients').value = data.ingredients;
   if (data.garnish) document.getElementById('garnish').value = data.garnish;
   if (data.glassware) document.getElementById('glassware').value = data.glassware;
   if (data.recipeNotes) document.getElementById('recipeNotes').value = data.recipeNotes;
+  if (data.prepTime) {
+    const prepInput = document.getElementById('prepTime');
+    if (prepInput) prepInput.value = data.prepTime;
+  }
+
+  if (data.method) {
+    const methodSelect = document.getElementById('method');
+    if (methodSelect) {
+      const match = [...methodSelect.options].find(
+        o => o.value.toLowerCase() === data.method.toLowerCase()
+      );
+      if (match) methodSelect.value = match.value;
+    }
+  }
+
+  if (data.swaSyrups && data.swaSyrups.length > 0) {
+    checkMultiSelectOptions('swaSyrupWrap', data.swaSyrups);
+  }
+
+  if (data.spirits && data.spirits.length > 0) {
+    checkMultiSelectOptions('spiritWrap', data.spirits);
+  }
 
   if (data.homemade && data.homemade.length > 0) {
-    // Clear existing homemade items
     const list = document.getElementById('homemadeList');
     list.innerHTML = '';
-    data.homemade.forEach((item, i) => {
+    data.homemade.forEach((item) => {
       addHomemade();
       const items = list.querySelectorAll('.homemade-item');
       const el = items[items.length - 1];
@@ -191,6 +307,18 @@ function fillFields(data) {
       }
     });
   }
+}
+
+function checkMultiSelectOptions(wrapId, valuesToCheck) {
+  const wrap = document.getElementById(wrapId);
+  if (!wrap) return;
+  const lowerValues = valuesToCheck.map(v => v.toLowerCase());
+  wrap.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    if (lowerValues.includes(cb.value.toLowerCase())) {
+      cb.checked = true;
+    }
+  });
+  if (typeof updateMultiDisplay === 'function') updateMultiDisplay(wrapId);
 }
 
 function setVoiceStatus(msg) {
