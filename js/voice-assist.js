@@ -13,7 +13,6 @@ const SPIRITS = [
   'Brandy / Cognac', 'Aperol / Campari', 'Amaro', 'Non-alcoholic', 'Other'
 ];
 
-const METHODS = ['Shake', 'Stir', 'Blend', 'Build', 'Pour-over', 'Cold brew', 'Other'];
 
 const SUPABASE_FN_BASE = 'https://ftduvppcdjanupoudzvi.supabase.co/functions/v1';
 const VOICE_ASSIST_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w';
@@ -43,7 +42,7 @@ function initVoiceAssist() {
     <div style="flex:1;min-width:200px;">
       <p style="color:#fff;font-family:'Poppins',sans-serif;font-weight:600;margin:0 0 4px;">🎤 Fill Recipe by Voice</p>
       <p style="color:rgba(255,255,255,0.7);font-family:'Poppins',sans-serif;font-size:0.82rem;margin:0;">
-        Describe your ingredients, garnish, glassware, recipe story, and any homemade components.
+        Describe your drink name, syrup, spirit, ingredients, steps, garnish, glassware, and story.
       </p>
     </div>
     <button id="voiceBtn" onclick="toggleRecording()" style="
@@ -175,7 +174,11 @@ async function handleRecordingComplete() {
     await extractAndFill(transcript.trim());
   } catch (err) {
     console.error('Transcription error:', err);
-    setVoiceStatus('Could not process. Please fill manually or try again.');
+    if (err.message === 'TIMEOUT') {
+      setVoiceStatus('Transcription took too long. Please try a shorter recording (under 60s).');
+    } else {
+      setVoiceStatus('Could not process. Please fill manually or try again.');
+    }
   }
 }
 
@@ -193,6 +196,9 @@ async function transcribeAudio(audioBlob) {
   });
 
   if (!response.ok) {
+    if (response.status === 504) {
+      throw new Error('TIMEOUT');
+    }
     const errText = await response.text().catch(() => '');
     throw new Error(`Transcribe failed: ${response.status} ${errText}`);
   }
@@ -208,19 +214,17 @@ Spoken description: "${transcript}"
 
 Valid Swa syrup options (match spoken syrup names to these exactly, only include if mentioned): ${SWA_SYRUPS.join(', ')}
 Valid spirit options (match spoken spirit names to these exactly, only include if mentioned): ${SPIRITS.join(', ')}
-Valid method options (pick one if the speaker describes how they made it, else empty string): ${METHODS.join(', ')}
 
 Return this exact JSON structure:
 {
   "drinkName": "name of the drink, or empty string if not mentioned",
   "swaSyrups": ["exact matches from the valid Swa syrup options list, only if mentioned"],
   "spirits": ["exact matches from the valid spirit options list, only if mentioned"],
-  "method": "one exact match from valid method options, or empty string",
-  "prepTime": "prep time in minutes as a number, or empty string if not mentioned",
   "ingredients": "full ingredients list with measurements, one per line",
   "garnish": "garnish description or empty string",
   "glassware": "glassware type or empty string",
-  "recipeNotes": "the steps describing HOW the drink was made — the actual procedure/process, in the speaker's own words. Not inspiration or backstory unless no procedure was given.",
+  "recipeSteps": "the steps describing HOW the drink was made — the actual procedure/process, in the speaker's own words, one step per line if possible.",
+  "recipeNotes": "the story or inspiration behind the drink, in the speaker's own words — NOT the preparation process (that goes in recipeSteps). Empty string if no story was mentioned.",
   "homemade": [
     {
       "name": "component name",
@@ -266,21 +270,8 @@ function fillFields(data) {
   if (data.ingredients) document.getElementById('ingredients').value = data.ingredients;
   if (data.garnish) document.getElementById('garnish').value = data.garnish;
   if (data.glassware) document.getElementById('glassware').value = data.glassware;
+  if (data.recipeSteps) document.getElementById('recipeSteps').value = data.recipeSteps;
   if (data.recipeNotes) document.getElementById('recipeNotes').value = data.recipeNotes;
-  if (data.prepTime) {
-    const prepInput = document.getElementById('prepTime');
-    if (prepInput) prepInput.value = data.prepTime;
-  }
-
-  if (data.method) {
-    const methodSelect = document.getElementById('method');
-    if (methodSelect) {
-      const match = [...methodSelect.options].find(
-        o => o.value.toLowerCase() === data.method.toLowerCase()
-      );
-      if (match) methodSelect.value = match.value;
-    }
-  }
 
   if (data.swaSyrups && data.swaSyrups.length > 0) {
     checkMultiSelectOptions('swaSyrupWrap', data.swaSyrups);

@@ -296,7 +296,7 @@ avour<!DOCTYPE html>
       <div class="timeline-content">
         <span class="timeline-date olive">August 2026</span>
         <h3>Regionals</h3>
-        <p>Delhi - 13 Aug | Mumbai - 20 Aug | Bangalore - 25 Aug. Judging by a panel of three per city. Top 2 teams per city advance to the finale.</p>
+        <p>Delhi - 11 Aug | Mumbai - 20 Aug | Bangalore - 25 Aug. Judging by a panel of three per city. Top 2 teams per city advance to the finale.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -383,7 +383,7 @@ avour<!DOCTYPE html>
           </div>
         </div>
 
-        <div class="form-row">
+      <div class="form-row" style="display:none;">
           <div class="form-group">
             <label class="form-label">Method</label>
             <select class="form-select" id="method">
@@ -452,7 +452,13 @@ avour<!DOCTYPE html>
         </div>
         <div class="form-row single">
           <div class="form-group">
-            <label class="form-label">Recipe Notes & Story <span class="opt">(optional)</span></label>
+            <label class="form-label">Recipe Steps *</label>
+            <textarea class="form-textarea" id="recipeSteps" placeholder="Describe how you made it, step by step. e.g.&#10;1. Shake syrup, spirit and lime with ice&#10;2. Double strain into a coupe&#10;3. Garnish with dried hibiscus" style="min-height:110px;"></textarea>
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="form-group">
+            <label class="form-label">Recipe Story <span class="opt">(optional)</span></label>
             <textarea class="form-textarea" id="recipeNotes" placeholder="Tell us the story behind your drink. What inspired it? What does it represent?"></textarea>
           </div>
         </div>
@@ -598,6 +604,7 @@ avour<!DOCTYPE html>
     if (sub.servings)      document.getElementById('servings').value    = sub.servings;
     if (sub.ingredients)   document.getElementById('ingredients').value = sub.ingredients;
     if (sub.garnish)       document.getElementById('garnish').value     = sub.garnish;
+    if (sub.recipe_steps)  document.getElementById('recipeSteps').value = sub.recipe_steps;
     if (sub.recipe_notes)  document.getElementById('recipeNotes').value = sub.recipe_notes;
   }
 
@@ -612,6 +619,7 @@ avour<!DOCTYPE html>
       servings:        1,
       ingredients:     document.getElementById('ingredients').value.trim() || null,
       garnish:         document.getElementById('garnish').value.trim() || null,
+      recipe_steps:    document.getElementById('recipeSteps').value.trim() || null,
       recipe_notes:    document.getElementById('recipeNotes').value.trim() || null,
       ai_score_breakdown: getHomemadeData() ? { homemade: JSON.parse(getHomemadeData()) } : null,
       final_decision:  'pending',
@@ -645,12 +653,14 @@ avour<!DOCTYPE html>
     const drinkName   = document.getElementById('drinkName').value.trim();
     const swaSyrups   = getMultiValues('swaSyrupWrap');
     const ingredients = document.getElementById('ingredients').value.trim();
+    const recipeSteps = document.getElementById('recipeSteps').value.trim();
 
     if (!document.getElementById('rulesConsent').checked)  { showErr(errEl, 'Please confirm you have read and agree to the competition rules.'); return; }
     if (!document.getElementById('contentConsent').checked) { showErr(errEl, 'Please agree to the content usage terms to proceed.'); return; }
     if (!drinkName)       { showErr(errEl, 'Please enter your drink name.'); return; }
     if (!swaSyrups.length){ showErr(errEl, 'Please select at least one Swa syrup.'); return; }
     if (!ingredients)     { showErr(errEl, 'Please list your ingredients.'); return; }
+    if (!recipeSteps)     { showErr(errEl, 'Please describe your recipe steps.'); return; }
     if (!selectedDrinkPhoto) { showErr(errEl, 'Please upload a photo of your finished drink.'); return; }
     if (!selectedVideoFile)  { showErr(errEl, 'Please upload your preparation video.'); return; }
     if (selectedVideoFile.size > 50 * 1024 * 1024) { showErr(errEl, 'Video must be under 50MB. Please compress and re-upload.'); return; }
