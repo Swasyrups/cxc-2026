@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regional Teams — CxC 2026</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/images/cxc-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --olive: #59751d;
+      --plum: #4b3141;
+      --pink: #f0567a;
+      --paper: #f8f4ec;
+      --ink: #1a1a1a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--paper); font-family: 'Poppins', sans-serif; color: var(--ink); }
+
+    .teams-hero {
+      background: var(--plum);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .teams-hero img { width: 64px; margin-bottom: 20px; }
+    .teams-hero h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 8px; }
+    .teams-hero p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+    .teams-body { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .region-block { margin-bottom: 60px; }
+    .region-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--olive);
+    }
+    .region-badge {
+      background: var(--olive);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .region-title { font-size: 1.4rem; font-weight: 700; color: var(--plum); }
+    .region-meta { font-size: 0.82rem; color: #666; margin-left: auto; }
+
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .team-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(75,49,65,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .team-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .team-members { display: flex; gap: 12px; }
+    .member {
+      flex: 1;
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .member-role {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .member-role.barista { color: var(--olive); }
+    .member-role.bartender { color: var(--pink); }
+    .member-name { font-size: 0.9rem; font-weight: 600; color: var(--plum); line-height: 1.3; }
+    .member-employer { font-size: 0.75rem; color: #666; margin-top: 2px; }
+    .member-city { font-size: 0.72rem; color: #999; margin-top: 2px; }
+
+    .missing-tag {
+      background: #fff3cd;
+      color: #856404;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .team-members { flex-direction: column; }
+      .region-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="teams-hero">
+  <img src="assets/images/cxc-logo.png" alt="CxC 2026" />
+  <h1>Regional Teams</h1>
+  <p>CxC 2026 — Qualified Barista-Bartender Pairs</p>
+</div>
+
+<div class="teams-body">
+
+  <!-- NORTH -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">North</span>
+      <span class="region-title">Delhi NCR / Jaipur / Chandigarh</span>
+      <span class="region-meta">11 Aug · Siyah Arthouse, Saket · <a href="https://maps.app.goo.gl/JfTD6HJry2ijc4nG6" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team N1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anmol Singh</div>
+            <div class="member-employer">Olive Bar & Kitchen</div>
+            <div class="member-city">Delhi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Katnoria</div>
+            <div class="member-employer">Roslyn Coffee</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sagar Khuntia</div>
+            <div class="member-employer">DLF City Club 3</div>
+            <div class="member-city">Gurgaon</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Alok Singh</div>
+            <div class="member-employer">Roastery Coffee House</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anshuman Bhatt</div>
+            <div class="member-employer">Seville Bar & Lounge</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ashish Chawla</div>
+            <div class="member-employer">Barista Training Academy</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Satish Verma</div>
+            <div class="member-employer">Rhapsody Kitchen & Bar</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Mohammad Shadab</div>
+            <div class="member-employer">Dhanas Lake</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Pramod Rai</div>
+            <div class="member-employer">The Gaia Gourmet</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Abhay Mishra</div>
+            <div class="member-employer">Common Time</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Bhanwar Singh</div>
+            <div class="member-employer">Khoje Restaurant</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Sarabjeet Singh</div>
+            <div class="member-employer">Midori - The Zen Bar</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Abhinay Kumar Sharma</div>
+            <div class="member-employer">Bender's Bar & Cocktails Door</div>
+            <div class="member-city">Delhi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shiv Om</div>
+            <div class="member-employer">The Autumn House</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Ankit Chhetri</div>
+            <div class="member-employer">Hyatt Regency</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Biswajit Barman</div>
+            <div class="member-employer">Doppler Coffee</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sandeep Kumar</div>
+            <div class="member-employer">Taj Mussoorie Foothills</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Annant Baheti</div>
+            <div class="member-employer">Cafe 651</div>
+            <div class="member-city">Jodhpur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anil Sharma</div>
+            <div class="member-employer">The Brew Estate</div>
+            <div class="member-city">Ludhiana</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Surya Pratap Singh</div>
+            <div class="member-employer">Starbucks</div>
+            <div class="member-city">Jodhpur</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOUTH -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">South</span>
+      <span class="region-title">Bengaluru / Kochi</span>
+      <span class="region-meta">25 Aug · Hamilton Cocktail Bar · <a href="https://maps.app.goo.gl/2Cx2myWA7b4oSd1m9" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team S1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Varad Ghotge</div>
+            <div class="member-employer">Dali and Gala Cocktail Bar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Kushal Behera</div>
+            <div class="member-employer">Blue Tokai Coffee Roasters</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Bikash Dhimal</div>
+            <div class="member-employer">Legends Microbrewery</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Nikil R</div>
+            <div class="member-employer">Kanasu Kaffi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Dawa Lama</div>
+            <div class="member-employer">Bar Sama</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Nithish Kumar R</div>
+            <div class="member-employer">Roastea</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Rahit Pal</div>
+            <div class="member-employer">FOO Indiranagar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">John Abhi</div>
+            <div class="member-employer">Kanasu Kaffi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Manish Sankar</div>
+            <div class="member-employer">Yazu Pan Asian Supper Club</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ajith Kumar</div>
+            <div class="member-employer">Benki Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Yengkhom Chanu Romola</div>
+            <div class="member-employer">Oasis Brewery</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shalini M</div>
+            <div class="member-employer">Benki Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Prakhar Dubey</div>
+            <div class="member-employer">Dual Room</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Mohan NS</div>
+            <div class="member-employer">Third Wave Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Saahitya Trivedi</div>
+            <div class="member-employer">403 Forbidden Bar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Yadhu Krishnan</div>
+            <div class="member-employer">Nombre - Specialty Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Jabson Babu</div>
+            <div class="member-employer">Radisson Blu</div>
+            <div class="member-city">Kochi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Neethu Johnson</div>
+            <div class="member-employer">Malappuram Kottapadi</div>
+            <div class="member-city">Kochi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Om Bhadur Rai</div>
+            <div class="member-employer">FOO Indiranagar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Rajput</div>
+            <div class="member-employer">Pixi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WEST -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">West</span>
+      <span class="region-title">Mumbai / Pune / Goa / Nagpur</span>
+      <span class="region-meta">18 Aug · House of Paloma, Bandra · <a href="https://maps.app.goo.gl/zGXni7LSxuSB7Ejz9" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team W1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Ganesh Mirashi</div>
+            <div class="member-employer">Soraia Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shiv Kedar</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Croydin Sutari</div>
+            <div class="member-employer">Nayra</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Sairaj Phatkare</div>
+            <div class="member-employer">Kaapi Solutions</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Kshitij Bagul</div>
+            <div class="member-employer">Coast & Bloom</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Anjali Hari Gupta</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Devisha Mhatre</div>
+            <div class="member-employer">Bare Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Savita Vicky Parihar</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sundram Kumar</div>
+            <div class="member-employer">Deltin Royale</div>
+            <div class="member-city">Goa</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Pratik Dey Chowdhury</div>
+            <div class="member-employer">Together</div>
+            <div class="member-city">Goa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Marziya Lairikiyengbam</div>
+            <div class="member-employer">TSS - The Spirited Spot</div>
+            <div class="member-city">Pune</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ragini Bob</div>
+            <div class="member-employer">Third Wave Coffee</div>
+            <div class="member-city">Pune</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Shaurya Rajbhar</div>
+            <div class="member-employer">Fielia Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Shedjale</div>
+            <div class="member-employer">Ugaoo</div>
+            <div class="member-city">Pune</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Adesh Bhowate</div>
+            <div class="member-employer">Brickhaus: Taps n Brews</div>
+            <div class="member-city">Nagpur</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">R Saravanamuthu</div>
+            <div class="member-employer">Corridor Seven Coffee</div>
+            <div class="member-city">Nagpur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sai Tamhankar</div>
+            <div class="member-employer">Drinq</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rahul Nepali</div>
+            <div class="member-employer">Asterix</div>
+            <div class="member-city">Ahmedabad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Vikas Gaikwad</div>
+            <div class="member-employer">Sweeney Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">TBA</div>
+            <div class="member-employer">—</div>
+            <div class="member-city">—</div>
+            <span class="missing-tag">To be announced</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
