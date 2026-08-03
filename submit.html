@@ -351,11 +351,18 @@ avour<!DOCTYPE html>
               <div class="multi-select-display" onclick="toggleDropdown('swaSyrupDropdown')" id="swaSyrupDisplay">Select syrups...</div>
               <div class="multi-select-dropdown" id="swaSyrupDropdown">
                 <label class="multi-opt"><input type="checkbox" value="Alphonso Mango" onchange="updateMultiDisplay('swaSyrupWrap')"> Alphonso Mango</label>
-                <label class="multi-opt"><input type="checkbox" value="Guava Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Guava Chilli</label>
-                <label class="multi-opt"><input type="checkbox" value="Brown Butter" onchange="updateMultiDisplay('swaSyrupWrap')"> Brown Butter</label>
+                <label class="multi-opt"><input type="checkbox" value="Kokum" onchange="updateMultiDisplay('swaSyrupWrap')"> Kokum</label>
+                <label class="multi-opt"><input type="checkbox" value="Vanilla" onchange="updateMultiDisplay('swaSyrupWrap')"> Vanilla</label>
+                <label class="multi-opt"><input type="checkbox" value="Mojito Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Mojito Mint</label>
+                <label class="multi-opt"><input type="checkbox" value="Buransh" onchange="updateMultiDisplay('swaSyrupWrap')"> Buransh</label>
+                <label class="multi-opt"><input type="checkbox" value="Summer Berries" onchange="updateMultiDisplay('swaSyrupWrap')"> Summer Berries</label>
+                <label class="multi-opt"><input type="checkbox" value="Kaffir Lime" onchange="updateMultiDisplay('swaSyrupWrap')"> Kaffir Lime</label>
                 <label class="multi-opt"><input type="checkbox" value="Roasted Hazelnut" onchange="updateMultiDisplay('swaSyrupWrap')"> Roasted Hazelnut</label>
+                <label class="multi-opt"><input type="checkbox" value="Guava Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Guava Chilli</label>
                 <label class="multi-opt"><input type="checkbox" value="Passionfruit" onchange="updateMultiDisplay('swaSyrupWrap')"> Passionfruit</label>
-                <label class="multi-opt"><input type="checkbox" value="Pineapple Bird's Eye" onchange="updateMultiDisplay('swaSyrupWrap')"> Pineapple Bird's Eye</label>              </div>
+                <label class="multi-opt"><input type="checkbox" value="Brown Butter" onchange="updateMultiDisplay('swaSyrupWrap')"> Brown Butter</label>
+                <label class="multi-opt"><input type="checkbox" value="Pineapple Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Pineapple Chilli</label>
+              </div>
             </div>
             <p style="font-size:12px;color:rgba(28,28,28,0.4);margin-top:6px;">Minimum 20ml of at least one Swa syrup required.</p>
           </div>
@@ -446,8 +453,15 @@ avour<!DOCTYPE html>
             <input class="form-input" id="garnish" type="text" placeholder="e.g. Dried hibiscus, lime wheel" />
           </div>
           <div class="form-group">
-            <label class="form-label">Glassware <span class="opt">(optional)</span></label>
-            <input class="form-input" id="glassware" type="text" placeholder="e.g. Coupe, highball, rocks" />
+            <label class="form-label">Glassware at Venue <span class="opt">— list 2-3 options in preference order</span></label>
+            <input class="form-input" id="glassware" type="text" placeholder="e.g. Coupe, Nick & Nora, Rocks glass" />
+            <p style="font-size:11px;color:rgba(28,28,28,0.4);margin-top:4px;">We'll do our best to arrange these. Not guaranteed — please list alternatives.</p>
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="form-group">
+            <label class="form-label">Special Requirements at Venue <span class="opt">(optional)</span></label>
+            <textarea class="form-textarea" id="specialRequirements" placeholder="List anything you cannot carry and would need at the venue — e.g. specific equipment, appliances, or tools. This is not a guarantee; we will inform you if it is possible to arrange." style="min-height:80px;"></textarea>
           </div>
         </div>
         <div class="form-row single">

@@ -4,8 +4,9 @@
  */
 
 const SWA_SYRUPS = [
-  'Alphonso Mango', 'Guava Chilli', 'Brown Butter', 'Roasted Hazelnut',
-  'Passionfruit', "Pineapple Bird's Eye"
+  'Alphonso Mango', 'Kokum', 'Vanilla', 'Mojito Mint', 'Buransh',
+  'Summer Berries', 'Kaffir Lime', 'Roasted Hazelnut',
+  'Guava Chilli', 'Passionfruit', 'Brown Butter', 'Pineapple Chilli'
 ];
 
 const SPIRITS = [
