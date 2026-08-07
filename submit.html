@@ -39,9 +39,8 @@ avour<!DOCTYPE html>
   <div class="portal-subnav-inner">
     <div class="portal-subnav-links">
       <button class="subnav-link active" onclick="showPage('dashboard')">Dashboard</button>
-      <button class="subnav-link" onclick="showPage('rules')">Regional Rules</button>
-      <button class="subnav-link" onclick="showPage('schedule')">CxC Schedule</button>
-      <button class="subnav-link" onclick="showPage('regional')">Regional Schedule</button>
+      <button class="subnav-link" onclick="showPage('rules')">Rulebook</button>
+      <button class="subnav-link" onclick="showPage('schedule')">Schedule</button>
       <button class="subnav-link" onclick="showPage('submit')">Submit Entry</button>
     </div>
     <span class="subnav-user" id="navUserName">Loading...</span>
@@ -85,11 +84,7 @@ avour<!DOCTYPE html>
         <div class="svalue confirmed"><div class="dot green"></div> Confirmed</div>
       </div>
       <div class="status-card">
-        <div class="slabel">Sample Pack</div>
-        <div class="svalue pending" id="dispatchStatus"><div class="dot gold"></div> Processing</div>
-      </div>
-      <div class="status-card">
-        <div class="slabel">My Submission</div>
+        <div class="slabel">Regional Submission</div>
         <div class="svalue not-yet" id="submitStatus"><div class="dot grey"></div> Not submitted</div>
       </div>
     </div>
@@ -99,18 +94,6 @@ avour<!DOCTYPE html>
         <p>Fill in your recipe card and upload your preparation video.</p>
       </div>
       <button class="btn-pink" onclick="showPage('submit')">Submit My Entry →</button>
-      </div>
-      <!-- Draft card - shown when draft exists -->
-      <div id="dashDraftCard" style="display:none;background:#fff;border:1.5px solid var(--olive);border-radius:16px;padding:20px 24px;margin-top:12px;display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-          <div>
-            <p style="font-size:0.75rem;color:var(--olive);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;">Draft Saved</p>
-            <p id="dashDraftName" style="font-size:1rem;font-weight:600;color:var(--plum);"></p>
-          </div>
-          <button onclick="showPage('submit')" style="background:var(--olive);color:#fff;border:none;border-radius:50px;padding:10px 20px;font-size:0.85rem;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;">Edit & Submit →</button>
-        </div>
-      </div>
-      <div style="display:none">
     </div>
     <div class="deadline-bar">
       <p>Submission window closes</p>
@@ -125,101 +108,122 @@ avour<!DOCTYPE html>
 ══════════════════════════════════════════ -->
 <div id="page-rules" class="page">
   <div class="rules-hero">
-    <p class="eyebrow">CxC 2026 — Regional Round</p>
-    <h1>Regional Round<br>Rules</h1>
-    <p>Rules for the CxC 2026 Regional Round. All competing teams must read and comply before the event.</p>
+    <p class="eyebrow">CxC 2026</p>
+    <h1>Competition<br>Rulebook</h1>
+    <p>The complete rules and guidelines for CxC 2026. All registered participants are expected to read and agree to these terms before competing.</p>
     <div class="rules-hero-tags">
-      <span class="rules-hero-tag">Last updated: August 2026</span>
-      <span class="rules-hero-tag">Version 2.0</span>
+      <span class="rules-hero-tag">Last updated: June 2026</span>
+      <span class="rules-hero-tag">Version 1.0</span>
     </div>
   </div>
   <div class="rules-toc">
     <div class="rules-toc-label">In this document</div>
     <div class="rules-toc-items">
-      <a href="#rule-team" class="rules-toc-item">1. Team &amp; Eligibility</a>
+      <a href="#rule-eligibility" class="rules-toc-item">1. Eligibility</a>
       <a href="#rule-format" class="rules-toc-item">2. Format</a>
-      <a href="#rule-drink" class="rules-toc-item">3. The Drink</a>
+      <a href="#rule-recipe" class="rules-toc-item">3. Recipe Rules</a>
       <a href="#rule-swa" class="rules-toc-item">4. Swa Requirement</a>
-      <a href="#rule-submission" class="rules-toc-item">5. Submission</a>
-      <a href="#rule-onday" class="rules-toc-item">6. On the Day</a>
-      <a href="#rule-scoring" class="rules-toc-item">7. Scoring</a>
-      <a href="#rule-conduct" class="rules-toc-item">8. Conduct &amp; Rights</a>
+      <a href="#rule-video" class="rules-toc-item">5. Video Submission</a>
+      <a href="#rule-scoring" class="rules-toc-item">6. Scoring</a>
+      <a href="#rule-conduct" class="rules-toc-item">7. Conduct</a>
     </div>
   </div>
   <div class="rules-body">
-    <div class="rules-section" id="rule-team">
+    <div class="rules-section" id="rule-eligibility">
       <div class="rules-section-number">Section 01</div>
-      <h2>Team &amp; Eligibility</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Each team consists of one barista and one bartender. Both must be physically present on the day.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Both partners must contribute to the recipe and submission.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Employees of Raw Earth Foods &amp; Beverages Pvt. Ltd. and their immediate family members are not eligible.</p></div>
+      <h2>Eligibility</h2>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Open to all practising baristas and bartenders across India. No minimum experience required.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Stage 1 is an individual competition. You register and submit as a solo entrant — baristas and bartenders compete in separate tracks.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Shortlisted individuals from Stage 1 will be paired by the CxC organisers into barista–bartender teams for the regionals.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Employees of Raw Earth Foods & Beverages Pvt. Ltd. and their immediate family members are not eligible.</p></div>
     </div>
     <div class="rules-section" id="rule-format">
       <div class="rules-section-number">Section 02</div>
       <h2>Competition Format</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">8 minutes to prep, present your drink, and tell your story to the judges.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">2 minutes for questions from the judges.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">2 minutes to clean up your station.</p></div>
-      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Make 5 servings — 4 for the judges, 1 for photography.</p></div>
-      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Top 2 teams per regional advance to the Grand Finale, Bangalore, 8 September 2026.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Stage 1 — Individual online submission. Video + recipe card. Judged remotely by the CxC panel.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Stage 2 — Regionals in Bangalore, Mumbai, Delhi. Shortlisted teams compete live. Top 3 teams per city advance.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Stage 3 — Grand Finale on 8 September 2026, Bangalore. 15-minute live showcase per team. Live judging panel.</p></div>
     </div>
-    <div class="rules-section" id="rule-drink">
+    <div class="rules-section" id="rule-recipe">
       <div class="rules-section-number">Section 03</div>
-      <h2>The Drink</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">The drink must contain coffee and at least 10ml of Swa Artisanal Syrup.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Alcohol is optional. If used, follow venue rules.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Pre-prepped ingredients are allowed. Garnishes may be prepared in advance. All pre-prepped components must be declared in the submission.</p></div>
-      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Homemade syrups, infusions, bitters, and fat washes are permitted. The recipe for all homemade components must be declared — organisers may test these before they are added to the final drink.</p></div>
-      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">The recipe on the day must exactly match the submitted recipe. Changes may result in point deductions or disqualification.</p></div>
-      <div class="rule-item"><span class="rule-num">06</span><p class="rule-text">The recipe must be original and not publicly served at any commercial venue in the 12 months preceding the competition.</p></div>
+      <h2>Recipe Rules</h2>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">You can submit a mocktail, cocktail or a coffee beverage recipe. </p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">One drink submission per person. The recipe must be original and created by the participant specifically for CxC 2026.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">If at any stage of the competition, it is found that the recipe has been copied from somewhere, the individual and team will both be disqualified.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">The drink must not have been publicly served at any commercial venue in the 12 months preceding the submission date.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">All ingredients must be legally purchasable in India. No prohibited substances.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Submission deadline is 25 July 2026, 11:59 PM IST. No extensions will be granted under any circumstances.</p></div>
     </div>
     <div class="rules-section" id="rule-swa">
       <div class="rules-section-number">Section 04</div>
       <h2>Swa Syrup Requirement</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Minimum 10ml of at least one Swa Artisanal Syrup must be used. Entries without Swa will be disqualified.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You may use multiple Swa syrups — no upper limit.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Only Swa syrups provided at the venue may be used.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">At least one Swa Artisanal Syrup must feature as a named ingredient in the final drink. Entries without Swa will be disqualified.</p></div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Minimum of 20ml of any one syrup must be used.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You may use multiple Swa syrups. There is no upper limit.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You can only use the Swa syrup flavours sent to you in the sample kit.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">The Swa syrup sample kit dispatched on registration must be used in your video demonstration.</p></div>
     </div>
-    <div class="rules-section" id="rule-submission">
+    <div class="rules-section" id="rule-recipe-card">
       <div class="rules-section-number">Section 05</div>
-      <h2>Submission</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Both partners can log in and edit the shared submission. Submit before the deadline.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Mandatory: a video, a finished drink photo, an ingredients &amp; setup photo, and a full written recipe with process, tools, and ingredients.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">All pre-prepped ingredients and homemade components must be declared with their recipes.</p></div>
-      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Declare your glassware and any special requirements. Not guaranteed — organisers will confirm what is possible.</p></div>
-      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Once submitted, the entry is locked. Do not change your recipe, tools, or process.</p></div>
-      <div class="rule-item"><span class="rule-num">06</span><p class="rule-text">Print and carry your recipe card, full ingredient list, and recipes for all pre-prepped components on the day.</p></div>
+      <h2>Video Submission</h2>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Every recipe submission needs to be accompanied with a recipe card.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You need to tell us the exact ingredients, tools, techniques and garnish used.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">You will need to submit a finished photo of the drink as well.</p></div>
     </div>
-    <div class="rules-section" id="rule-onday">
+    <div class="rules-section" id="rule-video">
       <div class="rules-section-number">Section 06</div>
-      <h2>On the Day</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Report to the venue by 8:30 AM.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Carry all your own tools, ingredients, and pre-prepped components (sealed and labelled).</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Available at venue: Blue Tokai coffee (3 roasts), Swa Artisanal Syrups, basic ice cubes.</p></div>
-      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Not available: alcohol, specialty ice, any other ingredients. Bring everything else yourself.</p></div>
-      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Glassware at the venue can be used if declared in your submission. If not declared, carry your own.</p></div>
-      <div class="rule-item"><span class="rule-num">06</span><p class="rule-text">Tag @swa.artisanalsyrups on all posts from the event.</p></div>
+      <h2>Video Submission</h2>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Submit a video between 60 and 90 seconds showing your drink preparation from start to finish.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">The video must show your face and hands. Voice narration explaining your drink concept is strongly encouraged.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Accepted formats: MP4, MOV. Maximum file size: 250MB. Minimum resolution: 720p.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">No post-production effects, AI-generated visuals, or footage from commercial shoots. Raw, authentic footage only.</p></div>
     </div>
+    
     <div class="rules-section" id="rule-scoring">
       <div class="rules-section-number">Section 07</div>
       <h2>Scoring</h2>
-      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;">Regionals are scored out of 100 points.</p>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;">Stage 1 entries are scored out of 100 points across five criteria.</p>
       <div class="scorecard-grid">
-        <div class="score-row"><div class="score-row-top"><span class="score-label">Taste &amp; Balance</span><span class="score-pts">30</span></div><p class="score-desc">Sweetness, acidity, bitterness, coffee, and body in harmony.</p><div class="score-bar"><div class="score-fill" style="width:100%"></div></div></div>
-        <div class="score-row"><div class="score-row-top"><span class="score-label">Story &amp; Presentation</span><span class="score-pts">25</span></div><p class="score-desc">Compelling narrative, confident presentation from both partners.</p><div class="score-bar"><div class="score-fill" style="width:83%"></div></div></div>
-        <div class="score-row"><div class="score-row-top"><span class="score-label">Technique &amp; Execution</span><span class="score-pts">20</span></div><p class="score-desc">Clean workstation, precise technique, efficient within 8 minutes.</p><div class="score-bar"><div class="score-fill" style="width:67%"></div></div></div>
-        <div class="score-row"><div class="score-row-top"><span class="score-label">Originality &amp; Collaboration</span><span class="score-pts">15</span></div><p class="score-desc">Original concept, genuine collaboration on build and story.</p><div class="score-bar"><div class="score-fill" style="width:50%"></div></div></div>
-        <div class="score-row"><div class="score-row-top"><span class="score-label">Use of Hero Ingredients</span><span class="score-pts">10</span></div><p class="score-desc">How thoughtfully Swa and coffee elevate the drink.</p><div class="score-bar"><div class="score-fill" style="width:33%"></div></div></div>
-      </div>
+        <div class="score-row">
+  <div class="score-row-top"><span class="score-label">Craft & Technique</span><span class="score-pts">25</span></div>
+  <p class="score-desc">Precision in preparation, consistency, and mastery of your craft — shaking, stirring, brewing, or building.</p>
+  <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+</div>
+
+<div class="score-row">
+  <div class="score-row-top"><span class="score-label">Flavour & Balance</span><span class="score-pts">25</span></div>
+  <p class="score-desc">Does the drink taste great? Are sweetness, acidity, bitterness, and body in harmony?</p>
+  <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+</div>
+
+<div class="score-row">
+  <div class="score-row-top"><span class="score-label">Swa Integration</span><span class="score-pts">20</span></div>
+  <p class="score-desc">How thoughtfully is the Swa syrup used? Does it elevate the drink or feel like an afterthought?</p>
+  <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
+</div>
+
+<div class="score-row">
+  <div class="score-row-top"><span class="score-label">Creativity & Narrative</span><span class="score-pts">20</span></div>
+  <p class="score-desc">Is this drink original and memorable? Does it tell a story — about a place, a memory, a culture?</p>
+  <div class="score-bar"><div class="score-fill" style="width:80%"></div></div>
+</div>
+
+<div class="score-row">
+  <div class="score-row-top"><span class="score-label">Presentation</span><span class="score-pts">10</span></div>
+  <p class="score-desc">Visual appeal of the finished drink and how it's served — glassware, garnish, overall finish.</p>
+  <div class="score-bar"><div class="score-fill" style="width:40%"></div></div>
+</div>
+</div>
     </div>
     <div class="rules-section" id="rule-conduct">
       <div class="rules-section-number">Section 08</div>
-      <h2>Conduct &amp; Rights</h2>
-      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Judges' decisions are final and binding. No appeals.</p></div>
-      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Plagiarism or unsportsmanlike conduct results in disqualification of both team members.</p></div>
-      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">CxC organisers reserve the right to disqualify any team that does not meet the spirit of the competition.</p></div>
-      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">By competing, you grant Swa Artisanal Syrups and CxC the right to use your name, photo, video, and recipe for promotional purposes — with full credit.</p></div>
-      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Dates, venues, format, and prizes are subject to change without prior notice.</p></div>
+      <h2>Conduct & Rights</h2>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Judges' decisions are final and binding. No appeals will be entertained.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Any attempt to contact judges directly about your submission will result in immediate disqualification.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">CxC organisers reserve the right to disqualify any entry that does not meet the spirit of the competition.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">By submitting, you grant Swa Artisanal Syrups and CxC the non-exclusive right to use your name, photo, video, and recipe content for promotional purposes including social media, paid advertising, and the Swa recipe bank — with full credit given to you as the creator.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Swa will not be held responsible for misconduct or plagiarism by the participants.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">If the participant fails to meet the deadlines or complete requirements, the organisers reserve the right to disqualify the candidate.</p></div>
     </div>
   </div>
 </div>
@@ -385,44 +389,6 @@ avour<!DOCTYPE html>
 </div>
 
 
-
-<!-- Regional Schedule Page -->
-<div id="page-regional" class="page">
-  <div class="schedule-hero">
-    <p class="eyebrow">Regional Round</p>
-    <h1>Day Schedule</h1>
-    <p>Report by 8:30 AM. Competition begins at 2:00 PM.</p>
-  </div>
-  <div style="max-width:700px;margin:0 auto;padding:0 20px 40px;">
-    <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(75,49,65,0.08);">
-      <div style="background:var(--plum);padding:20px 24px;">
-        <p style="color:rgba(255,255,255,0.7);font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Regional Day</p>
-        <p style="color:#fff;font-size:1.1rem;font-weight:700;">Report by 8:30 AM · Competition from 2:00 PM</p>
-      </div>
-      <div style="font-family:'Poppins',sans-serif;">
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">8:30 AM</span><span style="font-size:0.85rem;color:#333;"><strong>Report &amp; Check-in</strong></span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;background:#fafafa;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">9:00 – 10:00</span><span style="font-size:0.85rem;color:#333;">Registration + Slot selection</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">10:00 – 10:20</span><span style="font-size:0.85rem;color:#333;">Judges Introduction</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;background:#fafafa;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">10:20 – 12:20</span><span style="font-size:0.85rem;color:#333;"><strong>Masterclasses</strong> — Three sessions by our judges</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">12:30 – 2:00</span><span style="font-size:0.85rem;color:#333;">Lunch &amp; Networking</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;background:rgba(240,86,122,0.05);"><span style="font-size:0.78rem;color:var(--pink);font-weight:700;min-width:110px;">2:00 – 5:00</span><span style="font-size:0.85rem;color:#333;"><strong style="color:var(--pink);">Main Round</strong> — 8 min prep &amp; present · 2 min Q&amp;A · 2 min cleanup</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;background:#fafafa;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">5:00 – 5:30</span><span style="font-size:0.85rem;color:#333;">Judges Collation + Tea Break</span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">5:30</span><span style="font-size:0.85rem;color:#333;"><strong>Prize Announcement</strong></span></div>
-        <div style="display:flex;gap:16px;padding:16px 24px;background:#fafafa;"><span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">6:00</span><span style="font-size:0.85rem;color:#333;">Networking</span></div>
-      </div>
-    </div>
-    <div style="background:var(--paper);border-radius:12px;padding:20px 24px;margin-top:16px;font-family:'Poppins',sans-serif;">
-      <p style="font-size:0.78rem;font-weight:700;color:var(--plum);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">On the Day — Checklist</p>
-      <ul style="font-size:0.82rem;color:#444;line-height:2;padding-left:16px;">
-        <li>Report by <strong>8:30 AM</strong></li>
-        <li>Carry all your tools + ingredients + pre-prepped components (sealed, labelled)</li>
-        <li>Print your recipe card, ingredient list, and pre-prep recipes</li>
-        <li>Make <strong>5 servings</strong> — 4 judges, 1 photography</li>
-        <li>Tag <strong>@swa.artisanalsyrups</strong> on all event posts</li>
-      </ul>
-    </div>
-  </div>
-</div>
 <!-- ══════════════════════════════════════════
      PAGE: SUBMIT ENTRY
 ══════════════════════════════════════════ -->
@@ -675,7 +641,7 @@ avour<!DOCTYPE html>
             <div style="display:flex;align-items:flex-start;gap:12px;">
               <input type="checkbox" id="rulesConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
               <label for="rulesConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
-                I confirm I have read and agree to the <a href="#" onclick="showPage('rules');return false;" style="color:var(--olive);font-weight:500;">CxC 2026 Regional Rules</a>. My submission is original work, complies with all competition requirements, and I understand that the judges' decision is final. Plagiarism or unsportsmanlike conduct may result in disqualification of both team members. I understand that at least one Swa Artisanal Syrup must be used, the judges' decision is final and binding, and that plagiarism or unsportsmanlike conduct may result in disqualification.
+                I confirm I have read and agree to the <a href="#" onclick="showPage('rules');return false;" style="color:var(--olive);font-weight:500;">CxC 2026 Competition Rules</a>. My submission is original work, not publicly served in the last 12 months, and complies with all eligibility requirements. I understand that at least one Swa Artisanal Syrup must be used, the judges' decision is final and binding, and that plagiarism or unsportsmanlike conduct may result in disqualification.
               </label>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px;">
@@ -739,13 +705,9 @@ avour<!DOCTYPE html>
     document.getElementById('dashFirstName').textContent = data.first_name;
     document.getElementById('dashRole').textContent = data.role === 'barista' ? 'Barista ☕' : 'Bartender 🍹';
 
-    // Show team info if available
-    if (data.team_number && data.regional_selected) {
-      const teamEl = document.getElementById('dashTeam');
-      if (teamEl) {
-        teamEl.textContent = `${data.regional_selected} — Team ${data.team_number}`;
-        teamEl.style.display = 'block';
-      }
+    if (data.sample_dispatched) {
+      document.getElementById('dispatchStatus').innerHTML = '<div class="dot green"></div> Dispatched';
+      document.getElementById('dispatchStatus').className = 'svalue confirmed';
     }
 
     const { data: sub } = await sb.from('submissions').select('*')
@@ -753,56 +715,74 @@ avour<!DOCTYPE html>
 
     if (sub) {
       existingSubmissionId = sub.id;
-      if (sub.video_url) {
-        // Fully submitted
+      if (sub.final_decision !== 'pending' || sub.video_url) {
         document.getElementById('submitForm').style.display = 'none';
         document.getElementById('successCard').style.display = 'block';
         document.getElementById('submitStatus').innerHTML = '<div class="dot green"></div> Submitted';
         document.getElementById('submitStatus').className = 'svalue confirmed';
       } else {
-        // Draft exists — populate and show edit button on dashboard
         populateDraft(sub);
         document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
         document.getElementById('submitStatus').className = 'svalue pending';
-        // Show draft card on dashboard
-        const draftCard = document.getElementById('dashDraftCard');
-        if (draftCard) {
-          draftCard.style.display = 'block';
-          const draftName = document.getElementById('dashDraftName');
-          if (draftName) draftName.textContent = sub.drink_name || 'Untitled draft';
-        }
       }
     }
   }
 
   function populateDraft(sub) {
-    if (sub.drink_name)    document.getElementById('drinkName').value   = sub.drink_name;
-    if (sub.swa_syrup_used) document.getElementById('swaSyrup').value   = sub.swa_syrup_used;
-    if (sub.spirit_used)   document.getElementById('spiritUsed').value  = sub.spirit_used;
-    if (sub.method)        document.getElementById('method').value      = sub.method;
-    if (sub.prep_time_mins) document.getElementById('prepTime').value   = sub.prep_time_mins;
-    if (sub.servings)      document.getElementById('servings').value    = sub.servings;
-    if (sub.ingredients)   document.getElementById('ingredients').value = sub.ingredients;
-    if (sub.garnish)       document.getElementById('garnish').value     = sub.garnish;
-    if (sub.recipe_steps)  document.getElementById('recipeSteps').value = sub.recipe_steps;
-    if (sub.recipe_notes)  document.getElementById('recipeNotes').value = sub.recipe_notes;
+    if (sub.drink_name)    document.getElementById('drinkName').value    = sub.drink_name;
+    if (sub.ingredients)   document.getElementById('ingredients').value  = sub.ingredients;
+    if (sub.garnish)       document.getElementById('garnish').value      = sub.garnish;
+    if (sub.recipe_steps)  document.getElementById('recipeSteps').value  = sub.recipe_steps;
+    if (sub.recipe_notes)  document.getElementById('recipeNotes').value  = sub.recipe_notes;
+    if (sub.glassware)     document.getElementById('glassware').value    = sub.glassware;
+    const srEl = document.getElementById('specialRequirements');
+    if (srEl && sub.special_requirements) srEl.value = sub.special_requirements;
+
+    // Restore Swa syrup checkboxes
+    if (sub.swa_syrup_used) {
+      const selected = sub.swa_syrup_used.split(', ');
+      document.querySelectorAll('#swaSyrupDropdown input[type="checkbox"]').forEach(cb => {
+        cb.checked = selected.includes(cb.value);
+      });
+      updateMultiDisplay('swaSyrupWrap');
+    }
+    // Restore spirit checkboxes
+    if (sub.spirit_used) {
+      const selected = sub.spirit_used.split(', ');
+      document.querySelectorAll('#spiritDropdown input[type="checkbox"]').forEach(cb => {
+        cb.checked = selected.includes(cb.value);
+      });
+      updateMultiDisplay('spiritWrap');
+    }
+
+    // Show draft card on dashboard
+    const draftCard = document.getElementById('dashDraftCard');
+    if (draftCard) {
+      draftCard.style.display = 'flex';
+      const nameEl = document.getElementById('dashDraftName');
+      if (nameEl) nameEl.textContent = sub.drink_name || 'Untitled draft';
+    }
   }
 
   function getFormData() {
+    const srEl = document.getElementById('specialRequirements');
+    const glEl = document.getElementById('glassware');
     return {
-      participant_id:  currentParticipant.id,
-      drink_name:      document.getElementById('drinkName').value.trim() || null,
-      swa_syrup_used:  getMultiValues('swaSyrupWrap').join(', ') || null,
-      spirit_used:     getMultiValues('spiritWrap').join(', ') || null,
-      method:          document.getElementById('method').value || null,
-      prep_time_mins:  parseInt(document.getElementById('prepTime').value) || null,
-      servings:        1,
-      ingredients:     document.getElementById('ingredients').value.trim() || null,
-      garnish:         document.getElementById('garnish').value.trim() || null,
-      recipe_steps:    document.getElementById('recipeSteps').value.trim() || null,
-      recipe_notes:    document.getElementById('recipeNotes').value.trim() || null,
-      ai_score_breakdown: getHomemadeData() ? { homemade: JSON.parse(getHomemadeData()) } : null,
-      final_decision:  'pending',
+      participant_id:       currentParticipant.id,
+      drink_name:           document.getElementById('drinkName').value.trim() || null,
+      swa_syrup_used:       getMultiValues('swaSyrupWrap').join(', ') || null,
+      spirit_used:          getMultiValues('spiritWrap').join(', ') || null,
+      method:               document.getElementById('method').value || null,
+      prep_time_mins:       parseInt(document.getElementById('prepTime').value) || null,
+      servings:             1,
+      ingredients:          document.getElementById('ingredients').value.trim() || null,
+      garnish:              document.getElementById('garnish').value.trim() || null,
+      glassware:            glEl ? glEl.value.trim() : null,
+      special_requirements: srEl ? srEl.value.trim() : null,
+      recipe_steps:         document.getElementById('recipeSteps').value.trim() || null,
+      recipe_notes:         document.getElementById('recipeNotes').value.trim() || null,
+      ai_score_breakdown:   getHomemadeData() && getHomemadeData() !== 'ERROR' ? { homemade: JSON.parse(getHomemadeData()) } : null,
+      final_decision:       'pending',
     };
   }
 
@@ -820,10 +800,24 @@ avour<!DOCTYPE html>
     }
     btn.disabled = false; btn.textContent = 'Save Draft';
     if (!error) {
-      document.getElementById('draftSaved').style.display = 'block';
       document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
       document.getElementById('submitStatus').className = 'svalue pending';
-      setTimeout(() => document.getElementById('draftSaved').style.display = 'none', 3000);
+      // Show/update draft card on dashboard
+      const draftCard = document.getElementById('dashDraftCard');
+      if (draftCard) {
+        draftCard.style.display = 'flex';
+        const nameEl = document.getElementById('dashDraftName');
+        const drinkName = document.getElementById('drinkName').value.trim();
+        if (nameEl) nameEl.textContent = drinkName || 'Untitled draft';
+      }
+      // Flash confirmation
+      const draftSavedEl = document.getElementById('draftSaved');
+      if (draftSavedEl) {
+        draftSavedEl.style.display = 'block';
+        setTimeout(() => draftSavedEl.style.display = 'none', 3000);
+      }
+    } else {
+      alert('Save failed. Please try again or check your connection.');
     }
   }
 
@@ -832,8 +826,6 @@ avour<!DOCTYPE html>
     const errEl  = document.getElementById('submitError');
     const drinkName   = document.getElementById('drinkName').value.trim();
     const swaSyrups   = getMultiValues('swaSyrupWrap');
-    const homemadeCheck = getHomemadeData();
-    if (homemadeCheck === 'ERROR') { showErr(errEl, 'Please fill the recipe for all declared homemade components.'); return; }
     const ingredients = document.getElementById('ingredients').value.trim();
     const recipeSteps = document.getElementById('recipeSteps').value.trim();
 
@@ -934,7 +926,7 @@ avour<!DOCTYPE html>
     document.getElementById('page-' + page).classList.add('active');
     document.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
     document.querySelectorAll('.mobile-nav-item').forEach(l => l.classList.remove('active'));
-    const pageMap = { dashboard: 0, rules: 1, schedule: 2, regional: 3, submit: 4 };
+    const pageMap = { dashboard: 0, rules: 1, schedule: 2, submit: 3 };
     document.querySelectorAll('.subnav-link')[pageMap[page]]?.classList.add('active');
     document.querySelectorAll('.mobile-nav-item')[pageMap[page]]?.classList.add('active');
     window.scrollTo(0, 0);
@@ -1033,18 +1025,12 @@ avour<!DOCTYPE html>
   }
   function getHomemadeData() {
     const items = [];
-    let hasError = false;
     document.querySelectorAll('.homemade-item').forEach(item => {
       const name = item.querySelector('input')?.value.trim();
       const type = item.querySelector('select')?.value;
       const recipe = item.querySelector('textarea')?.value.trim();
-      if (name) {
-        if (!recipe) { hasError = true; item.querySelector('textarea').style.border = '1.5px solid #e53e3e'; }
-        else { item.querySelector('textarea').style.border = ''; }
-        items.push({ name, type, recipe });
-      }
+      if (name) items.push({ name, type, recipe });
     });
-    if (hasError) return 'ERROR';
     return items.length ? JSON.stringify(items) : null;
   }
 
