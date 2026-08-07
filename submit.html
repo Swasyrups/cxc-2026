@@ -238,84 +238,158 @@ avour<!DOCTYPE html>
 ══════════════════════════════════════════ -->
 <div id="page-schedule" class="page">
   <div class="schedule-hero">
-    <p class="eyebrow">Key Dates</p>
-    <h1>The Full Timeline</h1>
-    <p>Every important date from registration to the finale on 8 September.</p>
+    <p class="eyebrow">Schedule</p>
+    <h1>Regionals & Day Plan</h1>
+    <p>Your regional date, venue, and what to expect on the day.</p>
   </div>
-  <div class="timeline">
+
+  <!-- Schedule sub-tabs -->
+  <div style="display:flex;gap:8px;padding:0 20px 20px;max-width:800px;margin:0 auto;flex-wrap:wrap;">
+    <button id="tab-timeline" onclick="showSchedTab('timeline')" style="padding:8px 20px;border-radius:50px;border:1.5px solid var(--olive);background:var(--olive);color:#fff;font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;">Full Timeline</button>
+    <button id="tab-dayschedule" onclick="showSchedTab('dayschedule')" style="padding:8px 20px;border-radius:50px;border:1.5px solid var(--olive);background:#fff;color:var(--olive);font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;">Day Schedule</button>
+  </div>
+
+  <!-- Timeline tab -->
+  <div id="sched-timeline" class="timeline">
     <div class="timeline-item">
-      <div class="timeline-dot olive">1</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
         <span class="timeline-date olive">21 June 2026</span>
-        <h3>Registrations Open</h3>
-        <p>Individual registration opens for baristas and bartenders across India. Sample pack dispatched within 24 hours of registration. You should receive the kit within 5-7 working days.</p>
+        <h3>Registrations Opened</h3>
+        <p>Individual registration opened for baristas and bartenders across India.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">2</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">22 June 2026</span>
-        <h3>Submission Portal Opens</h3>
-        <p>Upload your recipe card and video from this portal. The portal closes on 25 July at midnight IST.</p>
+        <span class="timeline-date olive">20 July 2026</span>
+        <h3>Registrations Closed</h3>
+        <p>Registration window closed.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">3</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">20 July 2026</span>
-        <h3>Registrations Close</h3>
-        <p>Final deadline for all registration. No registrations accepted after midnight IST. No extensions.</p>
+        <span class="timeline-date olive">25 July 2026</span>
+        <h3>Phase 1 Submissions Closed</h3>
+        <p>Individual recipe card and video submissions closed.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">4</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">25 July 2026</span>
-        <h3>Submissions Close</h3>
-        <p>Final deadline for all recipe card and video uploads. No submissions accepted after midnight IST. No extensions.</p>
+        <span class="timeline-date olive">31 July – 4 Aug 2026</span>
+        <h3>Regional Shortlist & Team Pairings</h3>
+        <p>You've been shortlisted and paired with your partner. Welcome to the CxC Regionals.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot gold">5</div>
+      <div class="timeline-dot pink">→</div>
       <div class="timeline-content">
-        <span class="timeline-date sand">31 July 2026</span>
-        <h3>Regional Shortlist Announced</h3>
-        <p>Shortlisted individuals for regionals notified via email. Barista–bartender team pairings announced for each regional city. Rules and sample kits dispatched on the same day.</p>
+        <span class="timeline-date pink">11 August 2026 · Tuesday</span>
+        <h3>North Regional</h3>
+        <p>Siyah Arthouse, Saket, Delhi NCR. Report by 8:30 AM.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot olive">6</div>
+      <div class="timeline-dot pink">→</div>
       <div class="timeline-content">
-        <span class="timeline-date olive">12 August 2026</span>
-        <h3>Regional Submissions Close</h3>
-        <p>Submissions as a team to be closed along with the recipe card and video. All regions will get the same time with the samples and regional round rules.</p>
+        <span class="timeline-date pink">18 August 2026 · Tuesday</span>
+        <h3>West Regional</h3>
+        <p>House of Paloma, Bandra, Mumbai. Report by 8:30 AM.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot olive">7</div>
+      <div class="timeline-dot pink">→</div>
       <div class="timeline-content">
-        <span class="timeline-date olive">August 2026</span>
-        <h3>Regionals</h3>
-        <p>Delhi - 11 Aug | Mumbai - 20 Aug | Bangalore - 25 Aug. Judging by a panel of three per city. Top 2 teams per city advance to the finale.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot pink" style="font-size:16px;">8</div>
-      <div class="timeline-content">
-        <span class="timeline-date pink">26 Aug 2026</span>
-        <h3>Finale Opens</h3>
-        <p>The top 6 Finale teams receive the samples and rules for the Grand Finale. Each team gets the same time with the samples.</p>
+        <span class="timeline-date pink">25 August 2026 · Tuesday</span>
+        <h3>South Regional</h3>
+        <p>Hamilton Cocktail Bar, Bengaluru. Report by 8:30 AM.</p>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot pink" style="font-size:16px;">✦</div>
       <div class="timeline-content">
         <span class="timeline-date pink">8 September 2026 · Bangalore</span>
-        <h3>Grand Finale</h3>
-        <p>The top teams 2 from each regionals compete live. 15-minute showcase. Finale judging panel. Winners announced at the closing ceremony. Prize pool ₹1L+.</p>
+        <h3>Grand Finale — Bangalore Brewing Company</h3>
+        <p>Top 2 teams from each regional compete live. 15-minute showcase. Prize pool ₹1L+.</p>
       </div>
     </div>
   </div>
+
+  <!-- Day Schedule tab -->
+  <div id="sched-dayschedule" style="display:none;max-width:700px;margin:0 auto;padding:0 20px 40px;">
+    <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(75,49,65,0.08);">
+      <div style="background:var(--plum);padding:20px 24px;">
+        <p style="color:rgba(255,255,255,0.7);font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Regional Day</p>
+        <p style="color:#fff;font-size:1.1rem;font-weight:700;">Report by 8:30 AM · Competition from 2:00 PM</p>
+      </div>
+      <div style="font-family:'Poppins',sans-serif;">
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">8:30 AM</span>
+          <span style="font-size:0.85rem;color:#333;"><strong>Report & Check-in</strong> — Arrive at the venue, register your presence</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;background:#fafafa;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">9:00 – 10:00</span>
+          <span style="font-size:0.85rem;color:#333;">Registration + Slot selection</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">10:00 – 10:20</span>
+          <span style="font-size:0.85rem;color:#333;">Judges Introduction</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;background:#fafafa;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">10:20 – 12:20</span>
+          <span style="font-size:0.85rem;color:#333;"><strong>Masterclasses</strong> — Three sessions by our judges from both the coffee and bar world</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">12:30 – 2:00</span>
+          <span style="font-size:0.85rem;color:#333;">Lunch & Networking</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;background:rgba(240,86,122,0.05);">
+          <span style="font-size:0.78rem;color:var(--pink);font-weight:700;min-width:110px;">2:00 – 5:00</span>
+          <span style="font-size:0.85rem;color:#333;"><strong style="color:var(--pink);">Main Round</strong> — Teams present their signature drink live before the judges. 8 minutes per team.</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;background:#fafafa;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">5:00 – 5:30</span>
+          <span style="font-size:0.85rem;color:#333;">Judges Collation + Tea Break</span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;border-bottom:1px solid #f0f0f0;align-items:center;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">5:30</span>
+          <span style="font-size:0.85rem;color:#333;"><strong>Prize Announcement</strong></span>
+        </div>
+        <div style="display:flex;gap:16px;padding:16px 24px;align-items:center;background:#fafafa;">
+          <span style="font-size:0.78rem;color:var(--olive);font-weight:700;min-width:110px;">6:00</span>
+          <span style="font-size:0.85rem;color:#333;">Networking</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--paper);border-radius:12px;padding:20px 24px;margin-top:16px;font-family:'Poppins',sans-serif;">
+      <p style="font-size:0.78rem;font-weight:700;color:var(--plum);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.5px;">On the Day — Checklist</p>
+      <ul style="font-size:0.82rem;color:#444;line-height:2;padding-left:16px;">
+        <li>Carry all your tools (jigger, shaker, strainer, etc.)</li>
+        <li>Carry all your ingredients</li>
+        <li>Carry your pre-prepped components (sealed, labelled)</li>
+        <li>Print your recipe card, ingredient list, and pre-prep recipes</li>
+        <li>Glassware at venue can be used if declared in submission</li>
+        <li>Make 5 servings — 4 for judges, 1 for photography</li>
+        <li>8 minutes to prep, present, and tell your story</li>
+        <li>2 minutes for judges' questions</li>
+        <li>2 minutes to clean up your station</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showSchedTab(tab) {
+      document.getElementById('sched-timeline').style.display = tab === 'timeline' ? 'block' : 'none';
+      document.getElementById('sched-dayschedule').style.display = tab === 'dayschedule' ? 'block' : 'none';
+      document.getElementById('tab-timeline').style.background = tab === 'timeline' ? 'var(--olive)' : '#fff';
+      document.getElementById('tab-timeline').style.color = tab === 'timeline' ? '#fff' : 'var(--olive)';
+      document.getElementById('tab-dayschedule').style.background = tab === 'dayschedule' ? 'var(--olive)' : '#fff';
+      document.getElementById('tab-dayschedule').style.color = tab === 'dayschedule' ? '#fff' : 'var(--olive)';
+    }
+  </script>
 </div>
 
 
@@ -324,8 +398,8 @@ avour<!DOCTYPE html>
 ══════════════════════════════════════════ -->
 <div id="page-submit" class="page">
   <div class="submit-hero">
-    <p class="eyebrow">Stage 1 Submission</p>
-    <h1>Submit Your Entry</h1>
+    <p class="eyebrow">Regional Round</p>
+    <h1>Regional Submission</h1>
     <p>Fill in your recipe details and upload your 60–90 second preparation video. You can save a draft and come back.</p>
   </div>
   <div class="submit-body">
@@ -349,19 +423,67 @@ avour<!DOCTYPE html>
             <label class="form-label">Swa Syrup(s) Used * <span class="opt">— select all that apply</span></label>
             <div class="multi-select-wrap" id="swaSyrupWrap">
               <div class="multi-select-display" onclick="toggleDropdown('swaSyrupDropdown')" id="swaSyrupDisplay">Select syrups...</div>
-              <div class="multi-select-dropdown" id="swaSyrupDropdown">
-                <label class="multi-opt"><input type="checkbox" value="Alphonso Mango" onchange="updateMultiDisplay('swaSyrupWrap')"> Alphonso Mango</label>
-                <label class="multi-opt"><input type="checkbox" value="Kokum" onchange="updateMultiDisplay('swaSyrupWrap')"> Kokum</label>
-                <label class="multi-opt"><input type="checkbox" value="Vanilla" onchange="updateMultiDisplay('swaSyrupWrap')"> Vanilla</label>
-                <label class="multi-opt"><input type="checkbox" value="Mojito Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Mojito Mint</label>
-                <label class="multi-opt"><input type="checkbox" value="Buransh" onchange="updateMultiDisplay('swaSyrupWrap')"> Buransh</label>
+              <div class="multi-select-dropdown" id="swaSyrupDropdown" style="max-height:250px;overflow-y:auto;">
+                <label class="multi-opt"><input type="checkbox" value="Jamun Kala Khatta" onchange="updateMultiDisplay('swaSyrupWrap')"> Jamun Kala Khatta</label>
+                <label class="multi-opt"><input type="checkbox" value="Orange Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Orange Mint</label>
                 <label class="multi-opt"><input type="checkbox" value="Summer Berries" onchange="updateMultiDisplay('swaSyrupWrap')"> Summer Berries</label>
-                <label class="multi-opt"><input type="checkbox" value="Kaffir Lime" onchange="updateMultiDisplay('swaSyrupWrap')"> Kaffir Lime</label>
-                <label class="multi-opt"><input type="checkbox" value="Roasted Hazelnut" onchange="updateMultiDisplay('swaSyrupWrap')"> Roasted Hazelnut</label>
+                <label class="multi-opt"><input type="checkbox" value="Lemon Ginger Naariyal Paani" onchange="updateMultiDisplay('swaSyrupWrap')"> Lemon Ginger Naariyal Paani</label>
+                <label class="multi-opt"><input type="checkbox" value="Kokam Cumin" onchange="updateMultiDisplay('swaSyrupWrap')"> Kokam Cumin</label>
                 <label class="multi-opt"><input type="checkbox" value="Guava Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Guava Chilli</label>
-                <label class="multi-opt"><input type="checkbox" value="Passionfruit" onchange="updateMultiDisplay('swaSyrupWrap')"> Passionfruit</label>
-                <label class="multi-opt"><input type="checkbox" value="Brown Butter" onchange="updateMultiDisplay('swaSyrupWrap')"> Brown Butter</label>
-                <label class="multi-opt"><input type="checkbox" value="Pineapple Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Pineapple Chilli</label>
+                <label class="multi-opt"><input type="checkbox" value="Mango Passion" onchange="updateMultiDisplay('swaSyrupWrap')"> Mango Passion</label>
+                <label class="multi-opt"><input type="checkbox" value="Lychee Lemon" onchange="updateMultiDisplay('swaSyrupWrap')"> Lychee Lemon</label>
+                <label class="multi-opt"><input type="checkbox" value="Pineapple Bird's Eye Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Pineapple Bird's Eye Chilli</label>
+                <label class="multi-opt"><input type="checkbox" value="Tamarind Shikanji" onchange="updateMultiDisplay('swaSyrupWrap')"> Tamarind Shikanji</label>
+                <label class="multi-opt"><input type="checkbox" value="Hibiscus Cascara" onchange="updateMultiDisplay('swaSyrupWrap')"> Hibiscus Cascara</label>
+                <label class="multi-opt"><input type="checkbox" value="Lychee Rose" onchange="updateMultiDisplay('swaSyrupWrap')"> Lychee Rose</label>
+                <label class="multi-opt"><input type="checkbox" value="Mint Lime" onchange="updateMultiDisplay('swaSyrupWrap')"> Mint Lime</label>
+                <label class="multi-opt"><input type="checkbox" value="Watermelon Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Watermelon Mint</label>
+                <label class="multi-opt"><input type="checkbox" value="Masala Shikanji" onchange="updateMultiDisplay('swaSyrupWrap')"> Masala Shikanji</label>
+                <label class="multi-opt"><input type="checkbox" value="Cocoa Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Cocoa Mint</label>
+                <label class="multi-opt"><input type="checkbox" value="Rich Cocoa" onchange="updateMultiDisplay('swaSyrupWrap')"> Rich Cocoa</label>
+                <label class="multi-opt"><input type="checkbox" value="Strawberry Vanilla" onchange="updateMultiDisplay('swaSyrupWrap')"> Strawberry Vanilla</label>
+                <label class="multi-opt"><input type="checkbox" value="Mango Cream" onchange="updateMultiDisplay('swaSyrupWrap')"> Mango Cream</label>
+                <label class="multi-opt"><input type="checkbox" value="Passionfruit Coconut" onchange="updateMultiDisplay('swaSyrupWrap')"> Passionfruit Coconut</label>
+                <label class="multi-opt"><input type="checkbox" value="Sea Salt Caramel" onchange="updateMultiDisplay('swaSyrupWrap')"> Sea Salt Caramel</label>
+                <label class="multi-opt"><input type="checkbox" value="Apple Pie" onchange="updateMultiDisplay('swaSyrupWrap')"> Apple Pie</label>
+                <label class="multi-opt"><input type="checkbox" value="Passion Fruit" onchange="updateMultiDisplay('swaSyrupWrap')"> Passion Fruit</label>
+                <label class="multi-opt"><input type="checkbox" value="Peach" onchange="updateMultiDisplay('swaSyrupWrap')"> Peach</label>
+                <label class="multi-opt"><input type="checkbox" value="Jackfruit" onchange="updateMultiDisplay('swaSyrupWrap')"> Jackfruit</label>
+                <label class="multi-opt"><input type="checkbox" value="Green Apple" onchange="updateMultiDisplay('swaSyrupWrap')"> Green Apple</label>
+                <label class="multi-opt"><input type="checkbox" value="Orange" onchange="updateMultiDisplay('swaSyrupWrap')"> Orange</label>
+                <label class="multi-opt"><input type="checkbox" value="Coconut" onchange="updateMultiDisplay('swaSyrupWrap')"> Coconut</label>
+                <label class="multi-opt"><input type="checkbox" value="Kokam" onchange="updateMultiDisplay('swaSyrupWrap')"> Kokam</label>
+                <label class="multi-opt"><input type="checkbox" value="Watermelon" onchange="updateMultiDisplay('swaSyrupWrap')"> Watermelon</label>
+                <label class="multi-opt"><input type="checkbox" value="Strawberry" onchange="updateMultiDisplay('swaSyrupWrap')"> Strawberry</label>
+                <label class="multi-opt"><input type="checkbox" value="Cucumber" onchange="updateMultiDisplay('swaSyrupWrap')"> Cucumber</label>
+                <label class="multi-opt"><input type="checkbox" value="Muskmelon" onchange="updateMultiDisplay('swaSyrupWrap')"> Muskmelon</label>
+                <label class="multi-opt"><input type="checkbox" value="Kaffir Lime" onchange="updateMultiDisplay('swaSyrupWrap')"> Kaffir Lime</label>
+                <label class="multi-opt"><input type="checkbox" value="Lavender" onchange="updateMultiDisplay('swaSyrupWrap')"> Lavender</label>
+                <label class="multi-opt"><input type="checkbox" value="Hibiscus" onchange="updateMultiDisplay('swaSyrupWrap')"> Hibiscus</label>
+                <label class="multi-opt"><input type="checkbox" value="Rose" onchange="updateMultiDisplay('swaSyrupWrap')"> Rose</label>
+                <label class="multi-opt"><input type="checkbox" value="Elderflower" onchange="updateMultiDisplay('swaSyrupWrap')"> Elderflower</label>
+                <label class="multi-opt"><input type="checkbox" value="Buransh (Rhododendron)" onchange="updateMultiDisplay('swaSyrupWrap')"> Buransh (Rhododendron)</label>
+                <label class="multi-opt"><input type="checkbox" value="Triple Sec" onchange="updateMultiDisplay('swaSyrupWrap')"> Triple Sec</label>
+                <label class="multi-opt"><input type="checkbox" value="Simple Syrup" onchange="updateMultiDisplay('swaSyrupWrap')"> Simple Syrup</label>
+                <label class="multi-opt"><input type="checkbox" value="Grenadine" onchange="updateMultiDisplay('swaSyrupWrap')"> Grenadine</label>
+                <label class="multi-opt"><input type="checkbox" value="Citrus" onchange="updateMultiDisplay('swaSyrupWrap')"> Citrus</label>
+                <label class="multi-opt"><input type="checkbox" value="Blue Curacao" onchange="updateMultiDisplay('swaSyrupWrap')"> Blue Curacao</label>
+                <label class="multi-opt"><input type="checkbox" value="Mojito Mint" onchange="updateMultiDisplay('swaSyrupWrap')"> Mojito Mint</label>
+                <label class="multi-opt"><input type="checkbox" value="Ginger Bread" onchange="updateMultiDisplay('swaSyrupWrap')"> Ginger Bread</label>
+                <label class="multi-opt"><input type="checkbox" value="Cardamom" onchange="updateMultiDisplay('swaSyrupWrap')"> Cardamom</label>
+                <label class="multi-opt"><input type="checkbox" value="Cinnamon" onchange="updateMultiDisplay('swaSyrupWrap')"> Cinnamon</label>
+                <label class="multi-opt"><input type="checkbox" value="Mixed Spice" onchange="updateMultiDisplay('swaSyrupWrap')"> Mixed Spice</label>
+                <label class="multi-opt"><input type="checkbox" value="Jaggery" onchange="updateMultiDisplay('swaSyrupWrap')"> Jaggery</label>
+                <label class="multi-opt"><input type="checkbox" value="Peppermint" onchange="updateMultiDisplay('swaSyrupWrap')"> Peppermint</label>
+                <label class="multi-opt"><input type="checkbox" value="Vanilla Bean" onchange="updateMultiDisplay('swaSyrupWrap')"> Vanilla Bean</label>
+                <label class="multi-opt"><input type="checkbox" value="Caramel" onchange="updateMultiDisplay('swaSyrupWrap')"> Caramel</label>
+                <label class="multi-opt"><input type="checkbox" value="Lemongrass" onchange="updateMultiDisplay('swaSyrupWrap')"> Lemongrass</label>
+                <label class="multi-opt"><input type="checkbox" value="Bird's Eye Chilli" onchange="updateMultiDisplay('swaSyrupWrap')"> Bird's Eye Chilli</label>
+                <label class="multi-opt"><input type="checkbox" value="Nannari" onchange="updateMultiDisplay('swaSyrupWrap')"> Nannari</label>
+                <label class="multi-opt"><input type="checkbox" value="Salted Pistachio" onchange="updateMultiDisplay('swaSyrupWrap')"> Salted Pistachio</label>
+                <label class="multi-opt"><input type="checkbox" value="Caramel Almond Praline" onchange="updateMultiDisplay('swaSyrupWrap')"> Caramel Almond Praline</label>
+                <label class="multi-opt"><input type="checkbox" value="Hazelnut" onchange="updateMultiDisplay('swaSyrupWrap')"> Hazelnut</label>
+                <label class="multi-opt"><input type="checkbox" value="Roasted Hazelnut" onchange="updateMultiDisplay('swaSyrupWrap')"> Roasted Hazelnut</label>
               </div>
             </div>
             <p style="font-size:12px;color:rgba(28,28,28,0.4);margin-top:6px;">Minimum 20ml of at least one Swa syrup required.</p>
@@ -430,8 +552,8 @@ avour<!DOCTYPE html>
             </div>
             <div class="form-row single">
               <div class="form-group">
-                <label class="form-label">Recipe / Method</label>
-                <textarea class="form-textarea" placeholder="Describe how you make it — ingredients and process." style="min-height:80px;"></textarea>
+                <label class="form-label">Recipe / Method *</label>
+                <textarea class="form-textarea" placeholder="Describe how you make it — ingredients and process." style="min-height:80px;" required></textarea>
               </div>
             </div>
           </div>
@@ -449,11 +571,11 @@ avour<!DOCTYPE html>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Garnish <span class="opt">(optional)</span></label>
+            <label class="form-label">Garnish *</label>
             <input class="form-input" id="garnish" type="text" placeholder="e.g. Dried hibiscus, lime wheel" />
           </div>
           <div class="form-group">
-            <label class="form-label">Glassware at Venue <span class="opt">— list 2-3 options in preference order</span></label>
+            <label class="form-label">Glassware at Venue * <span class="opt">— list 2-3 options in preference order</span></label>
             <input class="form-input" id="glassware" type="text" placeholder="e.g. Coupe, Nick & Nora, Rocks glass" />
             <p style="font-size:11px;color:rgba(28,28,28,0.4);margin-top:4px;">We'll do our best to arrange these. Not guaranteed — please list alternatives.</p>
           </div>
@@ -472,7 +594,7 @@ avour<!DOCTYPE html>
         </div>
         <div class="form-row single">
           <div class="form-group">
-            <label class="form-label">Recipe Story <span class="opt">(optional)</span></label>
+            <label class="form-label">Recipe Story *</label>
             <textarea class="form-textarea" id="recipeNotes" placeholder="Tell us the story behind your drink. What inspired it? What does it represent?"></textarea>
           </div>
         </div>
@@ -506,7 +628,7 @@ avour<!DOCTYPE html>
             <p id="drinkPhotoName" style="font-size:13px;color:var(--olive);font-weight:500;margin-top:8px;display:none;"></p>
           </div>
           <div class="form-group">
-            <label class="form-label">Ingredients & Setup Photo <span class="opt">(optional)</span></label>
+            <label class="form-label">Ingredients & Setup Photo *</label>
             <div class="upload-area" style="padding:24px;" onclick="document.getElementById('setupPhoto').click()">
               <div class="upload-icon" style="font-size:24px;">🔧</div>
               <p style="font-size:13px;margin-top:4px;"><span class="link">Upload a photo showing your ingredients and equipment laid out.</span> · JPG or PNG · Max 5MB</p>
@@ -523,7 +645,7 @@ avour<!DOCTYPE html>
             <div style="display:flex;align-items:flex-start;gap:12px;">
               <input type="checkbox" id="rulesConsent" style="margin-top:4px;width:18px;height:18px;accent-color:#59751d;flex-shrink:0;" />
               <label for="rulesConsent" style="font-size:13px;color:rgba(28,28,28,0.7);line-height:1.6;font-weight:300;cursor:pointer;">
-                I confirm I have read and agree to the <a href="#" onclick="showPage('rules');return false;" style="color:var(--olive);font-weight:500;">CxC 2026 Competition Rules</a>. My submission is original work, not publicly served in the last 12 months, and complies with all eligibility requirements.
+                I confirm I have read and agree to the <a href="#" onclick="showPage('rules');return false;" style="color:var(--olive);font-weight:500;">CxC 2026 Competition Rules</a>. My submission is original work, not publicly served in the last 12 months, and complies with all eligibility requirements. I understand that at least one Swa Artisanal Syrup must be used, the judges' decision is final and binding, and that plagiarism or unsportsmanlike conduct may result in disqualification.
               </label>
             </div>
             <div style="display:flex;align-items:flex-start;gap:12px;">
@@ -535,9 +657,10 @@ avour<!DOCTYPE html>
           </div>
         </div>
         <div id="submitError" style="color:#e53e3e;font-size:14px;margin-bottom:12px;display:none;"></div>
-        <div style="display:flex;gap:12px;">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <button class="btn-draft" id="draftBtn" onclick="saveDraft()">Save Draft</button>
           <button class="btn-submit" id="submitBtn" onclick="submitEntry()">Submit My Entry →</button>
+          <button type="button" id="clearBtn" onclick="clearEntry()" style="background:none;border:1.5px solid #e53e3e;color:#e53e3e;border-radius:50px;padding:12px 20px;font-size:0.88rem;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;">Clear & Start Over</button>
         </div>
         <p class="submit-note">By submitting you confirm this is your original work and you agree to the CxC 2026 competition rules.</p>
         <p id="draftSaved" style="text-align:center;font-size:13px;color:var(--olive);margin-top:8px;display:none;">✓ Draft saved</p>
@@ -547,7 +670,7 @@ avour<!DOCTYPE html>
     <div class="success-card" id="successCard" style="display:none;">
       <div class="success-icon">✓</div>
       <h2>Entry Submitted!</h2>
-      <p>Your recipe and video have been received. The judging panel will review all entries by 25 July. You'll hear from us on 1 August.</p>
+      <p>Your regional submission has been received. We'll see you on the day — carry your tools, ingredients, and printed recipe card.</p>
       <p style="margin-top:20px;font-size:14px;color:var(--gold);">Questions? Email <strong style="color:var(--ink);">cxc@drinkswa.com</strong></p>
     </div>
 
@@ -675,7 +798,14 @@ avour<!DOCTYPE html>
     if (!swaSyrups.length){ showErr(errEl, 'Please select at least one Swa syrup.'); return; }
     if (!ingredients)     { showErr(errEl, 'Please list your ingredients.'); return; }
     if (!recipeSteps)     { showErr(errEl, 'Please describe your recipe steps.'); return; }
+    const garnish = document.getElementById('garnish').value.trim();
+    const glassware = document.getElementById('glassware').value.trim();
+    const recipeNotes = document.getElementById('recipeNotes').value.trim();
+    if (!garnish)         { showErr(errEl, 'Please describe your garnish.'); return; }
+    if (!glassware)       { showErr(errEl, 'Please specify your glassware preference.'); return; }
+    if (!recipeNotes)     { showErr(errEl, 'Please write your recipe story.'); return; }
     if (!selectedDrinkPhoto) { showErr(errEl, 'Please upload a photo of your finished drink.'); return; }
+    if (!selectedSetupPhoto) { showErr(errEl, 'Please upload your ingredients & setup photo.'); return; }
     if (!selectedVideoFile)  { showErr(errEl, 'Please upload your preparation video.'); return; }
     if (selectedVideoFile.size > 50 * 1024 * 1024) { showErr(errEl, 'Video must be under 50MB. Please compress and re-upload.'); return; }
 
@@ -768,6 +898,27 @@ avour<!DOCTYPE html>
   async function logout() {
     await sb.auth.signOut();
     window.location.href = 'login.html';
+  }
+
+  async function clearEntry() {
+    if (!confirm('Are you sure you want to clear your draft and start over? This cannot be undone.')) return;
+    if (existingSubmissionId) {
+      await sb.from('submissions').delete().eq('id', existingSubmissionId);
+      existingSubmissionId = null;
+    }
+    document.getElementById('submitForm').querySelectorAll('input[type="text"], textarea, select').forEach(el => el.value = '');
+    document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+    document.querySelectorAll('.multi-select-display').forEach(el => el.textContent = 'Select...');
+    selectedVideoFile = null;
+    selectedDrinkPhoto = null;
+    selectedSetupPhoto = null;
+    document.getElementById('videoPreview').style.display = 'none';
+    document.getElementById('drinkPhotoName').style.display = 'none';
+    document.getElementById('setupPhotoName').style.display = 'none';
+    document.getElementById('draftSaved').style.display = 'none';
+    document.getElementById('submitStatus').innerHTML = '<div class="dot grey"></div> Not submitted';
+    document.getElementById('submitStatus').className = 'svalue';
+    alert('Draft cleared. You can start fresh.');
   }
 
   function showErr(el, msg) { el.textContent = msg; el.style.display = 'block'; }
