@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CxC 2026 — CoffeeXCocktail Championship | Presented by Swa</title>
+  <meta name="description" content="India's only barista-meets-bartender championship. Enter as an individual. Win your region. Compete at the Finale. " />
+  <meta property="og:title" content="CxC 2026 — CoffeeXCocktail Championship" />
+  <meta property="og:description" content="Where India's best baristas meet its best bartenders. Compete for ₹1L+." />
+  <meta property="og:image" content="assets/images/CXC_2026.jpg" />
+  <!-- Canonical -->
+<link rel="canonical" href="https://cxc.drinkswa.com/" />
+<!-- OG Type + URL -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cxc.drinkswa.com/" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CxC 2026 — CoffeeXCocktail Championship" />
+<meta name="twitter:description" content="Where India's best baristas meet its best bartenders. Compete for ₹1L+." />
+<meta name="twitter:image" content="https://cxc.drinkswa.com/assets/images/twitter.svg" />
+
+<!-- Favicon -->
+<link rel="icon" href="https://cxc.drinkswa.com/assets/images/CXC_favicon.svg" type="image/png" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Regional Teams — matched to teams.html */
+    .teams-section .region-block { margin-bottom: 60px; }
+    .teams-section .region-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--olive);
+    }
+    .teams-section .region-badge {
+      background: var(--olive);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .teams-section .region-title { font-size: 1.4rem; font-weight: 700; color: var(--plum); }
+    .teams-section .region-meta { font-size: 0.82rem; color: #666; margin-left: auto; }
+    .teams-section .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .teams-section .team-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(75,49,65,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .teams-section .team-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .teams-section .team-members { display: flex; gap: 12px; }
+    .teams-section .member {
+      flex: 1;
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .teams-section .member-role {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .teams-section .member-role.barista { color: var(--olive); }
+    .teams-section .member-role.bartender { color: var(--pink); }
+    .teams-section .member-name { font-size: 0.9rem; font-weight: 600; color: var(--plum); line-height: 1.3; }
+    .teams-section .member-employer { font-size: 0.75rem; color: #666; margin-top: 2px; }
+    .teams-section .member-city { font-size: 0.72rem; color: #999; margin-top: 2px; }
+
+    /* Region tabs */
+    .region-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .region-tab-btn {
+      background: transparent;
+      border: 1.5px solid var(--olive);
+      color: var(--olive);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .25s;
+      letter-spacing: 0.3px;
+    }
+    .region-tab-btn.active,
+    .region-tab-btn:hover {
+      background: var(--olive);
+      color: #fff;
+    }
+    .region-panel { display: none; }
+    .region-panel.active { display: block; }
+
+    @media (max-width: 600px) {
+      .teams-section .team-members { flex-direction: column; }
+      .teams-section .region-meta { display: none; }
+    }
+  </style>
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/images/CXC_2026.jpg" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CLV78FGMMF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CLV78FGMMF');
+</script>
+
+<!-- Event JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "CxC 2026 — CoffeeXCocktail Championship",
+  "startDate": "2026-09-08",
+  "endDate": "2026-09-08",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Bangalore, India"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Swa Artisanal Syrups",
+    "url": "https://drinkswa.com"
+  },
+  "description": "India's only barista-meets-bartender championship. ",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-06-21"
+  }
+}
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CLV78FGMMF');
+</script>
+ 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1009752455128270');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQR3MPLlIwoxxgbgQ-oMusg4pt237Vtbg&libraries=places&callback=initPlaces" async defer></script>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <!-- Swa logo — left -->
+    <a class="nav-brand" href="https://drinkswa.com" target="_blank" aria-label="Swa Artisanal Syrups">
+      <!-- Replace with Swa SVG/PNG when available. Placeholder text until then. -->
+      <span style="font-family:var(--font-head);font-size:18px;font-weight:700;color:#fff;letter-spacing:0.06em;transition:color .35s" id="swa-wordmark"><img src="assets/images/swa-logo-white.png" alt="Swa Logo"/></span>
+    </a>
+
+    <!-- Nav links — right -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#judges">Judges</a></li>
+      <li><a href="#teams">Regional Teams</a></li>
+      <li><a href="#faq">FAQs</a></li>
+      <li><a href="login.html" class="nav-cta">Login</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<img src="assets/images/cxc-logo.png" alt="CxC Logo" class="cxc-logo-float" id="cxcLogoFloat" />
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+
+    <!-- CxC logo in hero centre (animates up into nav on scroll) -->
+    <!-- <div class="hero-logo" id="heroLogo">
+      <img src="assets/images/cxc-logo.png" alt="CxC 2026" style="width:100%;" />
+    </div> -->
+
+    
+
+    <h1 class="hero-title">
+      Two crafts. <em>One stage.</em>
+    </h1>
+
+    <h4 class="hero-sub">
+      India's barista X bartender championship.
+    </h4>
+
+    <!-- <div class="hero-badges">
+      <span class="hero-badge free">✦ FREE to Enter</span>
+      <span class="hero-badge">3 Cities</span>
+      <span class="hero-badge">10+ Jury Members</span>
+      <span class="hero-badge">500+ Expected Registrations</span>
+      <span class="hero-badge">Prizes Over ₹1L</span>
+    </div> -->
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:8px;">
+      <a href="#teams" style="display:inline-block;padding:14px 28px;border-radius:50px;border:1.5px solid #fff;color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;letter-spacing:0.3px;">Regional Teams Announced →</a>
+    </div>
+    <p class="hero-dates">
+      Regionals: 11 Aug (North) · 18 Aug (West) · 25 Aug (South)
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAND
+     ============================================================ -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number">₹1L+</div>
+        <div class="stat-label">Prizes to be Won</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">Professional</div>
+        <div class="stat-label">Bartenders & Barista</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Regionals</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">25</div>
+        <div class="stat-label">Eligible cities</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REGISTER
+     ============================================================ -->
+<section id="teams" class="section-pad teams-section">
+  <div class="container">
+    <div class="schedule-header reveal">
+      <span class="tag">Regional Teams</span>
+      <h2 class="section-title">11 Teams. 3 Regions. One Shot at the Finale.</h2>
+      <p class="section-sub" style="margin:0 auto;">CxC 2026 regional teams — qualified barista-bartender pairs competing live in August.</p>
+    </div>
+    <div class="teams-body" style="max-width:1100px;margin:0 auto;padding:40px 0 0;">
+
+      <div class="region-tabs">
+        <button class="region-tab-btn active" data-region="north">North</button>
+        <button class="region-tab-btn" data-region="west">West</button>
+        <button class="region-tab-btn" data-region="south">South</button>
+      </div>
+
+      <div class="region-panel active" id="panel-north">
+  <!-- NORTH -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">North</span>
+      <span class="region-title">Delhi NCR / Jaipur / Chandigarh</span>
+      <span class="region-meta">11 Aug · Siyah Arthouse, Saket · <a href="https://maps.app.goo.gl/JfTD6HJry2ijc4nG6" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team N1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anmol Singh</div>
+            <div class="member-employer">Olive Bar & Kitchen</div>
+            <div class="member-city">Delhi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Katnoria</div>
+            <div class="member-employer">Roslyn Coffee</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sagar Khuntia</div>
+            <div class="member-employer">DLF City Club 3</div>
+            <div class="member-city">Gurgaon</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Alok Singh</div>
+            <div class="member-employer">Fresh Factory</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anshuman Bhatt</div>
+            <div class="member-employer">Seville Bar & Lounge</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ashish Chawla</div>
+            <div class="member-employer">Barista Training Academy</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Satish Verma</div>
+            <div class="member-employer">Rhapsody Kitchen & Bar</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Mohammad Shadab</div>
+            <div class="member-employer">Dhanas Lake</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Pramod Rai</div>
+            <div class="member-employer">The Gaia Gourmet</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Abhay Mishra</div>
+            <div class="member-employer">Common Time</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Bhanwar Singh</div>
+            <div class="member-employer">Khoje Restaurant</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Sarabjeet Singh</div>
+            <div class="member-employer">Midori - The Zen Bar</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Abhinay Kumar Sharma</div>
+            <div class="member-employer">Bender's Bar & Cocktails Door</div>
+            <div class="member-city">Delhi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shiv Om</div>
+            <div class="member-employer">The Autumn House</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Ankit Chhetri</div>
+            <div class="member-employer">Hyatt Regency</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Biswajit Barman</div>
+            <div class="member-employer">Doppler Coffee</div>
+            <div class="member-city">Jaipur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sandeep Kumar</div>
+            <div class="member-employer">Taj Mussoorie Foothills</div>
+            <div class="member-city">Dehradun</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Annant Baheti</div>
+            <div class="member-employer">Cafe 651</div>
+            <div class="member-city">Jodhpur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team N10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Anil Sharma</div>
+            <div class="member-employer">The Brew Estate</div>
+            <div class="member-city">Ludhiana</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Surya Pratap Singh</div>
+            <div class="member-employer">Starbucks</div>
+            <div class="member-city">Jodhpur</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- NORTH TEAM 11 -->
+  <div class="region-block" style="margin-top:-32px;">
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-number">Team N11</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Harjot Bashal</div>
+            <div class="member-employer">Yazu Pan Asian Experience</div>
+            <div class="member-city">Chandigarh</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Vishal Bharti</div>
+            <div class="member-employer">Tamped AF</div>
+            <div class="member-city">Delhi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+
+      <div class="region-panel" id="panel-south">
+  <!-- SOUTH -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">South</span>
+      <span class="region-title">Bengaluru / Kochi</span>
+      <span class="region-meta">25 Aug · Hamilton Cocktail Bar · <a href="https://maps.app.goo.gl/2Cx2myWA7b4oSd1m9" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team S1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Varad Ghotge</div>
+            <div class="member-employer">Dali and Gala Cocktail Bar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Kushal Behera</div>
+            <div class="member-employer">Blue Tokai Coffee Roasters</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Bikash Dhimal</div>
+            <div class="member-employer">Legends Microbrewery</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Nikil R</div>
+            <div class="member-employer">Kanasu Kaffi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Dawa Lama</div>
+            <div class="member-employer">Bar Sama</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Nithish Kumar R</div>
+            <div class="member-employer">Roastea</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Rahit Pal</div>
+            <div class="member-employer">FOO Indiranagar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">John Abhi</div>
+            <div class="member-employer">Kanasu Kaffi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Manish Sankar</div>
+            <div class="member-employer">Yazu Pan Asian Supper Club</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ajith Kumar</div>
+            <div class="member-employer">Benki Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Yengkhom Chanu Romola</div>
+            <div class="member-employer">Oasis Brewery</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shalini M</div>
+            <div class="member-employer">Benki Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Prakhar Dubey</div>
+            <div class="member-employer">Dual Room</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Mohan NS</div>
+            <div class="member-employer">Third Wave Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Saahitya Trivedi</div>
+            <div class="member-employer">403 Forbidden Bar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Yadhu Krishnan</div>
+            <div class="member-employer">Nombre - Specialty Coffee</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Jabson Babu</div>
+            <div class="member-employer">Radisson Blu</div>
+            <div class="member-city">Kochi</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Neethu Johnson</div>
+            <div class="member-employer">Kaapiberry Coffee Academy</div>
+            <div class="member-city">Kochi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team S10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Om Bhadur Rai</div>
+            <div class="member-employer">FOO Indiranagar</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Rajput</div>
+            <div class="member-employer">Pixi</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- SOUTH TEAM 11 -->
+  <div class="region-block" style="margin-top:-32px;">
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-number">Team S11</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Mathew Lawrence</div>
+            <div class="member-employer">The Founders Brewery</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Faiz Ali</div>
+            <div class="member-employer">SOS</div>
+            <div class="member-city">Bengaluru</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+
+      <div class="region-panel" id="panel-west">
+  <!-- WEST -->
+  <div class="region-block">
+    <div class="region-header">
+      <span class="region-badge">West</span>
+      <span class="region-title">Mumbai / Pune / Goa / Nagpur</span>
+      <span class="region-meta">18 Aug · House of Paloma, Bandra · <a href="https://maps.app.goo.gl/zGXni7LSxuSB7Ejz9" target="_blank" style="color:var(--olive)">Map ↗</a></span>
+    </div>
+    <div class="teams-grid">
+
+      <div class="team-card">
+        <div class="team-number">Team W1</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Ganesh Mirashi</div>
+            <div class="member-employer">Soraia Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Shiv Kedar</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W2</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Croydin Sutari</div>
+            <div class="member-employer">Nayra</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Sairaj Phatkare</div>
+            <div class="member-employer">Kaapi Solutions</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W3</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Kshitij Bagul</div>
+            <div class="member-employer">Coast & Bloom</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Anjali Hari Gupta</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W4</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Devisha Mhatre</div>
+            <div class="member-employer">Bare Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Savita Vicky Parihar</div>
+            <div class="member-employer">Blue Tokai</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W5</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sundram Kumar</div>
+            <div class="member-employer">Deltin Royale</div>
+            <div class="member-city">Goa</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Pratik Dey Chowdhury</div>
+            <div class="member-employer">Together</div>
+            <div class="member-city">Goa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W6</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Marziya Lairikiyengbam</div>
+            <div class="member-employer">TSS - The Spirited Spot</div>
+            <div class="member-city">Pune</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Ragini Bob</div>
+            <div class="member-employer">Third Wave Coffee</div>
+            <div class="member-city">Pune</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W7</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Shaurya Rajbhar</div>
+            <div class="member-employer">Fielia Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rohit Shedjale</div>
+            <div class="member-employer">Caffeine Cartel</div>
+            <div class="member-city">Pune</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W8</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Adesh Bhowate</div>
+            <div class="member-employer">Brickhaus: Taps n Brews</div>
+            <div class="member-city">Nagpur</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">R Saravanamuthu</div>
+            <div class="member-employer">Corridor Seven Coffee</div>
+            <div class="member-city">Nagpur</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W9</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Sai Tamhankar</div>
+            <div class="member-employer">Drinq</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Rahul Nepali</div>
+            <div class="member-employer">Asterix</div>
+            <div class="member-city">Ahmedabad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-number">Team W10</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Vikas Gaikwad</div>
+            <div class="member-employer">Sweeney Bombay</div>
+            <div class="member-city">Mumbai</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Hassan Tumbi</div>
+            <div class="member-employer">Kaffyn Cafe</div>
+            <div class="member-city">Surat</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- WEST TEAM 11 -->
+  <div class="region-block" style="margin-top:-32px;">
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-number">Team W11</div>
+        <div class="team-members">
+          <div class="member">
+            <div class="member-role bartender">Bartender</div>
+            <div class="member-name">Suman Paul</div>
+            <div class="member-employer">Gather</div>
+            <div class="member-city">Pune</div>
+          </div>
+          <div class="member">
+            <div class="member-role barista">Barista</div>
+            <div class="member-name">Mohd Khizar</div>
+            <div class="member-employer">Kaapi Machines</div>
+            <div class="member-city">Goa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="tag">About CxC</span>
+        <h2 class="section-title">India's Homegrown Competition</h2>
+        <p>
+          Coffee X Cocktail Championship — CxC — is India's only home-grown competition that brings baristas and bartenders together under one roof. It creates a single stage for two iconic crafts. CxC celebrates the art of flavour, the skill of technique, and the spirit of collaboration.
+        </p>
+        <p>
+          We believe that the two crafts are thriving in India right now and putting us on the world map. They are distinct in their ways, yet have a lot in common. CxC creates an opportunity for knowledge and skill sharing between the two communities. 
+        </p>
+       
+        <p>
+          <strong>Presented by Swa Artisanal Syrups.</strong>
+        </p>
+    
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-img-placeholder">
+           <img src="assets/images/cxc2025.jpg" alt="CxC 2025" style="width:100%;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section id="how" class="section-pad">
+  <div class="container">
+    <div class="how-header reveal">
+      <span class="tag">How it Works</span>
+      <h2 class="section-title">Enter as an Individual. Build a Team.</h2>
+      <p class="section-sub">
+        You don't need a partner to register. The top performers from each region earn their spot at the Regionals. We match-make you with your partner.
+      </p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="step-num">1</div>
+        <h3>Register</h3>
+        <p>Sign up as a barista or bartender. We'll dispatch your Swa sample pack to make your recipe. Register early to have more time to craft.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">2</div>
+        <h3>Create & Submit</h3>
+        <p>Submit your team recipe and video before 11 August 2026.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">3</div>
+        <h3>Qualify for Regionals</h3>
+        <p>Top 11 bartenders and baristas from each region qualify. They are paired into teams of two. The Regionals happen live in August at Delhi, Mumbai, and Bangalore.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">4</div>
+        <h3>Grand Finale</h3>
+        <p>6 finalist teams compete at the Grand Finale on 8 September, Bangalore. Winners walk away with the title — and prizes over ₹1L.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     IMPORTANT DATES
+     ============================================================ -->
+<section id="dates" class="section-pad">
+  <div class="container">
+    <div class="dates-header reveal">
+      <span class="tag">Important Dates</span>
+      <h2 class="section-title">Mark Your Calendar</h2>
+    </div>
+    <div class="dates-timeline reveal">
+      <div class="date-item">
+        <div class="date-dot">21</div>
+        <div>
+          <div class="date-label">June 2026</div>
+          <div class="date-name">Registration Opens</div>
+          <div class="date-sub">Sign up with your employment details.</div>
+        </div>
+      </div>
+      <div class="date-item">
+        <div class="date-dot">20</div>
+        <div>
+          <div class="date-label">July 2026</div>
+          <div class="date-name">Registration Closes</div>
+          <div class="date-sub">Register early to get enough time.</div>
+        </div>
+      </div>
+      <div class="date-item">
+        <div class="date-dot">25</div>
+        <div>
+          <div class="date-label">July 2026</div>
+          <div class="date-name">Regional Submission</div>
+          <div class="date-sub">Video + recipe card upload</div>
+        </div>
+      </div>
+      <div class="date-item">
+        <div class="date-dot">★</div>
+        <div>
+          <div class="date-label">Aug 2026</div>
+          <div class="date-name">Regionals</div>
+          <div class="date-sub">11 Aug Delhi · 18 Aug Mumbai · 25 Aug Bangalore</div>
+        </div>
+      </div>
+      <div class="date-item highlight">
+        <div class="date-dot">8</div>
+        <div>
+          <div class="date-label">September 2026</div>
+          <div class="date-name">Grand Finale</div>
+          <div class="date-sub">Bangalore — 6 teams, one winner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SCHEDULE — HEATS
+     ============================================================ -->
+<section id="schedule" class="section-pad">
+  <div class="container">
+    <div class="schedule-header reveal">
+      <span class="tag">Regionals</span>
+      <h2 class="section-title">3 Cities. 3 Battles.</h2>
+      <p class="section-sub" style="margin:0 auto">
+        11 teams per region compete live. Teams are formed from shortlisted individuals.
+      </p>
+    </div>
+    <div class="schedule-grid">
+      <div class="schedule-card reveal">
+        <div class="schedule-card-head">
+          <div class="card-eyebrow">Regional 1 · Delhi NCR</div>
+          <h3>North India</h3>
+        </div>
+        <div class="schedule-card-body">
+          <p><strong>Date:</strong> 11 August 2026, Tuesday</p>
+          <p><strong>Venue:</strong> Siyah Arthouse, Saket</p>
+          <p><strong>Format:</strong> 11 teams competing live</p>
+          <p><strong>Top 2 teams</strong> advance to the Grand Finale</p>
+          <a href="https://maps.app.goo.gl/JfTD6HJry2ijc4nG6" target="_blank" style="display:inline-block;margin-top:12px;color:var(--olive);font-weight:600;font-size:0.85rem;">↗ Get Directions</a>
+        </div>
+      </div>
+      <div class="schedule-card reveal">
+        <div class="schedule-card-head">
+          <div class="card-eyebrow">Regional 2 · Mumbai</div>
+          <h3>West India</h3>
+        </div>
+        <div class="schedule-card-body">
+          <p><strong>Date:</strong> 18 August 2026, Tuesday</p>
+          <p><strong>Venue:</strong> House of Paloma, Bandra</p>
+          <p><strong>Format:</strong> 11 teams competing live</p>
+          <p><strong>Top 2 teams</strong> advance to the Grand Finale</p>
+          <a href="https://maps.app.goo.gl/zGXni7LSxuSB7Ejz9" target="_blank" style="display:inline-block;margin-top:12px;color:var(--olive);font-weight:600;font-size:0.85rem;">↗ Get Directions</a>
+        </div>
+      </div>
+      <div class="schedule-card reveal">
+        <div class="schedule-card-head">
+          <div class="card-eyebrow">Regional 3 · Bangalore</div>
+          <h3>South India</h3>
+        </div>
+        <div class="schedule-card-body">
+          <p><strong>Date:</strong> 25 August 2026, Tuesday</p>
+          <p><strong>Venue:</strong> Hamilton Cocktail Bar</p>
+          <p><strong>Format:</strong> 11 teams competing live</p>
+          <p><strong>Top 2 teams</strong> advance to the Grand Finale</p>
+          <a href="https://maps.app.goo.gl/2Cx2myWA7b4oSd1m9" target="_blank" style="display:inline-block;margin-top:12px;color:var(--olive);font-weight:600;font-size:0.85rem;">↗ Get Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINALE -->
+    <div class="schedule-finale reveal">
+      <div class="finale-left">
+        <div class="card-eyebrow">Grand Finale · Bangalore</div>
+        <h3>The CxC 2026 Championship Final</h3>
+        <p>6 finalist teams. One floor. India's best barista-bartender pairing walks away with the title.</p>
+      </div>
+      <div class="finale-right">
+        <div class="finale-date">8 Sep</div>
+        <div class="finale-location">Bangalore Brewing Company</div>
+        <a href="https://maps.app.goo.gl/hPkHtwCwZiBfiSW38" target="_blank" style="color:var(--olive);font-weight:600;font-size:0.85rem;margin-top:8px;display:inline-block;">↗ Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRIZES
+     ============================================================ 
+<section id="prizes" class="section-pad">
+  <div class="container">
+    <div class="prizes-inner">
+      <div class="reveal">
+        <span class="tag" style="background:rgba(240,86,122,0.1);color:var(--pink)">Prize Pool</span>
+      </div>
+      <div class="prize-hero reveal">
+        <p class="prize-eyebrow">Total Prize Pool</p>
+        <div class="prize-amount">₹1,50,000+</div>
+        <p class="prize-desc">Prizes over ₹1 Lakh to be won across the Regional Heats and Grand Finale.</p>
+      </div>
+      <div class="prize-perks reveal">
+        <div class="prize-perk">
+          <div class="perk-icon">🏆</div>
+          <div class="perk-title">Cash Prizes</div>
+          <div class="perk-desc">For winners and runners-up across all 3 Heats and the Grand Finale</div>
+        </div>
+        <div class="prize-perk">
+          <div class="perk-icon">📦</div>
+          <div class="perk-title">Swa Sample Pack</div>
+          <div class="perk-desc">Every registered participant receives a curated Swa syrup pack to create with</div>
+        </div>
+        <div class="prize-perk">
+          <div class="perk-icon">🎖️</div>
+          <div class="perk-title">Industry Recognition</div>
+          <div class="perk-desc">Certificates, features, and visibility across Swa's trade network</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ============================================================
+     JUDGES CAROUSEL
+     ============================================================ -->
+<section id="judges" class="section-pad">
+  <div class="container">
+    <div class="judges-header reveal">
+      <span class="tag">The Jury</span>
+      <h2 class="section-title">Judged by the Best in the Business</h2>
+      <p class="section-sub" style="margin:0 auto">
+        Our panel brings together India's most respected names from both sides of the bar.
+      </p>
+    </div>
+
+    <div class="judges-track-wrap reveal">
+      <div class="judges-track" id="judgesTrack">
+
+        <!-- Judge 1: Avinash Kapoli -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/avinash.jpg" alt="Avinash Kapoli"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Avinash Kapoli</div>
+            <div class="judge-role">Co-Founder, SOKA & Kompany Hospitality</div>
+            <p class="judge-bio">17 years behind the bar. Co-founder of SOKA, Bangalore's celebrated cocktail destination, and Kompany Hospitality. A pioneer of experimental Indian mixology.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/avinash-kapoli-38511425" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 2: Vaishali Mehta -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/vaishali.jpg" alt="Vaishali Mehta"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Vaishali Mehta</div>
+            <div class="judge-role">Co-Founder, Swa Artisanal Syrups</div>
+            <p class="judge-bio">Vaishali founded Swa in 2019, tired of drinking overly sweet, artificial-tasting cocktails and iced teas at cafes and bars. Today Swa's 60+ hand-crafted, preservative-free flavours help HORECA brands deliver consistent, natural beverages — built by a women-led team, for a woman-led growth story.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/vaishali-mehta-535a6a9/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 3: Felix Daniel — PLACEHOLDER — update with correct title -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/felix.jpg" alt="Felix Daniel"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Felix Daniel</div>
+            <div class="judge-role">Coffee Professional & AVP, Culinary Brands</div>
+            <p class="judge-bio">18 years in the coffee industry. Two-time India Barista Champion (2008 & 2009), Felix represented India at the World Barista Championship in Copenhagen and Atlanta. Certified Q Grader and coffee roasting specialist, he has led beverage innovation at Dunkin' Donuts India and built training programs for some of the country's largest café chains.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/felix-daniel-33602123/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 4: Aman Dua — PLACEHOLDER -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/amandua.jpg" alt="Aman Dua"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Aman Dua</div>
+            <div class="judge-role">Co-Founder, CBD & Co-Founder, 403 Forbidden Bar</div>
+            <p class="judge-bio">One of Bangalore's most inventive bar minds. Aman founded CBD, a cocktail-forward destination, and co-founded 403 Forbidden Bar — two of the city's most talked-about drinking spaces. He brings a sharp palate and an operator's eye for what makes a drink work on a real menu.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/aman-dua-141156147/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 5: Chandini DP — PLACEHOLDER -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/chandini.jpg" alt="Chandini DP"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Chandini DP</div>
+            <div class="judge-role">Fifth-Generation Coffee Producer & Founder, LunyBee</div>
+            <p class="judge-bio">A fifth-generation coffee estate owner, certified Q Grader, Q Processing Professional, and the first Indian judge at the World Coffee Championships. Chandini founded LunyBee, leads a private coffee processing research institute, and serves on the board of the Specialty Coffee Association of India.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/chandinidp/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 6: Ajit Joshi — PLACEHOLDER -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/aj-photo.webp" alt="Ajit Joshi"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Ajit Joshi (AJ)</div>
+            <div class="judge-role">Specialty Coffee Consultant + Founder, Caarabi Coffee</div>
+            <p class="judge-bio">10+ years in Melbourne's specialty coffee scene, now building café and roastery projects across India. Ajit offers end-to-end solutions — from menu building and barista training to franchise setups and roastery design. His clients range from acclaimed Indian roasters to ambitious café startups.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/ajit-joshi-a-j-220b7722/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 7: Mithilesh Vazalwar — PLACEHOLDER -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/mithilesh.jpeg" alt="Ajit Joshi"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Mithilesh Vazalwar</div>
+            <div class="judge-role">Founder, Corridor Seven Coffee</div>
+            <p class="judge-bio">Mithilesh is a certified Q-Grader, two-time Indian Coffee Champion, National Barista Champion 2022, and India's first AeroPress Champion. He has judged international coffee competitions three times and founded Corridor Seven Coffee Roasters in Nagpur. Named 2025 Coffee Person of the Year.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/mithilesh-vazalwar-11812a53/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 8: Shatbhi Basu -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/shatbhi.jpg" alt="Shatbhi Basu"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Shatbhi Basu</div>
+            <div class="judge-role">Director, STIR Academy of Bartending</div>
+            <p class="judge-bio">Over four decades, she has bartended, consulted, taught, authored, and built STIR Academy, India's first professional bartending institution. She has shaped the careers of a generation of Indian mixologists, consulted for over 50 institutions, and was honoured with the Tatler Asia Legacy Award in 2024.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/shatbhi-basu-33459035" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 9: Vikram Achanta -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4TopIRql-dVvDuy2gLFqRYNMNN3GNS_DbxtTTjHlpyQ&s=10" alt="Vikram Achanta" style="object-fit:cover;width:100%;height:100%;"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Vikram Achanta</div>
+            <div class="judge-role">Founder & CEO, Tulleeho Portals</div>
+            <p class="judge-bio">Vikram founded Tulleeho in 2000, establishing it as India's pre-eminent beverage education and training company. Co-creator of 30 Best Bars India, Consulting Editor of Brews and Spirits magazine, and curator of the Brews and Spirits Expo. He writes on beverages for publications including ET Hospitality World, Man's World, and Business Standard.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/vikram-achanta/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 10: Kruti M -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/kruti.png" alt="Kruti M"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Kruti M</div>
+            <div class="judge-role">Product Development & Innovation Lead, Starbucks India</div>
+            <p class="judge-bio">A veteran NPD specialist with stints across Starbucks India, McDonald's India, Reliance Retail, and ADF Foods. Kruti has spent over a decade shaping menus and beverage programs for some of the country's largest F&B chains.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/kruti-m-54745527/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 11: Rasika Tulaskar -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/rasika.jpg" alt="Rasika Tulaskar"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Rasika Tulaskar</div>
+            <div class="judge-role">Head of Coffee Education & Training, Kaapi Machines</div>
+            <p class="judge-bio">A celebrated coffee expert and trainer who has shaped baristas into champions. Rasika has spent years driving innovation and operational excellence across India's coffee training landscape, including stints at Third Wave Coffee Roasters and GrabnGo.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/rasika-tulaskar-5b9112166" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 12: Rohan Carvalho -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/rohan.jpg" alt="Rohan Carvalho"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Rohan Carvalho</div>
+            <div class="judge-role">Founder, Bar Square India & President, Indian Flair Bartenders Association</div>
+            <p class="judge-bio">25+ years in hospitality, building bartending into a respected craft and career. Rohan has trained thousands of bartenders through Bar Square India, won multiple national and international bartending titles, and leads IFBA's mission to grow India's bartending community.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/rohan-carvalho-258172a" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 13: Robert Hospet -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/robert.jpg" alt="Robert Hospet"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Robert Hospet</div>
+            <div class="judge-role">Portfolio Advocate – South India, Suntory Global Spirits</div>
+            <p class="judge-bio">A strong operations professional with a background spanning catering, beverage management, and menu costing. Robert has led beverage programs at Svami Drinks and Lounge Hospitality, and now drives portfolio advocacy for Suntory across South India.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/robert-hospet-873b26158" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+      </div><!-- /judges-track -->
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="judgesPrev" aria-label="Previous">←</button>
+      <button class="carousel-btn" id="judgesNext" aria-label="Next">→</button>
+    </div>
+    <div class="carousel-dots" id="judgesDots">
+      <button class="carousel-dot active"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+      <button class="carousel-dot"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHERE IT BEGAN — 2025
+     ============================================================ -->
+<section id="faq" class="section-pad">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-header reveal">
+        <span class="tag">FAQ</span>
+        <h2 class="section-title">Everything You Need to Know</h2>
+      </div>
+
+            <div class="faq-item reveal">
+  <div class="faq-q">Terms & Conditions</div>
+  <div class="faq-a">
+    <ul style="padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+      <li>The judges' decision is final and binding in all matters.</li>
+      <li>All participants must meet eligibility criteria and provide accurate information.</li>
+      <li>Swa / CxC organisers may request valid government ID to verify eligibility.</li>
+      <li>The organisers may ask for proof of employment at any stage fo the competition.</li>
+      <li>Professional conduct is expected from all participants throughout the competition.</li>
+      <li>Any personal costs incurred during participation are the participant's own responsibility.</li>
+      <li>Dates, venues, format, rules, and prizes are subject to change at the organisers' discretion.</li>
+      <li>The organisers reserve the right to cancel, postpone, or modify the competition without prior notice.</li>
+      <li>By registering, participants grant CxC / Swa the right to use their name, image, and content for promotional purposes.</li>
+      <li>The organisers are not liable for registrations that are incomplete, unsuccessful, or affected by technical issues.</li>
+    </ul>
+  </div>
+</div>
+ <div class="faq-item reveal">
+        <div class="faq-q">Who can enter?</div>
+        <div class="faq-a">
+          <p>Any working barista or bartender based in select cities of India. You must be 18 or older and currently employed in a café, restaurant, bar, or hotel. We welcome all experience levels — from rising stars to established names.</p>
+        </div>
+      </div>
+       <div class="faq-item reveal">
+        <div class="faq-q">Which are the select cities from where I can participate?</div>
+        <div class="faq-a">
+          <p>Delhi, Bombay, Bangalore, Jaipur, Jodhpur, Chandigarh, Amritsar, Ludhiana, Goa, Pune, Surat, Ahmedabad, Nagpur, Hyderabad, Chennai, Kochi, Mysore, Coimbatore.</p>
+        </div>
+      </div>
+
+      
+      <div class="faq-item reveal">
+        <div class="faq-q">Do I have to enter as a team?</div>
+        <div class="faq-a">
+          <p>No — you register and compete as an individual. Your role (barista or bartender) determines which half of the competition you're in for Stage 1. Teams are formed only at the Regionals, from the top qualifiers in each city. Top performers from each region are paired into teams of two for the Regionals.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I participate if I don't live in the selected cities?</div>
+        <div class="faq-a">
+          <p>Yes, you can still participate if you provide a shipping address to one of the select city. You will need to self pick up the sample from that location. The cost of travel for Regionals, if selected, has to be borne by you.</p>
+        </div>
+      </div>
+
+       <div class="faq-item reveal">
+        <div class="faq-q">If I am selected for the regionals, will my travel to the venue be covered?</div>
+        <div class="faq-a">
+          <p>No, you will have to bear the cost of travel to the venue. If you live in any other city than where the regionals is being hosted, you will need to cover your own travel expense to the city.</p>
+        </div>
+      </div>
+
+       <div class="faq-item reveal">
+        <div class="faq-q">If I am selected for the finale, will my travel to Bangalore be covered?</div>
+        <div class="faq-a">
+          <p>Yes, for top 2 teams from North & West region, travel will be covered to and from Bangalore.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What if I don't work anywhere?</div>
+        <div class="faq-a">
+          <p>The competition is only for employed professional bartenders and baristas. If you are a consultant, or fresher or unemployed and still want to participate, you will need to share a letter of endorsement from the place of work mentioned in the form. This letter will be required to be submitted if you are selected for the Regionals.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Is there a registration fee?</div>
+        <div class="faq-a">
+          <p>No. CxC 2026 is completely free to enter. We believe the only thing standing between you and recognition should be your craft.</p>
+        </div>
+      </div> 
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How do I get my Swa sample pack?</div>
+        <div class="faq-a">
+          <p>Once you register, we'll ship a curated pack of 4 Swa Artisanal Syrups sample pack directly to your shipping address. Register early so you have more time to develop recipes. Packs are dispatched within 24 hours. It will take 5-7 working days to reach your doorstep. You must use at least one Swa syrup in your Stage 1 submission.</p>
+        </div>
+      </div>
+      
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What do I submit for Stage 1?</div>
+        <div class="faq-a">
+          <p>A video of your beverage preparation, along with a written recipe card. Your submission is judged on Storytelling & Concept, Flavour & Balance, Creativity & Innovation, Presentation & Garnish, Technique & Workflow, and Use of Swa Syrup. Regional submissions are due by 11 August 2026. You'll get access to the full submission portal once you register.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What are the Regionals?</div>
+        <div class="faq-a">
+          <p>The Regionals are live, in-person rounds held in Delhi (11 Aug), Mumbai (18 Aug) and Bangalore (25 Aug). 11 teams per region compete live. Teams are formed on the day. The top 2 teams from each Regional will advance to the Grand Finale.</p>
+        </div>
+      </div>
+
+     
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What are the prizes?</div>
+        <div class="faq-a">
+          <p>Total prize pool is over ₹1,00,000 distributed across the Regionals and Grand Finale. Full prize breakdown will be announced closer to the event. Every registered participant also receives a Swa sample pack, and all finalists receive industry recognition and features across Swa's trade network.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How do I contact the team?</div>
+        <div class="faq-a">
+          <p>Email us at <a href="mailto:cxc@drinkswa.com" style="color:var(--olive)">cxc@drinkswa.com</a>. You can also DM us on Instagram at <a href="https://instagram.com/swa.artisanalsyrups" target="_blank" style="color:var(--olive)">@swa.artisanalsyrups</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How is my Stage 1 submission judged?</div>
+        <div class="faq-a">
+          <p>Submissions are scored out of 100 points across five criteria:</p>
+          <ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px;padding-left:0;list-style:none;">
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Craft & Technique</span><span style="font-weight:700;color:var(--olive);">25 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Flavour & Balance</span><span style="font-weight:700;color:var(--olive);">25 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Swa Integration</span><span style="font-weight:700;color:var(--olive);">20 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Creativity & Narrative</span><span style="font-weight:700;color:var(--olive);">20 pts</span></li>
+            <li style="display:flex;justify-content:space-between;padding:10px 14px;background:rgba(89,117,29,0.06);border-radius:8px;"><span style="font-weight:500;">Presentation</span><span style="font-weight:700;color:var(--olive);">10 pts</span></li>
+          </ul>
+          <p style="margin-top:12px;">Full rulebook is available in your participant portal once you register.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I use homemade ingredients?</div>
+        <div class="faq-a">
+          <p>Yes, with conditions. Homemade infusions, bitters, fat washes, and juices are permitted. However:</p>
+          <ul style="margin-top:10px;padding-left:20px;display:flex;flex-direction:column;gap:6px;">
+            <li>Homemade syrups or cordials must be based on a Swa syrup — e.g. a "spiced kokam shrub" built on Swa Kokam.</li>
+            <li>If using a homemade syrup, an unadulterated Swa product must also appear in the recipe separately.</li>
+            <li>All homemade components must be fully declared in your recipe card — name, base ingredients, and method.</li>
+            <li>Homemade versions of flavours available in the Swa range are not permitted.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What if I am partnered with someone not in my city?</div>
+        <div class="faq-a">
+          <p>The organisers will ensure that you are paired with a partner from the same city.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal"> 
+        <div class="faq-q">What are the key rules for Stage 1?</div>
+        <div class="faq-a">
+          <ul style="padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+            <li>Open to all working baristas and bartenders in India aged 18+.</li>
+            <li>Individual entry only — no teams at this stage.</li>
+            <li>At least 20ml of one Swa Artisanal Syrup must be used in your drink.</li>
+            <li>Recipe must be original and not publicly served in the last 12 months.</li>
+            <li>Submit a 60–90 second video showing preparation from start to finish.</li>
+            <li>Video must show your face and hands. Narration strongly encouraged.</li>
+            <li>Regional submission deadline: 11 August 2026.</li>
+            <li>Judges' decisions are final.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER CTA
+     ============================================================ -->
+<section id="legacy" class="section-pad">
+  <div class="container">
+    <div class="legacy-header reveal">
+      <span class="tag">Where it Began</span>
+      <h2 class="section-title">CxC 2025 — The First Edition</h2>
+      <p class="section-sub" style="margin:0 auto">
+        In 2025, we dared to ask: what happens when a barista and a bartender share a station? The answer was extraordinary. CxC was born from that question — and the inaugural edition proved India was ready.
+      </p>
+    </div>
+
+    <!-- 2025 WINNER PODIUM -->
+    <div class="winners-podium">
+      <div class="winner-card gold reveal">
+        <div class="winner-medal">🥇</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-1.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Champions 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/ruturaj__007__ig?igsh=MXduZjYyN2R0dWNhOQ%3D%3D" target="_blank">↗ Ruturaj Govekar</a>
+          <a class="winner-li" href="https://www.instagram.com/sen__________01____?igsh=MW1mNDkxazFyc2sycA==" target="_blank">↗ Deepika Sen</a>
+        </div>
+      </div>
+      <div class="winner-card reveal">
+        <div class="winner-medal">🥈</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-2.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Runner-Up 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/joy.of.mixing?igsh=Mjk5N2FuNjc2dmNz" target="_blank">↗ Joyston Tauro</a>
+          <a class="winner-li" href="https://www.instagram.com/soudh_ibrahim?igsh=MTNhbG85eWtlZjM4OA%3D%3D" target="_blank">↗ Soudh Ibrahim</a>
+        </div>
+      </div>
+      <div class="winner-card reveal">
+        <div class="winner-medal">🥉</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-3.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Second Runner-Up 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/mi._.dh._.un?igsh=MWlxYzBxeXV5bXUxMA%3D%3D" target="_blank">↗ Midhun </a>
+          <a class="winner-li" href="https://www.instagram.com/adantescoffee?igsh=MTRxNWFkcjZveGlyZA%3D%3D" target="_blank">↗ Aastha Dante</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 PHOTO GALLERY -->
+    <div class="reveal">
+      <p class="gallery-label">Moments from CxC 2025</p>
+      <div class="photo-gallery">
+        <div class="gallery-item wide"><img src="assets/images/cxc2025-2.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-5.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-8.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-1.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-7.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item wide"><img src="assets/images/cxc2025-3.jpg" alt="Ajit Joshi"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="footer-cta">
+  <div class="container">
+    <p class="footer-cta-title reveal">Already Registered?</p>
+    <p class="footer-cta-sub reveal">Regionals: 11 Aug · 18 Aug · 25 Aug</p>
+    <a href="login.html" class="footer-cta-btn reveal">Login to Submit →</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">CxC 2026</div>
+        <p class="footer-brand-sub">
+          CoffeeXCocktail Championship. Presented by Swa Artisanal Syrups.<br />
+          India's homegrown barista-bartender competition. 
+        </p>
+        <div class="footer-social">
+          <a href="https://instagram.com/swa.artisanalsyrups" target="_blank" aria-label="Instagram">𝕀</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Competition</h4>
+        <ul>
+          <li><a href="#about">About CxC</a></li>
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="#schedule">Regionals</a></li>
+          <li><a href="#prizes">Prizes</a></li>
+          <li><a href="#judges">Jury</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Participate</h4>
+        <ul>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#dates">Important Dates</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#teams">Regional Teams</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:nivedita.panda@drinkswa.com">cxc@drinkswa.com</a></li>
+          <li><a href="https://instagram.com/swa.artisanalsyrups" target="_blank">@swa.artisanalsyrups</a></li>
+          <li><a href="https://drinkswa.com" target="_blank">drinkswa.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Raw Earth Foods & Beverages Pvt. Ltd. All rights reserved.</p>
+      <p>CxC 2026 is presented by <a href="https://drinkswa.com" target="_blank">Swa Artisanal Syrups</a> · Bangalore, India</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/main.js"></script>
+<script src="js/cxc-registration.js"></script>
+<script>
+(async () => {
+  const sb = supabase.createClient(
+    'https://ftduvppcdjanupoudzvi.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHV2cHBjZGphbnVwb3VkenZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4NDcwNTMsImV4cCI6MjA5NzQyMzA1M30.HibCpa3_CKojK-hUw5b0PGI6UK8LKdOVI0KUxXZn82w'
+  );
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return;
+
+  // Verify user exists in participants
+  const { data: participant } = await sb
+    .from('participants')
+    .select('email')
+    .eq('email', session.user.email)
+    .single();
+
+  if (!participant) {
+    await sb.auth.signOut();
+    return;
+  }
+
+  const ctaBtn = document.querySelector('.nav-cta');
+  if (ctaBtn) {
+    ctaBtn.textContent = 'My Dashboard →';
+    ctaBtn.href = 'submit.html';
+  }
+  const loginLink = document.querySelector('a[href="login.html"]');
+  if (loginLink) loginLink.closest('li').style.display = 'none';
+
+  const label = 'My Dashboard →';
+  const href  = 'submit.html';
+
+  document.querySelectorAll('a[href="login.html"]').forEach(link => {
+    link.textContent = label;
+    link.href = href;
+    link.removeAttribute('style');
+    link.style.color = 'var(--olive)';
+    link.style.fontWeight = '600';
+    link.style.textDecoration = 'underline';
+    link.style.textUnderlineOffset = '3px';
+    link.style.fontFamily = "'Poppins', sans-serif";
+  });
+})();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabBtns = document.querySelectorAll('.region-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.region-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.region).classList.add('active');
+    });
+  });
+});
+</script>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('judgesTrack');
+  const prev = document.getElementById('judgesPrev');
+  const next = document.getElementById('judgesNext');
+  const dots = document.querySelectorAll('#judgesDots .carousel-dot');
+  if (!track || !prev || !next) return;
+
+  const cardsPerFrame = 3;
+  const totalCards = track.children.length;
+  const totalFrames = Math.ceil(totalCards / cardsPerFrame);
+  let frame = 0;
+
+  function frameWidth() {
+    const card = track.children[0];
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || 0);
+    return (card.offsetWidth + gap) * cardsPerFrame;
+  }
+
+  function goTo(f) {
+    frame = Math.max(0, Math.min(totalFrames - 1, f));
+    track.scrollTo({ left: frame * frameWidth(), behavior: 'smooth' });
+    dots.forEach((d, i) => d.classList.toggle('active', i === frame));
+  }
+
+  prev.addEventListener('click', () => goTo(frame - 1));
+  next.addEventListener('click', () => goTo(frame + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+});
+</script>
+</body>
+</html>
