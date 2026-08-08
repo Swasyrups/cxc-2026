@@ -48,11 +48,15 @@
     .teams-section .region-title { font-size: 1.4rem; font-weight: 700; color: var(--plum); }
     .teams-section .region-meta { font-size: 0.82rem; color: #666; margin-left: auto; }
     .teams-section .teams-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 16px !important;
     }
     .teams-section .team-card {
+      flex: 1 1 320px !important;
+      width: 320px !important;
+      max-width: 340px !important;
       background: #fff;
       border-radius: 14px;
       padding: 20px;
@@ -494,13 +498,6 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
         </div>
       </div>
 
-    </div>
-  </div>
-
-
-  <!-- NORTH TEAM 11 -->
-  <div class="region-block" style="margin-top:-32px;">
-    <div class="teams-grid">
       <div class="team-card">
         <div class="team-number">Team N11</div>
         <div class="team-members">
@@ -518,8 +515,10 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
       </div>
 
       <div class="region-panel" id="panel-south">
@@ -712,13 +711,6 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
         </div>
       </div>
 
-    </div>
-  </div>
-
-
-  <!-- SOUTH TEAM 11 -->
-  <div class="region-block" style="margin-top:-32px;">
-    <div class="teams-grid">
       <div class="team-card">
         <div class="team-number">Team S11</div>
         <div class="team-members">
@@ -736,8 +728,10 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           </div>
         </div>
       </div>
+
     </div>
   </div>
+
       </div>
 
       <div class="region-panel" id="panel-west">
@@ -930,13 +924,6 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
         </div>
       </div>
 
-    </div>
-  </div>
-
-
-  <!-- WEST TEAM 11 -->
-  <div class="region-block" style="margin-top:-32px;">
-    <div class="teams-grid">
       <div class="team-card">
         <div class="team-number">Team W11</div>
         <div class="team-members">
@@ -954,6 +941,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           </div>
         </div>
       </div>
+
     </div>
   </div>
       </div>
@@ -1210,7 +1198,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           <div class="judge-info">
             <div class="judge-name">Avinash Kapoli</div>
             <div class="judge-role">Co-Founder, SOKA & Kompany Hospitality</div>
-            <p class="judge-bio">17 years behind the bar. Co-founder of SOKA, Bangalore's celebrated cocktail destination, and Kompany Hospitality. A pioneer of experimental Indian mixology.</p>
+            <p class="judge-bio">16 years behind the bar, crafting drinks that balance experimentation with the classics. Avinash has worked with some of the world's biggest liquor brands and helped build leading bars across India through his projects Jamming Goat, Cocktail Kompany, and SOKA — named Asia's #18 Best Bar in 2026.</p>
             <a class="judge-li" href="https://in.linkedin.com/in/avinash-kapoli-38511425" target="_blank">↗ LinkedIn</a>
           </div>
         </div>
@@ -1316,7 +1304,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 
         <!-- Judge 11: Rasika Tulaskar -->
         <div class="judge-card">
-          <div class="judge-photo-placeholder"><img src="assets/images/rasika.jpeg" alt="Rasika Tulaskar"/></div>
+          <div class="judge-photo-placeholder"><img src="assets/images/rasika.jpg" alt="Rasika Tulaskar"/></div>
           <div class="judge-info">
             <div class="judge-name">Rasika Tulaskar</div>
             <div class="judge-role">Head of Coffee Education & Training, Kaapi Machines</div>
@@ -1327,7 +1315,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 
         <!-- Judge 12: Rohan Carvalho -->
         <div class="judge-card">
-          <div class="judge-photo-placeholder"><img src="assets/images/rohan.jpeg" alt="Rohan Carvalho"/></div>
+          <div class="judge-photo-placeholder"><img src="assets/images/rohan.jpg" alt="Rohan Carvalho"/></div>
           <div class="judge-info">
             <div class="judge-name">Rohan Carvalho</div>
             <div class="judge-role">Founder, Bar Square India & President, Indian Flair Bartenders Association</div>
@@ -1338,7 +1326,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 
         <!-- Judge 13: Robert Hospet -->
         <div class="judge-card">
-          <div class="judge-photo-placeholder"><img src="assets/images/robert.jpeg" alt="Robert Hospet"/></div>
+          <div class="judge-photo-placeholder"><img src="assets/images/robert.jpg" alt="Robert Hospet"/></div>
           <div class="judge-info">
             <div class="judge-name">Robert Hospet</div>
             <div class="judge-role">Portfolio Advocate – South India, Suntory Global Spirits</div>
