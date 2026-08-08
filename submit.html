@@ -10,6 +10,13 @@ avour<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,700;1,800;1,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/portal.css" />
+  <style>
+    /* Cross out a multi-select option once it's checked */
+    .multi-opt:has(input[type="checkbox"]:checked) {
+      text-decoration: line-through;
+      opacity: 0.55;
+    }
+  </style>
 </head>
 <body>
 
@@ -79,6 +86,9 @@ avour<!DOCTYPE html>
     <div class="dash-role-badge" id="dashRole">Barista</div>
   </div>
   <div class="dash-body">
+    <div id="dashSavedBanner" style="display:none;background:var(--olive);color:#fff;border-radius:16px;padding:16px 24px;margin-bottom:16px;align-items:center;gap:10px;font-weight:600;font-size:1rem;">
+      <span style="font-size:1.2rem;">✓</span> Draft saved successfully.
+    </div>
     <div class="status-grid">
       <div class="status-card">
         <div class="slabel">Registration</div>
@@ -96,7 +106,7 @@ avour<!DOCTYPE html>
       </div>
       <button onclick="showPage('submit')" style="background:var(--olive);color:#fff;border:none;border-radius:50px;padding:10px 22px;font-size:0.85rem;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;white-space:nowrap;">Edit Draft →</button>
     </div>
-    <div class="dash-cta">
+    <div class="dash-cta" id="dashCta">
       <div>
         <h3>Ready to enter?</h3>
         <p>Submit your regional recipe and video by 11 August 2026.</p>
@@ -698,13 +708,15 @@ avour<!DOCTYPE html>
       updateMultiDisplay('spiritWrap');
     }
 
-    // Show draft card on dashboard
+    // Show draft card on dashboard, hide the "Submit My Entry" CTA — one entry only, Edit Draft covers it
     const draftCard = document.getElementById('dashDraftCard');
     if (draftCard) {
       draftCard.style.display = 'flex';
       const nameEl = document.getElementById('dashDraftName');
       if (nameEl) nameEl.textContent = sub.drink_name || 'Untitled draft';
     }
+    const dashCta = document.getElementById('dashCta');
+    if (dashCta) dashCta.style.display = 'none';
   }
 
   function getFormData() {
@@ -729,7 +741,38 @@ avour<!DOCTYPE html>
     };
   }
 
+  // Recipe/Method becomes mandatory for any homemade component that has a Name filled in
+  function validateHomemade() {
+    let valid = true;
+    let firstInvalid = null;
+    document.querySelectorAll('.homemade-item').forEach(item => {
+      const nameInput = item.querySelector('input');
+      const recipeInput = item.querySelector('textarea');
+      const name = nameInput?.value.trim();
+      const recipe = recipeInput?.value.trim();
+      if (name && !recipe) {
+        valid = false;
+        if (recipeInput) {
+          recipeInput.style.borderColor = '#cc3333';
+          recipeInput.style.boxShadow = '0 0 0 1.5px #cc3333';
+        }
+        if (!firstInvalid) firstInvalid = recipeInput;
+      } else if (recipeInput) {
+        recipeInput.style.borderColor = '';
+        recipeInput.style.boxShadow = '';
+      }
+    });
+    return { valid, firstInvalid };
+  }
+
   async function saveDraft() {
+    const { valid, firstInvalid } = validateHomemade();
+    if (!valid) {
+      alert('You\'ve named a homemade component — please add its Recipe / Method before saving.');
+      firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      firstInvalid?.focus();
+      return;
+    }
     const btn = document.getElementById('draftBtn');
     btn.disabled = true; btn.textContent = 'Saving...';
     const data = getFormData();
@@ -745,7 +788,7 @@ avour<!DOCTYPE html>
     if (!error) {
       document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
       document.getElementById('submitStatus').className = 'svalue pending';
-      // Show/update draft card on dashboard
+      // Show/update draft card on dashboard, hide "Submit My Entry" CTA
       const draftCard = document.getElementById('dashDraftCard');
       if (draftCard) {
         draftCard.style.display = 'flex';
@@ -753,11 +796,15 @@ avour<!DOCTYPE html>
         const drinkName = document.getElementById('drinkName').value.trim();
         if (nameEl) nameEl.textContent = drinkName || 'Untitled draft';
       }
-      // Flash confirmation
-      const draftSavedEl = document.getElementById('draftSaved');
-      if (draftSavedEl) {
-        draftSavedEl.style.display = 'block';
-        setTimeout(() => draftSavedEl.style.display = 'none', 3000);
+      const dashCta = document.getElementById('dashCta');
+      if (dashCta) dashCta.style.display = 'none';
+
+      // Redirect to dashboard with a prominent confirmation banner
+      showPage('dashboard');
+      const banner = document.getElementById('dashSavedBanner');
+      if (banner) {
+        banner.style.display = 'flex';
+        setTimeout(() => { banner.style.display = 'none'; }, 4000);
       }
     } else {
       alert('Save failed. Please try again or check your connection.');
@@ -772,6 +819,13 @@ avour<!DOCTYPE html>
     const ingredients = document.getElementById('ingredients').value.trim();
     const recipeSteps = document.getElementById('recipeSteps').value.trim();
 
+    const homemadeCheck = validateHomemade();
+    if (!homemadeCheck.valid) {
+      showErr(errEl, 'You\'ve named a homemade component — please add its Recipe / Method before submitting.');
+      homemadeCheck.firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      homemadeCheck.firstInvalid?.focus();
+      return;
+    }
     if (!document.getElementById('rulesConsent').checked)  { showErr(errEl, 'Please confirm you have read and agree to the competition rules.'); return; }
     if (!document.getElementById('contentConsent').checked) { showErr(errEl, 'Please agree to the content usage terms to proceed.'); return; }
     if (!drinkName)       { showErr(errEl, 'Please enter your drink name.'); return; }
