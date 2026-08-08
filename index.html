@@ -24,6 +24,104 @@
 <link rel="icon" href="https://cxc.drinkswa.com/assets/images/CXC_favicon.svg" type="image/png" />
 
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Regional Teams — matched to teams.html */
+    .teams-section .region-block { margin-bottom: 60px; }
+    .teams-section .region-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--olive);
+    }
+    .teams-section .region-badge {
+      background: var(--olive);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .teams-section .region-title { font-size: 1.4rem; font-weight: 700; color: var(--plum); }
+    .teams-section .region-meta { font-size: 0.82rem; color: #666; margin-left: auto; }
+    .teams-section .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .teams-section .team-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(75,49,65,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .teams-section .team-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--olive);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .teams-section .team-members { display: flex; gap: 12px; }
+    .teams-section .member {
+      flex: 1;
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .teams-section .member-role {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .teams-section .member-role.barista { color: var(--olive); }
+    .teams-section .member-role.bartender { color: var(--pink); }
+    .teams-section .member-name { font-size: 0.9rem; font-weight: 600; color: var(--plum); line-height: 1.3; }
+    .teams-section .member-employer { font-size: 0.75rem; color: #666; margin-top: 2px; }
+    .teams-section .member-city { font-size: 0.72rem; color: #999; margin-top: 2px; }
+
+    /* Region tabs */
+    .region-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .region-tab-btn {
+      background: transparent;
+      border: 1.5px solid var(--olive);
+      color: var(--olive);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 10px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all .25s;
+      letter-spacing: 0.3px;
+    }
+    .region-tab-btn.active,
+    .region-tab-btn:hover {
+      background: var(--olive);
+      color: #fff;
+    }
+    .region-panel { display: none; }
+    .region-panel.active { display: block; }
+
+    @media (max-width: 600px) {
+      .teams-section .team-members { flex-direction: column; }
+      .teams-section .region-meta { display: none; }
+    }
+  </style>
   <!-- Preload hero image -->
   <link rel="preload" as="image" href="assets/images/CXC_2026.jpg" />
 <!-- Google tag (gtag.js) -->
@@ -153,7 +251,6 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
     </div> -->
 
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:8px;">
-      <a href="login.html" class="hero-cta">Login →</a>
       <a href="#teams" style="display:inline-block;padding:14px 28px;border-radius:50px;border:1.5px solid #fff;color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;letter-spacing:0.3px;">Regional Teams Announced →</a>
     </div>
     <p class="hero-dates">
@@ -200,8 +297,14 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       <p class="section-sub" style="margin:0 auto;">CxC 2026 regional teams — qualified barista-bartender pairs competing live in August.</p>
     </div>
     <div class="teams-body" style="max-width:1100px;margin:0 auto;padding:40px 0 0;">
-      
 
+      <div class="region-tabs">
+        <button class="region-tab-btn active" data-region="north">North</button>
+        <button class="region-tab-btn" data-region="west">West</button>
+        <button class="region-tab-btn" data-region="south">South</button>
+      </div>
+
+      <div class="region-panel active" id="panel-north">
   <!-- NORTH -->
   <div class="region-block">
     <div class="region-header">
@@ -417,7 +520,9 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       </div>
     </div>
   </div>
+      </div>
 
+      <div class="region-panel" id="panel-south">
   <!-- SOUTH -->
   <div class="region-block">
     <div class="region-header">
@@ -633,7 +738,9 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       </div>
     </div>
   </div>
+      </div>
 
+      <div class="region-panel" id="panel-west">
   <!-- WEST -->
   <div class="region-block">
     <div class="region-header">
@@ -849,7 +956,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       </div>
     </div>
   </div>
-
+      </div>
 
     </div>
   </div>
@@ -911,7 +1018,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       <div class="how-step reveal">
         <div class="step-num">3</div>
         <h3>Qualify for Regionals</h3>
-        <p>Top 10 bartenders and baristas from each region qualify. They are paired into teams of two. The Regionals happen live in August at Delhi, Mumbai, and Bangalore.</p>
+        <p>Top 11 bartenders and baristas from each region qualify. They are paired into teams of two. The Regionals happen live in August at Delhi, Mumbai, and Bangalore.</p>
       </div>
       <div class="how-step reveal">
         <div class="step-num">4</div>
@@ -1114,7 +1221,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           <div class="judge-info">
             <div class="judge-name">Vaishali Mehta</div>
             <div class="judge-role">Co-Founder, Swa Artisanal Syrups</div>
-            <p class="judge-bio">Vaishali built Swa from the ground up — a brand committed to real Indian ingredients, no preservatives, and craft. Her vision is to build Swa as a community first brand.</p>
+            <p class="judge-bio">Vaishali founded Swa in 2019, tired of drinking overly sweet, artificial-tasting cocktails and iced teas at cafes and bars. Today Swa's 60+ hand-crafted, preservative-free flavours help HORECA brands deliver consistent, natural beverages — built by a women-led team, for a woman-led growth story.</p>
             <a class="judge-li" href="https://www.linkedin.com/in/vaishali-mehta-535a6a9/" target="_blank">↗ LinkedIn</a>
           </div>
         </div>
@@ -1196,6 +1303,50 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
           </div>
         </div>
 
+        <!-- Judge 10: Kruti M -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/kruti.png" alt="Kruti M"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Kruti M</div>
+            <div class="judge-role">Product Development & Innovation Lead, Starbucks India</div>
+            <p class="judge-bio">A veteran NPD specialist with stints across Starbucks India, McDonald's India, Reliance Retail, and ADF Foods. Kruti has spent over a decade shaping menus and beverage programs for some of the country's largest F&B chains.</p>
+            <a class="judge-li" href="https://www.linkedin.com/in/kruti-m-54745527/" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 11: Rasika Tulaskar -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/rasika.jpg" alt="Rasika Tulaskar"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Rasika Tulaskar</div>
+            <div class="judge-role">Head of Coffee Education & Training, Kaapi Machines</div>
+            <p class="judge-bio">A celebrated coffee expert and trainer who has shaped baristas into champions. Rasika has spent years driving innovation and operational excellence across India's coffee training landscape, including stints at Third Wave Coffee Roasters and GrabnGo.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/rasika-tulaskar-5b9112166" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 12: Rohan Carvalho -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/rohan.jpg" alt="Rohan Carvalho"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Rohan Carvalho</div>
+            <div class="judge-role">Founder, Bar Square India & President, Indian Flair Bartenders Association</div>
+            <p class="judge-bio">25+ years in hospitality, building bartending into a respected craft and career. Rohan has trained thousands of bartenders through Bar Square India, won multiple national and international bartending titles, and leads IFBA's mission to grow India's bartending community.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/rohan-carvalho-258172a" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Judge 13: Robert Hospet -->
+        <div class="judge-card">
+          <div class="judge-photo-placeholder"><img src="assets/images/robert.jpg" alt="Robert Hospet"/></div>
+          <div class="judge-info">
+            <div class="judge-name">Robert Hospet</div>
+            <div class="judge-role">Portfolio Advocate – South India, Suntory Global Spirits</div>
+            <p class="judge-bio">A strong operations professional with a background spanning catering, beverage management, and menu costing. Robert has led beverage programs at Svami Drinks and Lounge Hospitality, and now drives portfolio advocacy for Suntory across South India.</p>
+            <a class="judge-li" href="https://in.linkedin.com/in/robert-hospet-873b26158" target="_blank">↗ LinkedIn</a>
+          </div>
+        </div>
+
       </div><!-- /judges-track -->
     </div>
 
@@ -1203,7 +1354,7 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
       <button class="carousel-btn" id="judgesPrev" aria-label="Previous">←</button>
       <button class="carousel-btn" id="judgesNext" aria-label="Next">→</button>
     </div>
-    <div class="carousel-dots">
+    <div class="carousel-dots" id="judgesDots">
       <button class="carousel-dot active"></button>
       <button class="carousel-dot"></button>
       <button class="carousel-dot"></button>
@@ -1215,67 +1366,6 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 
 <!-- ============================================================
      WHERE IT BEGAN — 2025
-     ============================================================ -->
-<section id="legacy" class="section-pad">
-  <div class="container">
-    <div class="legacy-header reveal">
-      <span class="tag">Where it Began</span>
-      <h2 class="section-title">CxC 2025 — The First Edition</h2>
-      <p class="section-sub" style="margin:0 auto">
-        In 2025, we dared to ask: what happens when a barista and a bartender share a station? The answer was extraordinary. CxC was born from that question — and the inaugural edition proved India was ready.
-      </p>
-    </div>
-
-    <!-- 2025 WINNER PODIUM -->
-    <div class="winners-podium">
-      <div class="winner-card gold reveal">
-        <div class="winner-medal">🥇</div>
-        <div class="winner-photo-placeholder"><img src="assets/images/winner-1.jpg" alt="CXC 2025 Winners"/></div>
-        <div class="winner-info">
-          <div class="winner-place">Champions 2025</div>
-          <a class="winner-li" href="https://www.instagram.com/ruturaj__007__ig?igsh=MXduZjYyN2R0dWNhOQ%3D%3D" target="_blank">↗ Ruturaj Govekar</a>
-          <a class="winner-li" href="https://www.instagram.com/sen__________01____?igsh=MW1mNDkxazFyc2sycA==" target="_blank">↗ Deepika Sen</a>
-        </div>
-      </div>
-      <div class="winner-card reveal">
-        <div class="winner-medal">🥈</div>
-        <div class="winner-photo-placeholder"><img src="assets/images/winner-2.jpg" alt="CXC 2025 Winners"/></div>
-        <div class="winner-info">
-          <div class="winner-place">Runner-Up 2025</div>
-          <a class="winner-li" href="https://www.instagram.com/joy.of.mixing?igsh=Mjk5N2FuNjc2dmNz" target="_blank">↗ Joyston Tauro</a>
-          <a class="winner-li" href="https://www.instagram.com/soudh_ibrahim?igsh=MTNhbG85eWtlZjM4OA%3D%3D" target="_blank">↗ Soudh Ibrahim</a>
-        </div>
-      </div>
-      <div class="winner-card reveal">
-        <div class="winner-medal">🥉</div>
-        <div class="winner-photo-placeholder"><img src="assets/images/winner-3.jpg" alt="CXC 2025 Winners"/></div>
-        <div class="winner-info">
-          <div class="winner-place">Second Runner-Up 2025</div>
-          <a class="winner-li" href="https://www.instagram.com/mi._.dh._.un?igsh=MWlxYzBxeXV5bXUxMA%3D%3D" target="_blank">↗ Midhun </a>
-          <a class="winner-li" href="https://www.instagram.com/adantescoffee?igsh=MTRxNWFkcjZveGlyZA%3D%3D" target="_blank">↗ Aastha Dante</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2025 PHOTO GALLERY -->
-    <div class="reveal">
-      <p class="gallery-label">Moments from CxC 2025</p>
-      <div class="photo-gallery">
-        <div class="gallery-item wide"><img src="assets/images/cxc2025-2.jpg" alt="Ajit Joshi"/></div>
-        <div class="gallery-item"><img src="assets/images/cxc2025-5.jpg" alt="Ajit Joshi"/></div>
-        <div class="gallery-item"><img src="assets/images/cxc2025-8.jpg" alt="Ajit Joshi"/></div>
-        <div class="gallery-item"><img src="assets/images/cxc2025-1.jpg" alt="Ajit Joshi"/></div>
-        <div class="gallery-item"><img src="assets/images/cxc2025-7.jpg" alt="Ajit Joshi"/></div>
-        <div class="gallery-item wide"><img src="assets/images/cxc2025-3.jpg" alt="Ajit Joshi"/></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ============================================================
-     FAQ
      ============================================================ -->
 <section id="faq" class="section-pad">
   <div class="container">
@@ -1454,6 +1544,67 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
 <!-- ============================================================
      FOOTER CTA
      ============================================================ -->
+<section id="legacy" class="section-pad">
+  <div class="container">
+    <div class="legacy-header reveal">
+      <span class="tag">Where it Began</span>
+      <h2 class="section-title">CxC 2025 — The First Edition</h2>
+      <p class="section-sub" style="margin:0 auto">
+        In 2025, we dared to ask: what happens when a barista and a bartender share a station? The answer was extraordinary. CxC was born from that question — and the inaugural edition proved India was ready.
+      </p>
+    </div>
+
+    <!-- 2025 WINNER PODIUM -->
+    <div class="winners-podium">
+      <div class="winner-card gold reveal">
+        <div class="winner-medal">🥇</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-1.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Champions 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/ruturaj__007__ig?igsh=MXduZjYyN2R0dWNhOQ%3D%3D" target="_blank">↗ Ruturaj Govekar</a>
+          <a class="winner-li" href="https://www.instagram.com/sen__________01____?igsh=MW1mNDkxazFyc2sycA==" target="_blank">↗ Deepika Sen</a>
+        </div>
+      </div>
+      <div class="winner-card reveal">
+        <div class="winner-medal">🥈</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-2.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Runner-Up 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/joy.of.mixing?igsh=Mjk5N2FuNjc2dmNz" target="_blank">↗ Joyston Tauro</a>
+          <a class="winner-li" href="https://www.instagram.com/soudh_ibrahim?igsh=MTNhbG85eWtlZjM4OA%3D%3D" target="_blank">↗ Soudh Ibrahim</a>
+        </div>
+      </div>
+      <div class="winner-card reveal">
+        <div class="winner-medal">🥉</div>
+        <div class="winner-photo-placeholder"><img src="assets/images/winner-3.jpg" alt="CXC 2025 Winners"/></div>
+        <div class="winner-info">
+          <div class="winner-place">Second Runner-Up 2025</div>
+          <a class="winner-li" href="https://www.instagram.com/mi._.dh._.un?igsh=MWlxYzBxeXV5bXUxMA%3D%3D" target="_blank">↗ Midhun </a>
+          <a class="winner-li" href="https://www.instagram.com/adantescoffee?igsh=MTRxNWFkcjZveGlyZA%3D%3D" target="_blank">↗ Aastha Dante</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 PHOTO GALLERY -->
+    <div class="reveal">
+      <p class="gallery-label">Moments from CxC 2025</p>
+      <div class="photo-gallery">
+        <div class="gallery-item wide"><img src="assets/images/cxc2025-2.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-5.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-8.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-1.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item"><img src="assets/images/cxc2025-7.jpg" alt="Ajit Joshi"/></div>
+        <div class="gallery-item wide"><img src="assets/images/cxc2025-3.jpg" alt="Ajit Joshi"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
 <section id="footer-cta">
   <div class="container">
     <p class="footer-cta-title reveal">Already Registered?</p>
@@ -1561,9 +1712,53 @@ src="https://www.facebook.com/tr?id=1009752455128270&ev=PageView&noscript=1"
   });
 })();
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tabBtns = document.querySelectorAll('.region-tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.region-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.region).classList.add('active');
+    });
+  });
+});
+</script>
 
 
 
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('judgesTrack');
+  const prev = document.getElementById('judgesPrev');
+  const next = document.getElementById('judgesNext');
+  const dots = document.querySelectorAll('#judgesDots .carousel-dot');
+  if (!track || !prev || !next) return;
+
+  const cardsPerFrame = 3;
+  const totalCards = track.children.length;
+  const totalFrames = Math.ceil(totalCards / cardsPerFrame);
+  let frame = 0;
+
+  function frameWidth() {
+    const card = track.children[0];
+    const style = getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || 0);
+    return (card.offsetWidth + gap) * cardsPerFrame;
+  }
+
+  function goTo(f) {
+    frame = Math.max(0, Math.min(totalFrames - 1, f));
+    track.scrollTo({ left: frame * frameWidth(), behavior: 'smooth' });
+    dots.forEach((d, i) => d.classList.toggle('active', i === frame));
+  }
+
+  prev.addEventListener('click', () => goTo(frame - 1));
+  next.addEventListener('click', () => goTo(frame + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+});
+</script>
 </body>
 </html>
