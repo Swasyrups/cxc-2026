@@ -652,6 +652,8 @@ avour<!DOCTYPE html>
     await loadParticipant();
   });
 
+  const CURRENT_ROUND = 'regional'; // change to 'final' when the 6-team final stage opens
+
   async function loadParticipant() {
     const { data, error } = await sb
       .from('participants').select('*')
@@ -663,8 +665,11 @@ avour<!DOCTYPE html>
     document.getElementById('dashFirstName').textContent = data.first_name;
     document.getElementById('dashRole').textContent = data.role === 'barista' ? 'Barista ☕' : 'Bartender 🍹';
 
+    // Only look at THIS round's submission — a Stage 1 entry must never block Regional, and vice versa
     const { data: sub } = await sb.from('submissions').select('*')
-      .eq('participant_id', data.id).single();
+      .eq('participant_id', data.id)
+      .eq('round', CURRENT_ROUND)
+      .single();
 
     if (sub) {
       existingSubmissionId = sub.id;
@@ -738,6 +743,7 @@ avour<!DOCTYPE html>
       recipe_notes:         document.getElementById('recipeNotes').value.trim() || null,
       ai_score_breakdown:   getHomemadeData() && getHomemadeData() !== 'ERROR' ? { homemade: JSON.parse(getHomemadeData()) } : null,
       final_decision:       'pending',
+      round:                CURRENT_ROUND,
     };
   }
 
