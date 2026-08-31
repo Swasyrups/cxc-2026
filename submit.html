@@ -93,10 +93,14 @@ avour<!DOCTYPE html>
     <div class="status-grid">
       <div class="status-card">
         <div class="slabel">Registration</div>
-        <div class="svalue confirmed"><div class="dot green"></div> Confirmed</div>
+        <div class="svalue confirmed" id="regStatus"><div class="dot green"></div> Confirmed</div>
       </div>
       <div class="status-card">
         <div class="slabel">Regional Submission</div>
+        <div class="svalue not-yet" id="regionalSubmitStatus"><div class="dot grey"></div> Loading…</div>
+      </div>
+      <div class="status-card" id="finaleStatusCard" style="display:none;">
+        <div class="slabel">Finale Submission</div>
         <div class="svalue not-yet" id="submitStatus"><div class="dot grey"></div> Not submitted</div>
       </div>
     </div>
@@ -107,17 +111,18 @@ avour<!DOCTYPE html>
       </div>
       <button onclick="showPage('submit')" style="background:var(--olive);color:#fff;border:none;border-radius:50px;padding:10px 22px;font-size:0.85rem;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;white-space:nowrap;">Edit Draft →</button>
     </div>
-    <div class="dash-cta" id="dashCta">
+    <div class="dash-cta" id="dashCta" style="display:none;">
       <div>
         <h3>Ready to enter?</h3>
-        <p>Submit your regional recipe and video by 11 August 2026.</p>
+        <p>Submit your Finale recipe and video by 6 September 2026.</p>
       </div>
       <button class="btn-pink" onclick="showPage('submit')">Submit My Entry →</button>
     </div>
-    <div class="deadline-bar">
-      <p>Regional submission deadline</p>
-      <div class="ddate">11 August 2026</div>
+    <div class="deadline-bar" id="deadlineBar" style="display:none;">
+      <p>Finale submission deadline</p>
+      <div class="ddate">6 September 2026</div>
     </div>
+    <div id="nonFinalistPanel" style="display:none;"></div>
   </div>
 </div>
 
@@ -446,25 +451,25 @@ avour<!DOCTYPE html>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">→</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">11 August 2026 · Tuesday</span>
+        <span class="timeline-date olive">11 August 2026 · Tuesday</span>
         <h3>North Regional</h3>
         <p>Siyah Arthouse, Saket, Delhi NCR. Report by 8:30 AM.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">→</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">18 August 2026 · Tuesday</span>
+        <span class="timeline-date olive">18 August 2026 · Tuesday</span>
         <h3>West Regional</h3>
         <p>House of Paloma, Bandra, Mumbai. Report by 8:30 AM.</p>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-dot pink">→</div>
+      <div class="timeline-dot olive">✓</div>
       <div class="timeline-content">
-        <span class="timeline-date pink">25 August 2026 · Tuesday</span>
+        <span class="timeline-date olive">25 August 2026 · Tuesday</span>
         <h3>South Regional</h3>
         <p>Hamilton Cocktail Bar, Bengaluru. Report by 8:30 AM.</p>
       </div>
@@ -828,7 +833,7 @@ avour<!DOCTYPE html>
   });
 
   const CURRENT_ROUND = 'final';
-  const FINALE_DEADLINE = new Date('2026-09-07T23:59:59+05:30');
+  const FINALE_DEADLINE = new Date('2026-09-06T23:59:59+05:30');
 
   async function loadParticipant() {
     const { data, error } = await sb
@@ -840,6 +845,9 @@ avour<!DOCTYPE html>
     document.getElementById('navUserName').textContent = data.first_name;
     document.getElementById('dashFirstName').textContent = data.first_name;
     document.getElementById('dashRole').textContent = data.role === 'barista' ? 'Barista ☕' : 'Bartender 🍹';
+
+    // Dashboard status cards are always accurate, regardless of finalist status or deadline
+    await renderDashboardStatus(data);
 
     // Portal fully closes after the finale deadline, for everyone
     if (new Date() > FINALE_DEADLINE) {
@@ -874,6 +882,52 @@ avour<!DOCTYPE html>
     }
   }
 
+  // Populates Registration / Regional / Finale status cards, and — for non-finalists —
+  // replaces the Finale CTA with a read-only view of their Regional entry instead.
+  async function renderDashboardStatus(data) {
+    const { data: regionalSub } = await sb.from('submissions')
+      .select('final_decision, video_url, drink_name')
+      .eq('participant_id', data.id).eq('round', 'regional').maybeSingle();
+
+    const regionalSubmitted = !!(regionalSub && (regionalSub.final_decision !== 'pending' || regionalSub.video_url));
+    const regionalEl = document.getElementById('regionalSubmitStatus');
+    if (regionalSubmitted) {
+      regionalEl.innerHTML = '<div class="dot green"></div> Submitted';
+      regionalEl.className = 'svalue confirmed';
+    } else {
+      regionalEl.innerHTML = '<div class="dot grey"></div> Not submitted';
+      regionalEl.className = 'svalue not-yet';
+    }
+
+    if (data.finalist_team_number) {
+      document.getElementById('finaleStatusCard').style.display = '';
+      document.getElementById('dashCta').style.display = 'flex';
+      document.getElementById('deadlineBar').style.display = '';
+      document.getElementById('nonFinalistPanel').style.display = 'none';
+    } else {
+      // Not a finalist — hide all Finale-round UI, show their Regional entry read-only instead
+      document.getElementById('finaleStatusCard').style.display = 'none';
+      document.getElementById('dashCta').style.display = 'none';
+      document.getElementById('deadlineBar').style.display = 'none';
+
+      const panel = document.getElementById('nonFinalistPanel');
+      panel.style.display = 'block';
+      if (regionalSubmitted) {
+        panel.innerHTML = `
+          <div style="background:#fff;border:1.5px solid rgba(75,49,65,0.12);border-radius:16px;padding:24px;margin-top:12px;">
+            <p style="font-size:0.72rem;color:var(--olive);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Your Regional Submission</p>
+            <p style="font-size:1.1rem;font-weight:700;color:var(--plum);margin-bottom:12px;">${regionalSub.drink_name || 'Untitled'}</p>
+            <p style="font-size:0.9rem;color:var(--ink-light);line-height:1.6;">Thank you for competing in CxC 2026! The 9 finalist teams have been announced and Regional submissions are now closed. Your entry is preserved here for your records.</p>
+          </div>`;
+      } else {
+        panel.innerHTML = `
+          <div style="background:#fff;border:1.5px solid rgba(75,49,65,0.12);border-radius:16px;padding:24px;margin-top:12px;">
+            <p style="font-size:0.95rem;color:var(--ink-light);line-height:1.6;">Regional submissions are now closed, and the 9 finalist teams have been announced. Thank you for being part of CxC 2026!</p>
+          </div>`;
+      }
+    }
+  }
+
   function showNotQualified() {
     const form = document.getElementById('submitForm');
     if (form) form.style.display = 'none';
@@ -898,7 +952,7 @@ avour<!DOCTYPE html>
         <div style="text-align:center;padding:40px 0">
           <h3 style="font-family:var(--font-head);font-size:22px;margin-bottom:12px;color:var(--ink)">Submissions are closed</h3>
           <p style="color:var(--ink-light);font-size:14px;line-height:1.7;max-width:360px;margin:0 auto">
-            The Finale submission deadline (7 September 2026) has passed. The portal is no longer accepting entries.
+            The Finale submission deadline (6 September 2026) has passed. The portal is no longer accepting entries.
           </p>
         </div>`;
     }
