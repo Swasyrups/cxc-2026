@@ -277,7 +277,7 @@ transform: translateX(-50%);
   z-index: 2;
   text-align: center;
   color: #fff;
-  padding: 260px 24px 0px;
+  padding: 150px 24px 0px;
   max-width: 860px;
   font-family: Roca;
 
@@ -1324,7 +1324,7 @@ footer {
   .nav-links { display: none; margin-top:0px; padding-top:200px !important;}
   .nav-hamburger { display: flex; }
   .cxc-logo-float {width:160px;top:60px}
-  .hero-content {padding-top:180px}
+  .hero-content {padding-top:110px}
   .hero-content h1 {font-size:32px}
   .hero-cta {margin-top:100px}
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
