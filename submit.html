@@ -45,11 +45,12 @@ avour<!DOCTYPE html>
 <div id="portal-subnav">
   <div class="portal-subnav-inner">
     <div class="portal-subnav-links">
-      <button class="subnav-link active" onclick="showPage('dashboard')">Dashboard</button>
-      <button class="subnav-link" onclick="showPage('rules')">Regional Rules</button>
-      <button class="subnav-link" onclick="showPage('schedule')">CxC Schedule</button>
-      <button class="subnav-link" onclick="showPage('regional')">Regional Schedule</button>
-      <button class="subnav-link" onclick="showPage('submit')">Submit Entry</button>
+      <button class="subnav-link active" data-page="dashboard" onclick="showPage('dashboard')">Dashboard</button>
+      <button class="subnav-link" data-page="rules" onclick="showPage('rules')">Regional Rules</button>
+      <button class="subnav-link" data-page="finale-rules" onclick="showPage('finale-rules')">Finale Rules</button>
+      <button class="subnav-link" data-page="schedule" onclick="showPage('schedule')">CxC Schedule</button>
+      <button class="subnav-link" data-page="regional" onclick="showPage('regional')">Regional Schedule</button>
+      <button class="subnav-link" data-page="submit" onclick="showPage('submit')">Submit Entry</button>
     </div>
     <span class="subnav-user" id="navUserName">Loading...</span>
   </div>
@@ -58,16 +59,16 @@ avour<!DOCTYPE html>
 <!-- ── MOBILE BOTTOM NAV ── -->
 <div class="mobile-nav">
   <div class="mobile-nav-items">
-    <button class="mobile-nav-item active" onclick="showPage('dashboard')">
+    <button class="mobile-nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
       <span class="micon">⌂</span><span class="mlabel">Home</span>
     </button>
-    <button class="mobile-nav-item" onclick="showPage('rules')">
+    <button class="mobile-nav-item" data-page="rules" onclick="showPage('rules')">
       <span class="micon">📋</span><span class="mlabel">Rules</span>
     </button>
-    <button class="mobile-nav-item" onclick="showPage('schedule')">
+    <button class="mobile-nav-item" data-page="schedule" onclick="showPage('schedule')">
       <span class="micon">📅</span><span class="mlabel">Dates</span>
     </button>
-    <button class="mobile-nav-item" onclick="showPage('submit')">
+    <button class="mobile-nav-item" data-page="submit" onclick="showPage('submit')">
       <span class="micon">✦</span><span class="mlabel">Submit</span>
     </button>
   </div>
@@ -227,6 +228,180 @@ avour<!DOCTYPE html>
 
 
 <!-- ══════════════════════════════════════════
+     PAGE: FINALE RULEBOOK
+══════════════════════════════════════════ -->
+<div id="page-finale-rules" class="page">
+  <div class="rules-hero">
+    <p class="eyebrow">CxC 2026 — Grand Finale</p>
+    <h1>Finale Round<br>Rules</h1>
+    <p>Rules for the 9 finalist teams. Read carefully before 6 September.</p>
+    <div class="rules-hero-tags">
+      <span class="rules-hero-tag">Last updated: August 2026</span>
+      <span class="rules-hero-tag">Version 1.0</span>
+    </div>
+  </div>
+  <div class="rules-toc">
+    <div class="rules-toc-label">In this document</div>
+    <div class="rules-toc-items">
+      <a href="#frule-about" class="rules-toc-item">1. About the Finale</a>
+      <a href="#frule-classact" class="rules-toc-item">2. CxC ClassAct</a>
+      <a href="#frule-darksecret" class="rules-toc-item">3. CxC Dark Secret</a>
+      <a href="#frule-inventory" class="rules-toc-item">4. Inventory</a>
+      <a href="#frule-notes" class="rules-toc-item">5. Things to Note</a>
+      <a href="#frule-scoring" class="rules-toc-item">6. Scoring</a>
+    </div>
+  </div>
+  <div class="rules-body">
+
+    <div class="rules-section" id="frule-about">
+      <div class="rules-section-number">Section 01</div>
+      <h2>About the Finale</h2>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;">There are 2 rounds — one you prepare for from now to 6 September, and one you'll face live on the day of the Finale. Same team, same chemistry — new challenges.</p>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:8px;"><strong>CxC ClassAct</strong> — the main round. A classic cocktail, caffeinated. Tests preparation, precision, and craft.</p>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;"><strong>CxC Dark Secret</strong> — the surprise-on-the-day round. Work with a secret ingredient and a limited pantry to craft a recipe in 30 minutes. Tests instinct, real-world bar thinking, and how you handle a curveball.</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Team size: 2 — one barista + one bartender. Same team as in Regionals.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Both partners must contribute to the recipe and the submission.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Both must be physically present on the day. Absence of a team member disqualifies the team.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">The submission video must show both of you making the drink together.</p></div>
+      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Every drink must include coffee (brewed live), Swa syrup, and alcohol — mandatorily.</p></div>
+      <div class="rule-item"><span class="rule-num">06</span><p class="rule-text">Judged by 3 Tasting Judges + 2 Technical Judges (one for coffee, one for spirit).</p></div>
+    </div>
+
+    <div class="rules-section" id="frule-classact">
+      <div class="rules-section-number">Section 02</div>
+      <h2>CxC ClassAct</h2>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:8px;"><strong>The Theme:</strong> Make a classic cocktail, desi and caffeinated.</p>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">What we're testing</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Fundamental soundness — can you build a technically sound drink.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Ability to work with flavour — can you make an Indian ingredient belong in a Western classic.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Risk-taking — are you playing safe, or actually pushing the twist.</p></div>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">How it works</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Each team chooses a Classic Cocktail from a given list.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">You get 10 days to think through your creative twist.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Submit the recipe online by 6 September. This is the recipe you will present on 8 September — no changes.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Present the recipe live in Bangalore on 8 September.</p></div>
+      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Use any of the 5 Swa syrups, chosen by you, for the cocktail. You need a minimum amount of Swa syrup in it.</p></div>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">Online Submission</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Log in at cxc.drinkswa.com with your registered email — OTP login.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Both partners can log in and edit the submission.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Submit: 1 video of you making the drink (together, if possible), 1 photo of the finished drink, and a written breakdown of your process, tools & ingredients — including anything pre-prepared.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Once submitted, your entry is locked — same recipe, same tools, same process, on the Finale.</p></div>
+      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text"><strong>Submission deadline: 6 September 2026.</strong></p></div>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">On Presentation Day</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Each team gets a total assigned slot of 15 minutes — 3 min Prep (can be used to brew coffee), 8 min Make + Present + Story, 2 min Serving + Judges' Questions, 2 min Clean-up.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Make 4 pours — 3 for the taste judges, 1 for photography.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Your story: why this spin, for this specific drink — not "why this assigned drink."</p></div>
+    </div>
+
+    <div class="rules-section" id="frule-darksecret">
+      <div class="rules-section-number">Section 03</div>
+      <h2>CxC Dark Secret</h2>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:8px;"><strong>The Theme:</strong> Surprise ingredient round. On-the-spot recipe making.</p>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">What we're testing</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Team chemistry.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Thinking on your feet.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">AI-free creativity.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Working within constraints.</p></div>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">How it works</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">A list of 9 secret ingredients will be compiled — one per team.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Draw of lots decides your presentation order for this round.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">In that same sequence, each team picks a rival team — whoever you think is your toughest competition — and hands them the toughest ingredient left on the list.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">If you get a disadvantage from an early presentation slot, you also get the advantage of picking the toughest ingredient for the toughest opponent.</p></div>
+      <div class="rule-item"><span class="rule-num">05</span><p class="rule-text">Draw of lots and ingredient selection will be done before 10am.</p></div>
+      <div class="rule-item"><span class="rule-num">06</span><p class="rule-text">When the round begins, every team gets 30 minutes to think, with access to a basic pantry.</p></div>
+      <div class="rule-item"><span class="rule-num">07</span><p class="rule-text">At the end of the 30 minutes, hand over a handwritten recipe to the judges — no changes after, while other teams present. It must contain the ingredients you chose from the pantry, recipe method, glassware, and garnish details.</p></div>
+      <div class="rule-item"><span class="rule-num">08</span><p class="rule-text">Each team gets a total assigned slot of 15 minutes to make & present, in the draw-of-lots sequence — 3 min prep, 8 min make, 2 min judge serving + Q&amp;A, 2 min clean-up.</p></div>
+      <div class="rule-item"><span class="rule-num">09</span><p class="rule-text">Storytelling — walk the judges through your thought process, live.</p></div>
+    </div>
+
+    <div class="rules-section" id="frule-inventory">
+      <div class="rules-section-number">Section 04</div>
+      <h2>Inventory at the Venue vs. What You Must Carry</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+        <div>
+          <p style="font-size:14px;font-weight:700;color:var(--olive);margin-bottom:10px;">Provided by CxC</p>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Coffee machine</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Blue Tokai coffee beans</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Swa syrups</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Basic ice cubes</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Serving glassware</p></div>
+        </div>
+        <div>
+          <p style="font-size:14px;font-weight:700;color:var(--pink);margin-bottom:10px;">You Carry</p>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Alcohol / spirits</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Any specialty ice</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Juice, garnish, mixers, any other packaged items, herbs + anything else your recipe needs</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">Tools & equipment</p></div>
+          <div class="rule-item"><span class="rule-num">·</span><p class="rule-text">5 printed copies of your recipe for the judges — must match your online submission exactly, including ingredients, method/steps, and any pre-prepped / homemade component.</p></div>
+        </div>
+      </div>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">You are not allowed to use anything from the venue's inventory. If used, you will need to pay the bill. It will be allowed only if declared in your online recipe submission.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">For the CxC Dark Secret round, you will be allowed to use the limited pantry we provide.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">We will compile a list of any other gear teams need and share it via the WhatsApp Group.</p></div>
+    </div>
+
+    <div class="rules-section" id="frule-notes">
+      <div class="rules-section-number">Section 05</div>
+      <h2>Things to Note</h2>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Pre-prepped elements (garnish, infusions, syrups) are allowed — only if declared in your submission.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Technical Timeout is allowed for a genuine equipment malfunction. Raise your hand, your clock pauses, our standby technician steps in. Once the issue is fixed, the clock resumes. Not valid for unfamiliarity with equipment.</p></div>
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:20px;margin-bottom:8px;">Disqualification criteria</p>
+      <div class="rule-item"><span class="rule-num">01</span><p class="rule-text">Both team members not being present at the assigned time.</p></div>
+      <div class="rule-item"><span class="rule-num">02</span><p class="rule-text">Brewing coffee before your total assigned time slot begins.</p></div>
+      <div class="rule-item"><span class="rule-num">03</span><p class="rule-text">Coaching or outside assistance during Prep or Make time.</p></div>
+      <div class="rule-item"><span class="rule-num">04</span><p class="rule-text">Exceeding your total assigned time slot by 2 minutes.</p></div>
+    </div>
+
+    <div class="rules-section" id="frule-scoring">
+      <div class="rules-section-number">Section 06</div>
+      <h2>Scoring</h2>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:8px;"><strong>Two rounds, weighted:</strong> CxC ClassAct — 70% · CxC Dark Secret — 30%</p>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:8px;"><strong>Within each round, two judging pools:</strong> Taste — 70% (3 Taste Judges) · Technical — 30% (1 Coffee Technical Judge + 1 Spirit Technical Judge)</p>
+      <p style="font-size:15px;color:rgba(28,28,28,0.6);line-height:1.8;font-weight:300;margin-bottom:24px;">Technical judges observe your process live — they do not taste the drink before scoring.</p>
+      <div class="rule-item"><span class="rule-num">·</span><p class="rule-text"><strong>Negative scoring:</strong> −2 points for every 15 seconds (or part of it) over your total assigned time window (10 min for CxC Dark Secret, 15 min for CxC ClassAct).</p></div>
+
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:32px;margin-bottom:8px;">Taste Scorecard — CxC ClassAct</p>
+      <div class="scorecard-grid">
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Storytelling & Concept</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Fidelity to Classic</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Flavour & Balance</span><span class="score-pts">30</span></div><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Creativity & Innovation</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Presentation & Garnish</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+      </div>
+
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:32px;margin-bottom:8px;">Taste Scorecard — CxC Dark Secret</p>
+      <div class="scorecard-grid">
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Storytelling & Concept</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Adaptability</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Flavour & Balance</span><span class="score-pts">30</span></div><div class="score-bar"><div class="score-fill" style="width:30%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Creativity & Innovation</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Presentation & Garnish</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+      </div>
+
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:32px;margin-bottom:8px;">Technical Scorecard — Coffee</p>
+      <div class="scorecard-grid">
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Grind & Dose Consistency</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Extraction / Brew Execution</span><span class="score-pts">25</span></div><div class="score-bar"><div class="score-fill" style="width:25%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Waste & Spill Management</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Workstation Organisation</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Cleanliness & Hygiene</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+      </div>
+
+      <p style="font-size:14px;color:rgba(28,28,28,0.55);line-height:1.7;font-weight:600;margin-top:32px;margin-bottom:8px;">Technical Scorecard — Spirit</p>
+      <div class="scorecard-grid">
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Technique Matched to Method (shake / stir / build)</span><span class="score-pts">25</span></div><div class="score-bar"><div class="score-fill" style="width:25%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Measuring & Pour Accuracy</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Ice & Dilution Handling</span><span class="score-pts">15</span></div><div class="score-bar"><div class="score-fill" style="width:15%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Workstation Organisation</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+        <div class="score-row"><div class="score-row-top"><span class="score-label">Cleanliness & Hygiene</span><span class="score-pts">20</span></div><div class="score-bar"><div class="score-fill" style="width:20%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
      PAGE: SCHEDULE
 ══════════════════════════════════════════ -->
 <div id="page-schedule" class="page">
@@ -298,7 +473,7 @@ avour<!DOCTYPE html>
       <div class="timeline-dot pink" style="font-size:16px;">✦</div>
       <div class="timeline-content">
         <span class="timeline-date pink">8 September 2026 · Bangalore</span>
-        <h3>Grand Finale — Bangalore Brewing Company</h3>
+        <h3>Grand Finale — Hamilton Cocktail Bar</h3>
         <p>Top 2 teams from each regional compete live. 15-minute showcase. Prize pool ₹1L+.</p>
       </div>
     </div>
@@ -652,7 +827,8 @@ avour<!DOCTYPE html>
     await loadParticipant();
   });
 
-  const CURRENT_ROUND = 'regional'; // change to 'final' when the 6-team final stage opens
+  const CURRENT_ROUND = 'final';
+  const FINALE_DEADLINE = new Date('2026-09-07T23:59:59+05:30');
 
   async function loadParticipant() {
     const { data, error } = await sb
@@ -665,7 +841,19 @@ avour<!DOCTYPE html>
     document.getElementById('dashFirstName').textContent = data.first_name;
     document.getElementById('dashRole').textContent = data.role === 'barista' ? 'Barista ☕' : 'Bartender 🍹';
 
-    // Only look at THIS round's submission — a Stage 1 entry must never block Regional, and vice versa
+    // Portal fully closes after the finale deadline, for everyone
+    if (new Date() > FINALE_DEADLINE) {
+      showPortalClosed();
+      return;
+    }
+
+    // Only finalist teams (F1–F9) get access to the Finale submission form
+    if (!data.finalist_team_number) {
+      showNotQualified();
+      return;
+    }
+
+    // Only look at THIS round's submission — a Stage 1 / Regional entry must never block the Finale round
     const { data: sub } = await sb.from('submissions').select('*')
       .eq('participant_id', data.id)
       .eq('round', CURRENT_ROUND)
@@ -683,6 +871,65 @@ avour<!DOCTYPE html>
         document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
         document.getElementById('submitStatus').className = 'svalue pending';
       }
+    }
+  }
+
+  function showNotQualified() {
+    const form = document.getElementById('submitForm');
+    if (form) form.style.display = 'none';
+    const card = form?.closest('.register-form-card') || form?.parentElement;
+    if (card) {
+      card.innerHTML = `
+        <div style="text-align:center;padding:40px 0">
+          <h3 style="font-family:var(--font-head);font-size:22px;margin-bottom:12px;color:var(--ink)">Finale submissions aren't open to your account</h3>
+          <p style="color:var(--ink-light);font-size:14px;line-height:1.7;max-width:360px;margin:0 auto">
+            Only the 9 teams advancing to the Grand Finale can submit here. If you believe this is a mistake, reach out to the Swa team.
+          </p>
+        </div>`;
+    }
+  }
+
+  function showPortalClosed() {
+    const form = document.getElementById('submitForm');
+    if (form) form.style.display = 'none';
+    const card = form?.closest('.register-form-card') || form?.parentElement;
+    if (card) {
+      card.innerHTML = `
+        <div style="text-align:center;padding:40px 0">
+          <h3 style="font-family:var(--font-head);font-size:22px;margin-bottom:12px;color:var(--ink)">Submissions are closed</h3>
+          <p style="color:var(--ink-light);font-size:14px;line-height:1.7;max-width:360px;margin:0 auto">
+            The Finale submission deadline (7 September 2026) has passed. The portal is no longer accepting entries.
+          </p>
+        </div>`;
+    }
+  }
+
+  // Find the finalist teammate, so the team's one submission can be mirrored to both accounts
+  async function getFinalistPartnerId(participant) {
+    if (!participant.finalist_team_number) return null;
+    const { data } = await sb.from('participants').select('id')
+      .eq('finalist_team_number', participant.finalist_team_number)
+      .neq('id', participant.id)
+      .maybeSingle();
+    return data?.id || null;
+  }
+
+  // Mirror this team's one submission to the partner's own row, so either partner sees the same entry
+  async function mirrorToPartner(data) {
+    const partnerId = await getFinalistPartnerId(currentParticipant);
+    if (!partnerId) return;
+
+    const mirroredData = { ...data, participant_id: partnerId };
+
+    const { data: existingPartnerSub } = await sb.from('submissions').select('id')
+      .eq('participant_id', partnerId)
+      .eq('round', CURRENT_ROUND)
+      .maybeSingle();
+
+    if (existingPartnerSub) {
+      await sb.from('submissions').update(mirroredData).eq('id', existingPartnerSub.id);
+    } else {
+      await sb.from('submissions').insert(mirroredData);
     }
   }
 
@@ -771,7 +1018,26 @@ avour<!DOCTYPE html>
     return { valid, firstInvalid };
   }
 
+  // Prevent a duplicate parallel entry if the partner already fully submitted while this tab was open
+  async function checkTeamAlreadySubmitted() {
+    const partnerId = await getFinalistPartnerId(currentParticipant);
+    if (!partnerId) return false;
+    const { data: partnerSub } = await sb.from('submissions').select('final_decision, video_url')
+      .eq('participant_id', partnerId)
+      .eq('round', CURRENT_ROUND)
+      .maybeSingle();
+    if (partnerSub && (partnerSub.final_decision !== 'pending' || partnerSub.video_url)) {
+      return true;
+    }
+    return false;
+  }
+
   async function saveDraft() {
+    if (await checkTeamAlreadySubmitted()) {
+      alert('Your teammate has already submitted this team\'s Finale entry. Reloading...');
+      window.location.reload();
+      return;
+    }
     const { valid, firstInvalid } = validateHomemade();
     if (!valid) {
       alert('You\'ve named a homemade component — please add its Recipe / Method before saving.');
@@ -790,6 +1056,7 @@ avour<!DOCTYPE html>
       error = e;
       if (inserted) existingSubmissionId = inserted.id;
     }
+    if (!error) await mirrorToPartner(data);
     btn.disabled = false; btn.textContent = 'Save Draft';
     if (!error) {
       document.getElementById('submitStatus').innerHTML = '<div class="dot gold"></div> Draft saved';
@@ -820,6 +1087,13 @@ avour<!DOCTYPE html>
   async function submitEntry() {
     const btn    = document.getElementById('submitBtn');
     const errEl  = document.getElementById('submitError');
+
+    if (await checkTeamAlreadySubmitted()) {
+      showErr(errEl, 'Your teammate has already submitted this team\'s Finale entry. Only one submission is allowed per team.');
+      setTimeout(() => window.location.reload(), 2500);
+      return;
+    }
+
     const drinkName   = document.getElementById('drinkName').value.trim();
     const swaSyrups   = getMultiValues('swaSyrupWrap');
     const ingredients = document.getElementById('ingredients').value.trim();
@@ -902,6 +1176,7 @@ avour<!DOCTYPE html>
       }
       if (dbError) { showErr(errEl, 'Submission failed. Please try again or email nivedita.panda@drinkswa.com'); console.error(dbError); btn.disabled = false; btn.textContent = 'Submit My Entry →'; return; }
 
+      await mirrorToPartner(submissionData);
       await sb.from('participants').update({ status: 'submitted' }).eq('id', currentParticipant.id);
 
       document.getElementById('submitForm').style.display = 'none';
@@ -929,9 +1204,8 @@ avour<!DOCTYPE html>
     document.getElementById('page-' + page).classList.add('active');
     document.querySelectorAll('.subnav-link').forEach(l => l.classList.remove('active'));
     document.querySelectorAll('.mobile-nav-item').forEach(l => l.classList.remove('active'));
-    const pageMap = { dashboard: 0, rules: 1, schedule: 2, regional: 3, submit: 4 };
-    document.querySelectorAll('.subnav-link')[pageMap[page]]?.classList.add('active');
-    document.querySelectorAll('.mobile-nav-item')[pageMap[page]]?.classList.add('active');
+    document.querySelector(`.subnav-link[data-page="${page}"]`)?.classList.add('active');
+    document.querySelector(`.mobile-nav-item[data-page="${page}"]`)?.classList.add('active');
     window.scrollTo(0, 0);
   }
 
